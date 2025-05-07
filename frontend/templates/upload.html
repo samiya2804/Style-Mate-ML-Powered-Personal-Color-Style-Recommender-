@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload the image</title>
+    <link rel="stylesheet" href="./static/css/upload.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block title %}Home - StyleMate{% endblock %}
+    
+    {% block content %}
+
+    <section class="grid-container">
+        <!-- Cards -->
+        <div class="card" data-aos="fade-left">
+          <h2>Color-Analyze Yourself</h2>
+          <p>Discover your ideal color palette using AI — simply upload your selfie and let us guide your style journey.</p>
+        </div>
+        <div class="card" data-aos="fade-up">
+          <h2>How It Works</h2>
+          <ul>
+            <li>Take a clear selfie in daylight</li>
+            <li>Upload your image below</li>
+            <li>Get instant palette results</li>
+          </ul>
+        </div>
+        <div class="card" data-aos="fade-right">
+          <h2>Why It Matters</h2>
+          <p>Wearing the right colors enhances your look, brightens your appearance, and improves confidence.</p>
+        </div>
+        <div class="card" data-aos="fade-left">
+          <h2>Your Privacy</h2>
+          <p>We don’t store or share your image. All processing is secure and viewable only by you.</p>
+        </div>
+    
+        <!-- Upload Card -->
+        <div class="card upload-card" data-aos="fade-right">
+          <h2>Upload Your Selfie</h2>
+          <p>Select a well-lit image for best results:</p>
+          <div class="file-input-wrapper">
+            <form method="POST" enctype="multipart/form-data">
+            <input type="file" id="upload" class="file-input" />
+            <label for="upload">Choose File</label>
+            </form>
+          <button type="submit">Upload & Analyze</button>
+          </div>
+        </div>
+      </section>
+    <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+    AOS.init();
+   </script>
+
+    {% endblock %}
+    
+</body>
+</html>

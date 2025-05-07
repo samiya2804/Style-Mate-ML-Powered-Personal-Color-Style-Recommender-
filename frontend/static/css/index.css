@@ -1,0 +1,275 @@
+*{
+    /* margin: 0; */
+    font-family: 'Times New Roman', Times, serif;
+}
+/* 
+* {
+    outline: 1px solid red;
+  } */
+/* width: 100vw */
+html, body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.main{
+    position: relative;
+     /* display: inline-block; */
+     text-align: left;
+}
+
+.self-image{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-left: 6rem;
+}
+.heading{
+    position: absolute; 
+    top: 14px; 
+    left: 10px; 
+    right: 0; 
+    color: white;
+    /* margin-left: 1.9rem; */
+}
+.button{
+    position: absolute; 
+    top: 10px; 
+    left: 550px; 
+    right: 0; 
+    color: white;
+}
+.start{
+    background-color: rgb(66, 109, 238);
+    height: 3rem;
+    width: 10rem;
+    margin-top: 30rem;
+    margin-left: 0.5rem;
+  
+}
+.color{
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.color:hover {
+  transform: scale(1.1);
+}
+/* .style{
+    height:60px;
+    width:58rem;
+    border-radius: 4px;
+    margin-left: 1rem;
+    margin-top: 5.6rem;
+} */
+/* .imgsec{
+    margin-top: 1.5rem;
+} */
+
+
+.img{
+    height: 650px;
+    width: 100%;
+
+}
+.heading p{
+    margin: 5.5rem;
+    color: blanchedalmond;
+    margin-left: 1rem;
+
+}
+
+.word {
+    display: inline-block;
+    opacity: 0;
+    animation: appear 0.5s forwards;
+}
+
+@keyframes appear {
+    to {
+        opacity: 1;
+    }
+}
+.container{
+    margin: 2rem;
+    font-size: 1.1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.col-6{
+    width: 50%;
+}
+
+p{
+    opacity: 0.7;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.reg{
+    background-color: #333;
+    color: #fff;
+    width: 70%;
+    margin: 4rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius:25px;
+    cursor: pointer;
+    margin-top: 6rem;
+}
+.reg:hover{
+    background-color: #a2366c;
+}
+.button-container a{
+    text-decoration: none;
+    text-align: center;
+}
+.circle{
+    border-radius: 100%;
+}
+
+
+/* MEDIA QUERIES */
+
+
+/* mobile potrait */
+@media ( min-width:250px) and (max-width:780px){
+    .img{
+        width: 100%;
+        height: auto;
+    }
+    .self-image{
+        width: 80%;
+        height: auto;
+        max-width: none;        
+        margin-left: 19px;
+    }
+        
+
+    .button {
+        position: absolute;
+        top: 45px;
+        left: -10px;
+        right: 0px;
+        color: white;
+    }
+    .start{
+        background-color: #3b82f6;
+        margin-top: 37%;
+        margin-left: 9rem;
+        height: 2.5rem;
+        width: 8rem;
+    }
+      
+    .container{
+        margin: 0px;
+    }
+    .button-container{
+        justify-content: center;
+        margin: 2rem;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        gap: 4rem; /* Adds spacing between buttons */
+    }
+    .reg {
+        width: auto; /* Let the button size adjust based on content */
+        margin: 0; /* Remove extra margins that were stacking them */
+    }
+    .heading p{
+        margin-left: 0.6rem;
+        font-size: 0.8rem;
+    
+    }
+    .heading {
+        position: absolute;
+        top: -60px;
+        left: 13px;
+}
+.color{
+    margin-left: 2.5rem;
+}
+}
+
+
+@media ( min-width:250) and (max-width:480px){
+    .col-6{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+    }
+}
+
+
+
+@media ( min-width:250)and (max-width:480px){
+    .heading p{
+     font-size: 0.7rem;
+    }
+}
+
+
+/* Tablet potrait */
+@media (min-width:768px) and (max-width:1024px){
+    .img{
+        width: 100%;
+        height: auto;
+        /* margin-top: 2rem; */
+    }
+    .self-image{
+        width: 90%;
+        height: auto;
+        max-width: none;        
+        margin-left: 2rem;
+    }
+    .button {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        color: white;
+    }
+    .start{
+        background-color: rgb(238, 66, 66);
+        margin-top: 52%;
+        margin-left: 2.5rem;
+      
+    }
+    .h1{
+        margin-top: 40px;
+    }
+    .container{
+        margin: auto;
+    }
+    .button-container{
+        justify-content: center;
+        margin: 2rem;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        gap: 4rem; /* Adds spacing between buttons */
+    }
+    .reg {
+        width: auto; /* Let the button size adjust based on content */
+        margin: 0; /* Remove extra margins that were stacking them */
+    }
+    .row{
+        margin-top: 5%;
+    }
+    .heading p{
+        margin-left: 1.6rem;
+        font-size: 1rem;
+       }
+}
+
+
+
+/* Desktop potrait */
+@media (max-width:480px){
+    .col-6{
+        width: 100%;
+        margin-top: 2rem;
+        margin-right: 2rem;
+    }
+    
+}
+

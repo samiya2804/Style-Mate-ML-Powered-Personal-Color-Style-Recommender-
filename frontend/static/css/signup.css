@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #4e5d4e, #a4925a);
+}
+
+.container2 {
+    width: 35%;
+    margin-left: 20rem;
+    margin: 22px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+.contain{
+    margin-top: 3rem;
+}
+.heading2{
+    color: black;
+    text-align: center;
+    opacity: 0.7;
+    margin-bottom: 5px;
+    font-size: 1.25rem !important;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 15px;
+}
+
+.form-control && .state{
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 30%;
+    height: 40px;
+    padding: 10px;
+    margin-left: 8.5rem;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+
+@media (min-width: 250px) and (max-width: 780px) {
+    .heading2 {
+        top: 20px;
+        left: 67px;
+        color: black;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+    }
+    .name{
+        margin-top: 4rem;
+    }
+    .container2{
+        width: 90%;
+        margin: 22px auto;
+    }
+    button[type="submit"]{
+        width: 70%;
+        margin-left: 3rem;
+    }
+}
+
+
+

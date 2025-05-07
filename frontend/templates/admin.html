@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manage Users - Admin</title>
+  <style>
+    body { font-family: Arial; margin: 0; }
+    .sidebar { width: 200px; background: #222; height: 100vh; color: #fff; position: fixed; }
+    .sidebar a { color: #fff; display: block; padding: 15px; text-decoration: none; }
+    .sidebar a:hover { background: #333; }
+    .content { margin-left: 200px; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2 style="text-align:center;">Admin Panel</h2>
+    <a href="#">📊 Dashboard</a>
+    <a href="#">👥 Manage Users</a>
+    <a href="#">⚙️ Settings</a>
+    <a href="#">🔒 Logout</a>
+  </div>
+  <div class="content">
+    <h1>Manage Users</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Season</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>User One</td>
+        <td>user1@example.com</td>
+        <td>Summer</td>
+        <td><button>Delete</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>User Two</td>
+        <td>user2@example.com</td>
+        <td>Winter</td>
+        <td><button>Delete</button></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

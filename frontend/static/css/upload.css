@@ -1,0 +1,151 @@
+/* Base Reset & Typography */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f4f8;
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Grid Layout */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+  
+  /* Cards */
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  .card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #2c3e50;
+  }
+  .card ul {
+    padding-left: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  /* Upload Card Full Width */
+  .upload-card {
+    grid-column: span 2;
+  }
+  
+  /* Custom File Input */
+  .file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Hide actual input */
+  .file-input {
+    display: none;
+  }
+  
+  /* Custom file label */
+  .file-input + label {
+    padding: 10px 220px;
+    background: #e0e0e0;
+    color: #333;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .file-input + label:hover {
+    background: #d5d5d5;
+  }
+  
+  /* Upload button beside input */
+  .file-input-wrapper button {
+    background:  #d19cc3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .file-input-wrapper button:hover {
+    box-shadow: 0 0 5px #b34595;
+  }
+  
+  /* Responsive Behavior */
+  @media (max-width: 768px) {
+    .upload-card {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .file-input-wrapper {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .file-input + label {
+        padding: 10px 116px;
+    }
+  
+    .file-input + label,
+    .file-input-wrapper button {
+      text-align: center;
+    }
+    .file-input-wrapper button {
+        width: 52%;
+        margin-left: 5rem;
+    }
+    body{
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+  }
+  
+  
+
+
+
+
+
+
+
+/* .uploadbtn{
+    padding: 12px;
+    background-color: #d19cc3;
+    color: aliceblue;
+    border-radius: 2rem;
+    cursor: pointer;
+    margin-top: 3.25rem;
+    margin-left: 5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.uploadbtn:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #b34595;
+    /* background-color: #b34595; */
+
+
+
+        /* .uploadbtn {
+            padding: 10px;
+            margin-bottom: 3rem;
+            margin-top: 0;
+        } */
+        

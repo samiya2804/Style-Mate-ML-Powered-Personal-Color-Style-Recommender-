@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #3b82f6;
+  }
+
+  .chat-history {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background: #f9f9f9;
+  }
+
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .user {
+    background: #dbeafe;
+    text-align: right;
+  }
+
+  .bot {
+    background: #e5e7eb;
+    text-align: left;
+  }
+.hist_head{
+    margin-top: 16px;
+}
+
+@media(max-width:768px){
+  .navbar{
+      padding: 0.8rem 0.5rem;
+  }
+  .footer{
+    margin-top: 14rem;
+  }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>self analysis</title>
+    <link rel="stylesheet" href="./static/css/details.css">
+    <link rel="stylesheet" href="./static/css/navbar.css">
+        <!-- AOS CSS -->
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  {% extends 'base.html' %}
+
+{% block title %}Details Page{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <div id="navbar-placeholder"></div>
+        <div class="row" data-aos="fade-up">
+            <h1 class="heading2" >Color-Analyze Yourself</h1>
+            <p>Elevate your style with our top-rated website a stellar shopping companion that instantly identifies your best colors through your smartphone camera. Pioneering digital color analysis in 2025, we've consistently led with innovation, adding groundbreaking features like AI-driven analysis and the exclusive Color Analysis Camera©.</p><br>
+           <p>Our website offers the internet's largest Capsule Palettes library and a unique Palette Memory game, along with features unseen anywhere else, redefining the color analysis experience. Explore, create, and rediscover color like never before with tools designed to transform your approach to style.</p>
+        </div>
+        <div class="row video-wrapper">
+            <iframe  class="video" src="https://www.youtube.com/embed/vAT4_drWJK4?si=YRSuCKNi48m4pUwB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="row" data-aos="fade-up">
+            <h3>How to Use</h3>
+            <p>Welcome to StyleMate–your personal AI-powered fashion assistant! Follow these simple steps to discover the perfect colors, clothes, and accessories that suit your unique skin tone.</p> <br>
+               <p> My Best Colors offers styling help anytime, anywhere! Use it at home to plan outfits effortlessly or take it shopping to confidently pick clothing and accessories that suit you best. Here’s a glimpse of what you can do:</p><br>
+               <p>Follow these steps to discover what colors, clothes, and accessories suit your unique skin tone!</p>
+        </div>
+           
+        <!-- how to use -->
+
+        <main class="page-content">
+
+            <!-- Step 1 -->
+            <section class="step">
+              <div class="step-text" data-aos="fade-left">
+                <h2>Step 1: Upload Your Photo</h2><br>
+                <p>Select a well-lit, clear photo of your face. Avoid filters or makeup for the best results.</p><br>
+                <p>Position your face within the transparent oval area and press the round button to snap photos using the selfie camera. You'll have 5 seconds to make adjustments before the first picture is captured.</p><br>
+                <p>Ensure your camera remains stable, stay steady for approximately 15 seconds until the photo session concludes. Once finished, you'll be automatically redirected to the Color Analysis Kit page.</p><br>
+                <p>If needed, you can restart the session by tapping the round button.</p>
+              </div>
+              <div class="step-image">
+                <img src="./static/images/3rd.png" alt="Upload your photo">
+              </div>
+            </section>
+        
+            <!-- Step 2 -->
+            <section class="step">
+              <div class="step-text" data-aos="fade-right" >
+                <h2>Step 2: Analyze Your Skin Tone</h2>
+                <p>Our AI detects your skin tone & undertone using computer vision and generates a personalized profile.</p><br>
+              
+              <p>he Color Analysis Camera is like bringing an expert color consultation to your own home. It simulates the effect of color reflections similar to draping fabric over your torso, a technique seen at standard in-person consultations.</p><br>
+
+               <p> For accurate results, follow the steps provided on the page to prepare for taking photos, and then click on the "Open Camera" button to use the embedded camera.</p><br>
+               </div>
+              <div class="step-image">
+                <img src="./static/images/1st.png" alt="Skin tone analysis">
+              </div>
+            </section>
+        
+            <!-- Step 3 -->
+            <section class="step">
+              <div class="step-text" data-aos="fade-left">
+                <h2>Step 3: View Your Style Recommendations</h2><br>
+                <p>Get custom color palettes for clothes, accessories, and more—perfectly matched to your tone.</p><br>
+                  <p>  This page contains four sets of personalized filters intended to assist you in determining your color type. Each set features several preview photos that you can tap to explore further. The Color Palettes set is free of charge, while premium users can enjoy access to three extra sets: Cool or Warm, Dark or Light, and Clear or Soft.</p><br>
+                    
+                   <p> You can regenerate the filters anytime by clicking the "Re-create the kit" button. Note that this action will replace any filters you've previously created.</p><br>
+              </div>
+              <div class="step-image">
+                <img src="./static/images/2nd.png" alt="Recommendations">
+              </div>
+            </section>
+        
+            <!-- Step 4 -->
+            <section class="step">
+              <div class="step-text" data-aos="fade-right">
+                <h2>Step 4: Chat with Your AI Stylist</h2><br>
+                <p>Ask for style tips, outfit ideas, or save your favorites—just like chatting with a real stylist.</p><br>
+                <p>Unlock your personal style with our expertly crafted fashion essentials, designed to elevate your everyday look. From trendy statement pieces to timeless classics, our collection is tailored to inspire confidence and self-expression. With a focus on quality, comfort, and versatility, we're here to help you shine in your own unique way.</p><br><br>
+                <p>Step into your style and let your personality shine through fashion.</p>
+              </div>
+              <div class="step-image">
+                <img src="./static/images/5th.png" alt="AI stylist chat">
+              </div>
+            </section>
+        
+            <!-- Step 5 -->
+            <section class="step">
+              <div class="step-text" data-aos="fade-left">
+                <h2>Step 5: Save & Revisit</h2><br>
+                <p>Sign up to save your tone history and return anytime for fresh fashion suggestions.</p><br>
+                <p>Revisit anytime for the saved palatte and style.</p><br>
+              </div>
+              <div class="step-image">
+                <img src="./static/images/4th.png" alt="Save and revisit">
+              </div>
+            </section>
+            <!-- <section class="help-box">
+                <h3>Need Help?</h3>
+                <p>Visit our <a href="contact.html">Contact Us</a> page or chat with StyleMate for instant support.</p>
+              </section> -->
+          </main>
+    </div>
+
+    <!-- AOS JavaScript -->
+   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+  AOS.init();
+  </script>
+
+    {% endblock %}
+    
+</body>
+</html>

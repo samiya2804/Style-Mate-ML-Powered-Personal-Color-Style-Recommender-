@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9;
+  }
+  /* header {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+  } */
+  .container2{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  .profile-section {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    padding: 20px;
+    flex: 1;
+    min-width: 300px;
+    transition: transform 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .avatar {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .color-swatches {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .swatch:hover {
+    transform: scale(1.2);
+    border-color: #2575fc;
+  }
+  .lookbook {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .lookbook img {
+    width: 70%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .lookbook img:hover {
+    transform: scale(1.1);
+  }
+   .security a{
+    text-decoration: none;
+    text-align:center;
+    /* color: #333; */
+    font-size: 0.7rem;
+    margin-top: 4rem;
+    margin-left: 0.35rem;
+   }
+
+   .security{
+    display: flex;
+   }
+
+  .profilebtn{
+    display: inline-block;
+    background: #2575fc;
+    color: white;
+    width: 35%;
+    text-align: center;
+    padding: 10px 23px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background 0.2s;
+  }
+  .profilebtn:hover {
+    background: #1a5edb;
+  }
+
+  .stylebtn2{
+   background-color: rgb(215, 77, 77);
+  }
+  .stylebtn2:hover{
+    background-color: red;
+  }
+  .fa-solid{
+    margin-right: 0.5rem;
+  }
+
+  /* Media Queries */
+
+  @media (max-width:780px){
+
+    .security a{
+      text-decoration: none;
+    text-align: center;
+    font-size: 0.6rem;
+    margin-top: 1.5rem;
+    }
+
+    .security {
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .profilebtn{
+    padding: 10px 10px;
+    text-align: center;
+    margin-top: 3.7rem;
+    width:100%;
+  }
+  .lookbook{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lookbook img{
+    width: 108%;
+  }
+  h3{
+    font-size: 1rem;
+  }
+  .resize{
+    margin-top: 21px;
+    font-size: 0.8rem;
+  }
+  .recheck{
+    padding: 10px 7px;
+    margin-top: 2.5rem;
+    font-size: 0.77rem;
+  }
+
+  }
