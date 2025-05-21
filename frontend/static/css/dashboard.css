@@ -2,6 +2,7 @@ body {
     
 font-family: Arial; 
 margin: 0; 
+ background-color: 	#F8E8EE !important;
 }
     
 header {
@@ -20,9 +21,9 @@ header {
 
   .cta-btn {
     background: white;
-    color: #2575fc;
+    color: #c78b99;
     padding: 12px 24px;
-    border: 1px solid #1c55b7;
+    border: 1px solid #c0697d;
     border-radius: 25px;
     font-size: 1em;
     cursor: pointer;
@@ -35,7 +36,7 @@ header {
 
   .profilebtn{
     display: inline-block;
-    background: #2575fc;
+    background: #c78b99;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -45,14 +46,17 @@ header {
     transition: background 0.2s;
   }
   .profilebtn:hover {
-    background: #1a5edb;
+    background: #bf6a7e;
   }
 
   .grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 0 20px; max-width: 1000px; margin: auto;
   }
   .card {
-    background: white; border-radius: 12px; padding: 20px;
+    /* background: white;  */
+    background: #F9F5F6;
+    border-radius: 12px; 
+    padding: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center;
     transition: transform 0.3s;
   }
@@ -66,7 +70,7 @@ header {
 }
   .stat { 
     font-size: 26px; 
-    color: #253feb;
+    color: #c78b99;
  }
   canvas { 
     width: 100% !important; 

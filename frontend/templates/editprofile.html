@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="./static/css/editprofile.css">
+</head>
+<body>
+
+    <div class="container2">
+        <h2 class="heading2">Edit Profile on StyleMate</h2>
+        <form class="contain row g-3" action="/newdetails" method="POST">
+    
+          <div class="form-group">
+            <input type="text" name="username"  class="form-control" placeholder="Edit your Name"  value="{{ user.username }}" required>
+          </div>
+        
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Edit your Email" value="{{ user.email }}" required>
+          </div>    
+          <div class="form-group">
+            <input type="text" class="form-control"  name="country" placeholder="Edit Your Country" value="{{ user.country}}" required>
+          </div>
+          <div class="form-group">
+            <select class="form-select state" name="state">
+              <option disabled>Select Your State</option>
+              <!-- Indian States -->
+    <option value="Arunachal Pradesh" {% if user.state == "Arunachal Pradesh" %}selected{% endif %}>Arunachal Pradesh</option>
+    <option value="Andhra Pradesh" {% if user.state == "Andhra Pradesh" %}selected{% endif %}>Andhra Pradesh</option>
+    <option value="Bihar" {% if user.state == "Bihar" %}selected{% endif %}>Bihar</option>
+    <option value="Assam" {% if user.state == "Assam" %}selected{% endif %}>Assam</option>
+    <option value="Delhi" {% if user.state == "Delhi" %}selected{% endif %}>Delhi</option>
+    <option value="Mumbai" {% if user.state == "Mumbai" %}selected{% endif %}>Mumbai</option>
+    <option value="Bengaluru" {% if user.state == "Bengaluru" %}selected{% endif %}>Bengaluru</option>
+    <option value="Kolkata" {% if user.state == "Kolkata" %}selected{% endif %}>Kolkata</option>
+    <option value="Chennai" {% if user.state == "Chennai" %}selected{% endif %}>Chennai</option>
+    <option value="Hyderabad" {% if user.state == "Hyderabad" %}selected{% endif %}>Hyderabad</option>
+    <option value="Pune" {% if user.state == "Pune" %}selected{% endif %}>Pune</option>
+    <option value="Ahemdabad" {% if user.state == "Ahemdabad" %}selected{% endif %}>Ahemdabad</option>
+    <option value="Jaipur" {% if user.state == "Jaipur" %}selected{% endif %}>Jaipur</option>
+    <option value="Surat" {% if user.state == "Surat" %}selected{% endif %}>Surat</option>
+    <option value="Chandigarh" {% if user.state == "Chandigarh" %}selected{% endif %}>Chandigarh</option>
+    <option value="Lucknow" {% if user.state == "Lucknow" %}selected{% endif %}>Lucknow</option>
+    <option value="Indore" {% if user.state == "Indore" %}selected{% endif %}>Indore</option>
+    <option value="Patna" {% if user.state == "Patna" %}selected{% endif %}>Patna</option>
+    <option value="Vadodara" {% if user.state == "Vadodara" %}selected{% endif %}>Vadodara</option>
+    <option value="Goa" {% if user.state == "Goa" %}selected{% endif %}>Goa</option>
+    <option value="Chhattisgarh" {% if user.state == "Chhattisgarh" %}selected{% endif %}>Chhattisgarh</option>
+    <option value="Gujarat" {% if user.state == "Gujarat" %}selected{% endif %}>Gujarat</option>
+    <option value="Haryana" {% if user.state == "Haryana" %}selected{% endif %}>Haryana</option>
+    <option value="Himachal Pradesh" {% if user.state == "Himachal Pradesh" %}selected{% endif %}>Himachal Pradesh</option>
+    <option value="Jammu and Kashmir" {% if user.state == "Jammu and Kashmir" %}selected{% endif %}>Jammu and Kashmir</option>
+    <option value="Jharkhand" {% if user.state == "Jharkhand" %}selected{% endif %}>Jharkhand</option>
+    <option value="Karnataka" {% if user.state == "Karnataka" %}selected{% endif %}>Karnataka</option>
+    <option value="Kerala" {% if user.state == "Kerala" %}selected{% endif %}>Kerala</option>
+    <option value="Ladakh" {% if user.state == "Ladakh" %}selected{% endif %}>Ladakh</option>
+    <option value="Madhya Pradesh" {% if user.state == "Madhya Pradesh" %}selected{% endif %}>Madhya Pradesh</option>
+    <option value="Maharashtra" {% if user.state == "Maharashtra" %}selected{% endif %}>Maharashtra</option>
+    <option value="Manipur" {% if user.state == "Manipur" %}selected{% endif %}>Manipur</option>
+    <option value="Meghalaya" {% if user.state == "Meghalaya" %}selected{% endif %}>Meghalaya</option>
+    <option value="Mizoram" {% if user.state == "Mizoram" %}selected{% endif %}>Mizoram</option>
+    <option value="Nagaland" {% if user.state == "Nagaland" %}selected{% endif %}>Nagaland</option>
+    <option value="Odisha" {% if user.state == "Odisha" %}selected{% endif %}>Odisha</option>
+    <option value="Punjab" {% if user.state == "Punjab" %}selected{% endif %}>Punjab</option>
+    <option value="Rajasthan" {% if user.state == "Rajasthan" %}selected{% endif %}>Rajasthan</option>
+    <option value="Sikkim" {% if user.state == "Sikkim" %}selected{% endif %}>Sikkim</option>
+    <option value="Tamil Nadu" {% if user.state == "Tamil Nadu" %}selected{% endif %}>Tamil Nadu</option>
+    <option value="Telangana" {% if user.state == "Telangana" %}selected{% endif %}>Telangana</option>
+    <option value="Tripura" {% if user.state == "Tripura" %}selected{% endif %}>Tripura</option>
+    <option value="Uttar Pradesh" {% if user.state == "Uttar Pradesh" %}selected{% endif %}>Uttar Pradesh</option>
+    <option value="Uttarakhand" {% if user.state == "Uttarakhand" %}selected{% endif %}>Uttarakhand</option>
+    <option value="West Bengal" {% if user.state == "West Bengal" %}selected{% endif %}>West Bengal</option>
+
+    <!-- Places Outside India -->
+    <option value="Bangkok" {% if user.state == "Bangkok" %}selected{% endif %}>Bangkok</option>
+    <option value="Berlin" {% if user.state == "Berlin" %}selected{% endif %}>Berlin</option>
+    <option value="Dubai" {% if user.state == "Dubai" %}selected{% endif %}>Dubai</option>
+    <option value="London" {% if user.state == "London" %}selected{% endif %}>London</option>
+    <option value="New York" {% if user.state == "New York" %}selected{% endif %}>New York</option>
+    <option value="Paris" {% if user.state == "Paris" %}selected{% endif %}>Paris</option>
+    <option value="Singapore" {% if user.state == "Singapore" %}selected{% endif %}>Singapore</option>
+    <option value="Sydney" {% if user.state == "Sydney" %}selected{% endif %}>Sydney</option>
+    <option value="Tokyo" {% if user.state == "Tokyo" %}selected{% endif %}>Tokyo</option>
+    <option value="Toronto" {% if user.state == "Toronto" %}selected{% endif %}>Toronto</option>
+  </select>
+            </select>
+          </div>
+
+             <div class="form-group">
+            <input type="text" class="form-control"  name="zipcode" placeholder="Edit Your Pincode" value="{{ user.zipcode}}" required>
+          </div>
+
+          <div class="form-group">
+    <select class="form-select state" name="gender">
+    <option disabled value="">Select Gender</option>
+    <option value="Male" {% if user.gender == "Male" %}selected{% endif %}>Male</option>
+    <option value="Female" {% if user.gender == "Female" %}selected{% endif %}>Female</option>
+    <option value="Others" {% if user.gender == "Others" %}selected{% endif %}>Others</option>
+  </select>
+    </div>
+
+
+        
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+            <a href="{{url_for('profile')}}" class="moveback">Move back</a>
+          </div>
+        
+        </form>
+        
+        </div>
+    
+</body>
+</html>

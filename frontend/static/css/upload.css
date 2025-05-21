@@ -1,10 +1,27 @@
 /* Base Reset & Typography */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #f0f4f8;
+    /* background: #f0f4f8 ; */
     margin: 0;
     color: #333;
+    background-color: 	#F8E8EE !important;
   }
+
+ .file-name-bottom {
+  margin-top: 1.2rem;
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.file-name-bottom {
+  transition: all 0.3s ease;
+}
+
   
   /* Grid Layout */
   .grid-container {
@@ -14,12 +31,14 @@ body {
     max-width: 1200px;
     margin: auto;
     margin-top: 2.5rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
   }
   
   /* Cards */
   .card {
-    background: #ffffff;
+    /* background: #ffffff; */
+    /* background-color: #F8E8EE; */
+    background-color: #F9F5F6 !important;
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     padding: 2rem;
@@ -74,7 +93,8 @@ body {
   
   /* Upload button beside input */
   .file-input-wrapper button {
-    background:  #d19cc3;
+    /* background:  #d19cc3; */
+    background: #c78b99;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -84,7 +104,7 @@ body {
     transition: background 0.3s ease;
   }
   .file-input-wrapper button:hover {
-    box-shadow: 0 0 5px #b34595;
+    box-shadow: 0 0 5px #b97080;
   }
   
   /* Responsive Behavior */
@@ -110,6 +130,7 @@ body {
     .file-input-wrapper button {
         width: 52%;
         margin-left: 5rem;
+        margin-top: 1rem;
     }
     body{
         padding-left: 0.5rem;

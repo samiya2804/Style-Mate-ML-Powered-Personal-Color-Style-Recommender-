@@ -1,6 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right,#6a11cb, #2575fc);
+     /* background: linear-gradient(to right,#6a11cb, #2575fc); */
+     background: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1);
+     font-family: Arial, sans-serif;
+   
     color: white;
     margin: 0;
     padding: 0;
@@ -11,7 +13,7 @@ body {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: #3b82f6;
+    background-color: #9f6d8c;
     color: white;
     border: none;
     border-radius: 50%;
@@ -39,7 +41,7 @@ body {
   }
 
   .chat-header {
-    background: #3b82f6;
+    background: #e37fa4;
     color: white;
     padding: 15px;
     text-align: center;
@@ -74,7 +76,7 @@ body {
   }
 
   .chat-input button {
-    background: #3b82f6;
+    background: #e37fa4;
     border: none;
     color: white;
     padding: 0 20px;
@@ -87,7 +89,7 @@ body {
 
   .user {
     text-align: right;
-    color: #3b82f6;
+    color: #e37fa4;
   }
 
   .bot {
@@ -105,6 +107,7 @@ body {
   }
   .history-link a{
     text-decoration: none;
+      color: #d8648f !important;
   }
 
 
@@ -124,7 +127,7 @@ body {
   }
   .cta-btn {
     background: white;
-    color: #2575fc;
+  color: #d8648f;
     padding: 12px 24px;
     border: none;
     border-radius: 25px;
@@ -160,7 +163,7 @@ body {
   }
   .feature-card i {
     font-size: 2em;
-    color: #2575fc;
+      color: #d8648f;
     margin-bottom: 10px;
   }
 

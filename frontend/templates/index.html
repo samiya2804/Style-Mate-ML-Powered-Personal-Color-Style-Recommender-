@@ -40,7 +40,13 @@
     
         <!-- start button -->
         <div class="button">
-            <a href="{{ url_for('upload') }}"><button type="submit" class="btn btn-primary btn-lg start">Start now</button></a>
+            {% if session.get('user_id') %}
+            <a href="{{ url_for('upload') }}">
+                <button type="submit" class="btn btn-primary btn-lg start">Start now</button>
+              </a>
+            {% else %}
+            <a href="{{ url_for('login', next='upload') }}"><button type="submit" class="btn btn-primary btn-lg start">Start now</button></a>
+            {% endif %}
         </div>
     
         <div class="imgsec">

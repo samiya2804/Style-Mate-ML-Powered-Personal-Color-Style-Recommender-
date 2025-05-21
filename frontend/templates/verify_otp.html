@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+</head>
+<body>
+    <style>
+
+            body{
+            font-family: Arial, sans-serif;
+              background-color: 	#F8E8EE; 
+        }
+        .container{
+            width: 35%;
+            margin-left: 20rem;
+            margin: 152px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+    input[type="text"] {
+        width: 48%;
+    height: 40px;
+    padding: 10px;
+    /* margin-top: 4.25rem; */
+    /* margin-left: 7rem; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.reset {
+    width: 25%;
+    text-decoration: none;
+    padding: 13px;
+    /* margin-top: 0.5rem; */
+    /* margin-left: 2.5rem; */
+    background-color: #c78b99;
+    color: #fff;
+    border: none;
+    border-radius: 23px;
+    cursor: pointer;
+       font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.reset:hover {
+    background-color: #bd6177;
+}
+
+button[type="submit"] {
+    width: 25%;
+    height: 40px;
+    padding: 8px;
+    margin-top: 0.5rem;
+    /* margin-left: 3rem; */
+    background-color: #c78b99;
+    color: #fff;
+    border: none;
+    border-radius: 23px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #b85b70;
+}
+
+@media(max-width:768px){
+    input[type="text"] {
+        width: 90%;
+        margin-top: 1.25rem;
+        margin-left: 0.5rem;
+    
+    }
+    .container{
+        width: 85%;
+    }
+
+    button[type="submit"] {
+        width: 34%;
+        height: 37px;
+        padding: 0px;
+        margin-top: 1.5rem;
+        margin-left: 1rem;
+        font-size: 12px;
+    
+    }
+
+    /* button[type="submit"] {
+        width: 45%;
+        margin-top: 1.5rem;
+        margin-left: 5rem;
+    
+    } */
+     .reset{
+        /* padding: 11px; */
+    margin-top: 1.5rem;
+    margin-left: 5.5rem;
+    }
+}
+    </style>
+      <div class="container">
+     <h2 style="text-align: center; opacity: 0.5;">Verify Your OTP</h2>
+    <form action="/verifyotp" method="POST">
+        <input type="text" name="otp" placeholder="Enter OTP" required>
+        <button type="submit">Verify OTP</button>
+         <a class="reset" href="{{ url_for('profile')}}">Move Back</a>
+      </form>  
+      </div>     
+</body>
+</html>

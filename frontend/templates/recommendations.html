@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Recommendations</title>
+    <link rel="stylesheet" href="./static/css/recommendations.css">
+</head>
+<body>
+        {% extends 'base.html' %}
+
+    {% block title %}Reccomendations Page{% endblock %}
+    
+    {% block content %}
+    <div id="row">
+        <a href="/dashboard"><i class="fa-solid fa-circle-arrow-left"></i></a>
+          <h1 class="heading3">Uploaded Images</h1>
+
+    </div>
+    <div class="container">
+        {% for upload in uploads %}
+        <div class="card" id="card-{{ loop.index }}">
+            <img src="{{ url_for('uploaded_file', filename=upload.filename) }}" alt="Uploaded Image">
+            <div class="details">
+                <div class="short-detail">
+                    <strong>Date:</strong> {{ upload.date }}<br>
+                    <strong>Time:</strong> {{ upload.time }}<br>
+                    <span class="show-more" onclick="toggleDetail('card-{{ loop.index }}')">Show More</span>
+                </div>
+                <div class="full-detail">
+                    <strong>Date:</strong> {{ upload.date }}<br>
+                    <strong>Time:</strong> {{ upload.time }}<br>
+                    <strong>Skin Tone:</strong> Not analyzed yet<br>
+                    <strong>Recommended Colors: </strong> Not Found<br>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        function toggleDetail(id) {
+            let card = document.getElementById(id);
+            card.classList.toggle("show");
+        }
+    </script>
+        {% endblock %}
+</body>
+</html>
+

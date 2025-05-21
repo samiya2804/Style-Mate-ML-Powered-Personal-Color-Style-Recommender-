@@ -44,16 +44,31 @@
           <h2>Upload Your Selfie</h2>
           <p>Select a well-lit image for best results:</p>
           <div class="file-input-wrapper">
-            <form method="POST" enctype="multipart/form-data">
-            <input type="file" id="upload" class="file-input" />
+            <form action="/upload" method="POST" enctype="multipart/form-data" >
+            <input type="file" id="upload" name="file" class="file-input" required />
             <label for="upload">Choose File</label>
+            <button type="submit">Upload & Analyze</button>
             </form>
-          <button type="submit">Upload & Analyze</button>
-          </div>
+            </div>
+              <!--  Filename will appear here -->
+           <p id="file-name-display" class="file-name-bottom"></p>
         </div>
       </section>
+
+
+
     <!-- AOS JavaScript -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+  const uploadInput = document.getElementById('upload');
+  const fileNameDisplay = document.getElementById('file-name-display');
+
+  uploadInput.addEventListener('change', function () {
+    const fileName = uploadInput.files[0]?.name || "No file selected";
+    fileNameDisplay.textContent = "File selected: " + fileName;
+  });
+</script>
+
     <script>
     AOS.init();
    </script>

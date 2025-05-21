@@ -1,11 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    /* background: linear-gradient(to bottom right, #4e5d4e, #a4925a); */
-    background-color: 	#F8E8EE !important;
+     background-color: 	#F8E8EE;
 }
 
 .container2 {
-    width: 35%;
+    width: 25%;
     margin-left: 20rem;
     margin: 22px auto;
     padding: 20px;
@@ -16,7 +15,7 @@ body {
     margin-bottom: 2rem;
 }
 .contain{
-    margin-top: 3rem;
+      margin-top: 13px;
 }
 .heading2{
     color: black;
@@ -28,29 +27,48 @@ body {
 
 .form-group {
     margin-bottom: 6px;
-        background-color: #FFFFFF;
+      background-color: #FFFFFF;
 }
 
 label {
-    display: block;
+    /* display: block; */
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 15px;
 }
 
-.form-control && .state{
-    width: 90%;
-    height: 40px;
+.form-control{
+    width: 93%;
+    height: 34px;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+    .moveback{
+        text-decoration: none;
+           /* margin-left: 2rem; */
+    }
+    .moveback:hover{
+        text-decoration: underline;
+    }
+
+
+.state{
+    width: 100%;
+    height: 50px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+
 button[type="submit"] {
-    width: 30%;
+    width: 31%;
     height: 40px;
-    padding: 10px;
-    margin-left: 8.5rem;
-    background-color: #c78b99;
+    padding: 5px;
+    margin-left: 1.5rem;
+    margin-top: 6px;
+    margin-right: 94px;
+    background-color:  #c78b99;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -58,7 +76,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color:  #e478ac;
+    background-color:  #c55d75;
 }
 
 
@@ -74,14 +92,22 @@ button[type="submit"]:hover {
         margin-top: 4rem;
     }
     .container2{
-        width: 90%;
-        margin: 22px auto;
+        width: 87%;
+        margin: 119px auto;
+    }
+    .state{
+        width:100%;
     }
     button[type="submit"]{
-        width: 70%;
-        margin-left: 3rem;
+        width: 47%;
+        margin-left: 1rem;
+        margin-top: 14px;
+    }
+    .moveback{
+        text-decoration: none;
+        margin-left: 4rem;
+    }
+    .moveback:hover{
+        text-decoration: underline;
     }
 }
-
-
-

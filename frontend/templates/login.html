@@ -27,12 +27,13 @@
                   <input class="Remember" type="checkbox" name="remember">
                   Remember me
                 </label>
-                <a href="#" class="forgot-password">Forgot Password</a>
+                <a href="{{ url_for('forgetpassword') }}" class="forgot-password">Forgot Password</a>
               </div>
             <button type="submit">Login</button>
             </div>
         </form>
     </div>
+    <!-- f9f5e5 -->
     {% endblock %}
 </body>
 </html>

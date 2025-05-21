@@ -18,9 +18,12 @@
           <!-- Basic Info Card -->
           <div class="card">
             <img src="https://www.w3schools.com/howto/img_avatar.png" class="avatar" alt="User Avatar">
-            <h3>sam</h3>
-            <p>Email: sam@gmail.com</p>
-            <a href="#" class="profilebtn">Edit Profile</a>
+            <h3>{{ session['username'] }}</h3>
+            <p>Email: {{ session['email'] }} </p>
+            <form action="{{ url_for('editprofile') }}" method="get">
+              <button class="profilebtn" type="submit">Edit Profile</button>
+          </form>
+            <!-- <a href="#" class="profilebtn">Edit Profile</a> -->
           </div>
     
           <!-- Skin Tone Card -->
@@ -70,12 +73,30 @@
             <div class="card">
                 <h3><i class="fa-solid fa-lock"></i> Security</h3>
                 <div class="security">
-                  <a href="#" class="profilebtn stylebtn"><i class="fa-solid fa-key"></i>Change Password</a>
-                  <a href="#" class="profilebtn stylebtn2""><i class="fa-solid fa-trash"></i>Delete Account</a>
+                  <a href="{{ url_for('forgetpassword') }}" class="profilebtn stylebtn"><i class="fa-solid fa-key"></i>Change Password</a>
+                  <a href="#" onclick="showDeletePopup()" class="profilebtn stylebtn2""><i class="fa-solid fa-trash"></i>Delete Account</a>
                   <a href="#" class="profilebtn stylebtn"><i class="fa-solid fa-cloud-arrow-down"></i>Download My Data</a>
                 </div>
           </div>
         </div>
+
+        <!-- Hidden Delete Confirmation Popup -->
+<div id="deletePopup" class="popup-form">
+  <form method="POST" action="{{ url_for('delete_account') }}">
+    <h4>Are you sure you want to delete your account?</h4>
+    <label style="margin-right: 10px;" >
+      <input type="radio" name="confirm_delete" value="yes" required> Yes
+    </label>
+    <label>
+      <input type="radio" name="confirm_delete" value="no"> No
+    </label>
+    <br><br>
+    <button type="submit" class="submitbtn">Submit</button>
+    <button type="button" onclick="hideDeletePopup()" class="cancelbtn">Cancel</button>
+  </form>
+</div>
+
+        
 
         <div class="profile-section">
           <div class="card">
@@ -112,6 +133,16 @@
           </div>
     </div>
         </div>
+        <script>
+          function showDeletePopup() {
+            document.getElementById('deletePopup').style.display = 'block';
+          }
+        
+          function hideDeletePopup() {
+            document.getElementById('deletePopup').style.display = 'none';
+          }
+        </script>
+        
         {% endblock %}
 </body>
 </html>

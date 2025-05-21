@@ -11,6 +11,10 @@ html, body{
     max-width: 100%;
     overflow-x: hidden;
 }
+/* body{
+         background-color: #FFF9F5;
+      color: #2E2E2E;
+} */
 .main{
     position: relative;
      /* display: inline-block; */
@@ -39,12 +43,24 @@ html, body{
     color: white;
 }
 .start{
-    background-color: rgb(66, 109, 238);
+    /* background-color: rgb(66, 109, 238); */
+     /* background-color: #8D6748; */
+      background-color: #b4556b;
+  color: white;
+  border-radius: 8px;
+  /* padding: 0.5rem 1rem; */
+  transition: background 0.3s ease;
+  border: 1px solid #9c495c;
+    /* border-radius: 999px; */
     height: 3rem;
     width: 10rem;
     margin-top: 30rem;
     margin-left: 0.5rem;
   
+}
+.start:hover{
+    background-color: #c74e6a;
+    border: 1px solid #963378;
 }
 .color{
     border-radius: 12px;
@@ -156,12 +172,18 @@ p{
         color: white;
     }
     .start{
-        background-color: #3b82f6;
+      background-color: #b4556b;
+        transition: background 0.3s ease;
+       border: 1px solid #9c495c;
         margin-top: 37%;
         margin-left: 9rem;
         height: 2.5rem;
         width: 8rem;
     }
+    .start:hover{
+    background-color: #c74e6a;
+    border: 1px solid #963378;
+}
       
     .container{
         margin: 0px;

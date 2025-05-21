@@ -20,10 +20,10 @@
   opacity: 1;
   cursor: pointer;
 }
-.row{
+/* .row{
     opacity: 0.7;
     margin-bottom: 1rem;
-}
+} */
 .row p{
   opacity: 0.8;
 }

@@ -13,7 +13,7 @@
     <header class="navbar">
         <div class="navbar-container">
             <div class="logo">      
-              <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" class="style" alt="logo">
+              <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_final.jpg') }}" class="style" alt="logo">
               </a></div>
             <nav class="nav-links" id="navLinks">
                 <div class="close-btn" id="closeBtn">&times;</div>
@@ -24,9 +24,11 @@
                 <div class="nav-items">
                 <a class="nav-logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt=""></a>
                 <a class="hidden sidebar-icon" href="{{ url_for('index') }}"><i class="fa-solid fa-house"></i>Home</a>
+                {% if session.get("user_id") %}
                 <a class="hidden sidebar-icon" href="{{ url_for('upload') }}"><i class="fa-solid fa-cloud-arrow-up"></i>Upload</a>
                 <a class="hidden sidebar-icon" href="{{ url_for('dashboard') }}"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
                 <a class="hidden sidebar-icon" href="{{ url_for('profile') }}"><i class="fa-solid fa-user"></i>Profile</a>
+                {% endif %}
                 <a class="hidden sidebar-icon"   href="{{ url_for('chatbot') }}"><i class="fa-solid fa-comment"></i>Chatbot</a>
                 <a class="hidden sidebar-icon" href="{{ url_for('details') }}"><i class="fa-solid fa-circle-info"></i>Details</a>
                 </div>
@@ -34,8 +36,12 @@
 
 
               <div class="auth-buttons">
+                {% if session.get("user_id") %}
+                <a href="{{ url_for('logout') }}" class="btn signup" style="color: aliceblue ;">Logout</a>
+                {% else %}
                 <a href="{{ url_for('login') }}" class="btn login">Login</a>
-                <a href="{{ url_for('signup') }}" class="btn signup">Register</a>
+                <a href="{{ url_for('signup') }}" class="btn signup" style="color: aliceblue ;">Register</a>
+                {% endif %}
               </div>  
             </nav>
               <div class="menu-toggle" id="menuToggle">

@@ -1,0 +1,114 @@
+ body {
+            font-family: 'Segoe UI', sans-serif;
+            /* background-color: #fff8f2; */
+             background-color: 	#F8E8EE !important;
+            margin: 0;
+            /* padding: 20px; */
+        }
+           #row a{
+            margin-top: 1.8rem;
+                font-size: 2rem;
+                text-decoration: none;
+                margin-left: 3rem;
+                  color: #c78b99;
+            }
+            #row a  :hover{
+                    color: #c55d75;
+
+            }
+
+
+        .heading3 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            /* margin-top: 2rem; */
+            color: #222;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color:   #F9F5F6 !important;
+            border: 1px solid #f4d4ba;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+              width: 100%;
+        height: 250px; /* Set a common height */
+        object-fit:contain; /* Ensures cropping without distortion */
+        }
+
+        .details {
+        display: block; /* Always show on all devices */
+            padding: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+
+       /* Default: mobile-first approach */
+.short-detail {
+    display: block;
+}
+
+.full-detail {
+    display: none;
+}
+
+/* When the card has the .show class, show full detail */
+.card.show .full-detail {
+    display: block;
+}
+
+.card.show .short-detail {
+    display: none;
+}
+    .show-more {
+            color: #e67e22;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        @media(max-width:768px){
+                  #row a{
+                margin-left: 1rem;
+            }
+        }
+
+/* On tablets and larger: show full detail directly */
+@media (min-width: 768px) {
+    .short-detail {
+        display: none;
+    }
+
+    .full-detail {
+        display: block;
+    }
+
+    .show-more {
+        display: none; /* hide show-more on desktop since full detail is always shown */
+    }
+}
+
+
+        /* @media (min-width: 768px) {
+            .short-detail { display: none; }
+            .full-detail { display: block; }
+        } */

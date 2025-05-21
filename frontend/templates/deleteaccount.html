@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete-Account</title>
+</head>
+<body>
+    <style>
+        /* Chat Popup */
+  .chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 350px;
+    max-height: 500px;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    background: #cf5085;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+  }
+
+  .chat-header .close {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    cursor: pointer;
+  }
+
+
+  .radio-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  .radio-container input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+  }
+    </style>
+
+
+<!-- Delete Account Button -->
+<button onclick="showDeleteForm()" class="delete-btn">Delete Account</button>
+
+<!-- Delete Confirmation Popup -->
+<div id="deleteFormPopup" class="popup-form">
+  <form method="POST" action="/delete-account">
+    <h3>Are you sure you want to delete your account?</h3>
+    <label>
+      <input type="radio" name="confirm_delete" value="yes" required> Yes
+    </label>
+    <label>
+      <input type="radio" name="confirm_delete" value="no"> No
+    </label>
+    <br><br>
+    <button type="submit">Submit</button>
+    <button type="button" onclick="hideDeleteForm()">Cancel</button>
+  </form>
+</div>
+<script>
+    
+</script>
+    
+</body>
+</html>
