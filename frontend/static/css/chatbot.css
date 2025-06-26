@@ -112,16 +112,16 @@ body {
 
 
   /* //page html */
-  header {
+ section {
     text-align: center;
     padding: 80px 20px;
   }
-  header h1 {
+section h1 {
     font-size: 3em;
     margin-bottom: 10px;
     animation: fadeIn 2s ease;
   }
-  header p {
+section p {
     font-size: 1.2em;
     margin-bottom: 30px;
   }

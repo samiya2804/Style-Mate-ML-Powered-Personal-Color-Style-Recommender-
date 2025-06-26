@@ -1,7 +1,24 @@
-*{
-    /* margin: 0; */
+/* *{
+  
     font-family: 'Times New Roman', Times, serif;
+} */
+
+
+/* body{
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+} */
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
+
+h1,h2,h3,h4{
+    font-family:  'Poppins', 'Segoe UI', Roboto, sans-serif;
+}
+/* 
+div {
+  border: 1px dashed red !important;
+} */
 /* 
 * {
     outline: 1px solid red;
@@ -10,51 +27,106 @@
 html, body{
     max-width: 100%;
     overflow-x: hidden;
+    background-color: #F8E8EE;
+}
+
+a{
+    font-family:  'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
 }
 /* body{
          background-color: #FFF9F5;
       color: #2E2E2E;
 } */
+
+.container {
+    padding: 1rem 2rem;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin: 1rem 0; */
+}
+
+.col-6 {
+    /* width: 50%; */
+    padding: 1rem;
+}
+
 .main{
     position: relative;
      /* display: inline-block; */
-     text-align: left;
+     /* text-align: left; */
+      overflow: hidden;
+       width: 100%;
 }
 
 .self-image{
-    width: 100%;
-    max-width: 300px;
+    width: 80%;
+    /* max-width: 300px; */
     height: auto;
-    margin-left: 6rem;
+    /* margin-left: 6rem; */
 }
+/* .row{
+    margin-bottom: 1rem;
+} */
 .heading{
     position: absolute; 
-    top: 14px; 
-    left: 10px; 
+    top: 334px; 
+    left: 20px; 
     right: 0; 
-    color: white;
+    color: rgb(255, 252, 252);
     /* margin-left: 1.9rem; */
+}
+.word {
+  white-space: nowrap;
+}
+
+.catchyline {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
 }
 .button{
     position: absolute; 
-    top: 10px; 
-    left: 550px; 
-    right: 0; 
-    color: white;
+    top: 0px; 
+    left: 0px; 
+    right: 0px; 
+    /* color: white; */
+ /* transform: translate(-50%, -50%); */
+  text-align: center;
+  background: rgba(65, 64, 64, 0.5); /* dark transparent background */
+  color: #fff;
+  padding:4.3rem 3rem;
+  /* border-radius: 1.5rem; */
+  backdrop-filter: blur(1px);
+  z-index: 1000;
+  max-width: 100%;
+    font-family:  'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .start{
-    /* background-color: rgb(66, 109, 238); */
-     /* background-color: #8D6748; */
-      background-color: #b4556b;
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+  background-color: #b4556b;
   color: white;
   border-radius: 8px;
   /* padding: 0.5rem 1rem; */
   transition: background 0.3s ease;
   border: 1px solid #9c495c;
-    /* border-radius: 999px; */
+      cursor: pointer;
+  transition: background-color 0.3s ease;
     height: 3rem;
     width: 10rem;
-    margin-top: 30rem;
+    margin-top: 26rem;
     margin-left: 0.5rem;
   
 }
@@ -83,14 +155,20 @@ html, body{
 
 
 .img{
-    height: 650px;
+    height: 600px;
     width: 100%;
+    position: relative;
+    z-index: 1;
+
+      /* object-fit: cover; */
+  display: block;
 
 }
 .heading p{
     margin: 5.5rem;
-    color: blanchedalmond;
-    margin-left: 1rem;
+    /* text-align: center; */
+    color: rgb(242, 239, 234);
+    /* margin-left: -4rem; */
 
 }
 
@@ -106,9 +184,8 @@ html, body{
     }
 }
 .container{
-    margin: 2rem;
+    /* margin: 2rem; */
     font-size: 1.1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .col-6{
     width: 50%;
@@ -116,27 +193,98 @@ html, body{
 
 p{
     opacity: 0.7;
+    /* font-weight: 400; */
+    line-height: 24px;
+    margin-bottom: 16px;
+        font-size: 16px;
+        font-family:'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+/* CTA Section above Footer */
+.cta-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1dbe1;
+  padding: 30px 20px;
+  /* border-bottom: 1px solid #444; */
+  color: white;
 }
 
-.button-container{
+.cta-text h2 {
+  margin: 0;
+  font-size: 22px;
+      color: #171414;
+}
+
+.cta-text p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #995b5b;
+}
+
+.button-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.button-container form {
+  margin: 0;
+}
+
+button.reg {
+  padding: 10px 20px;
+  background-color:  #c78b99;
+  color: white;
+  border: none;
+  border-radius: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.reg:hover {
+  background-color:  #c07586;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cta-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .button-container {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+
+/* .button-container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-}
+    background-color: #f2e0e7;
+    border-radius: 24px;
+} */
 .reg{
-    background-color: #333;
+  background: #c38392;
     color: #fff;
     width: 70%;
-    margin: 4rem;
+    margin: 0rem 2rem 1rem 2rem;
     padding: 10px 20px;
-    border: none;
-    border-radius:25px;
+    border: 1px solid #c76f83;
+    border-radius: 25px;
     cursor: pointer;
-    margin-top: 6rem;
+    margin-top: 0.9rem;
 }
 .reg:hover{
-    background-color: #a2366c;
+    background-color: #c3667c ;
+     border: 1px solid #c1405e;
 }
 .button-container a{
     text-decoration: none;
@@ -165,9 +313,10 @@ p{
         
 
     .button {
-        position: absolute;
-        top: 45px;
-        left: -10px;
+    position: absolute;
+        height: 7.9%;
+        top: 2px;
+        left: 0px;
         right: 0px;
         color: white;
     }
@@ -175,8 +324,8 @@ p{
       background-color: #b4556b;
         transition: background 0.3s ease;
        border: 1px solid #9c495c;
-        margin-top: 37%;
-        margin-left: 9rem;
+        margin-top: 48%;
+        margin-left: 2rem;
         height: 2.5rem;
         width: 8rem;
     }
@@ -184,6 +333,18 @@ p{
     background-color: #c74e6a;
     border: 1px solid #963378;
 }
+
+
+.catchyline {
+    font-size: 1.5rem;
+    gap: 0.2rem;
+    line-height: 7;
+  }
+
+  .start {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+  }
       
     .container{
         margin: 0px;
@@ -199,14 +360,14 @@ p{
         margin: 0; /* Remove extra margins that were stacking them */
     }
     .heading p{
-        margin-left: 0.6rem;
+      
         font-size: 0.8rem;
     
     }
     .heading {
-        position: absolute;
-        top: -60px;
-        left: 13px;
+               position: absolute;
+        top: 46px;
+        right: -23px;
 }
 .color{
     margin-left: 2.5rem;
@@ -253,9 +414,9 @@ p{
         color: white;
     }
     .start{
-        background-color: rgb(238, 66, 66);
+        background-color: #b4556b; ;
         margin-top: 52%;
-        margin-left: 2.5rem;
+        margin-left: 21.5rem;
       
     }
     .h1{

@@ -1,19 +1,32 @@
 /* Navbar base styles */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   
-  .navbar {
+  /* .navbar {
     background-color: #F9F5F6;
-    /* background-color: #FFF9F4; */
+    background-color: #FFF9F4;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 0.8rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  } */
+
+  header{
+    background-color: #F9F5F6;
+    background-color: #FFF9F4;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding: 0.8rem 1.5rem;
     position: sticky;
     top: 0;
     z-index: 999;
   }
+
+
   .nav-items a:hover {
   border-bottom: 2px solid #da4a78;
 }
@@ -37,7 +50,8 @@ body {
   
   .nav-links {
     display: flex;
-    gap: 0.5rem;
+    gap: 17.5rem;
+    /* margin-left: 300px; */
   }
   
   .nav-links a {
@@ -65,28 +79,29 @@ body {
   .auth-buttons {
     display: flex;
     gap: 0.5rem;
+
   }
   
   .btn {
     text-decoration: none;
-    padding: 0.4rem 0.9rem;
+    padding: 0.7rem;
     border-radius: 20px;
     font-size: 0.9rem;
     transition: 0.3s ease;
   }
-  .auth-buttons{
-    margin-left: 10rem;
-  }
+ 
   
   
   .signup {
     /* background-color: #3b82f6;
     color: white; */
-     background: #c78b99; color: white; border-radius: 8px;
+     background: #c78b99; 
+     color: white; 
+     border-radius: 8px;
   }
   
   .signup:hover {
-    background-color: #de83bd !important;
+    background-color: #c57386 !important;
   }
   .sidebar-icon i {
    margin-right: 10px;
@@ -138,6 +153,7 @@ body {
   
   /* Responsive */
   @media (max-width: 768px) {
+    
     .nav-links {
       position: fixed;
       top: 0;
@@ -155,6 +171,7 @@ body {
       transition: opacity 0.3s ease, transform 0.4s ease;
       z-index: 1000;
       padding: 2rem 1.5rem;
+      gap: 0rem;
     }
     
     .nav-links.active {
@@ -371,7 +388,7 @@ transition: all 0.3s ease;
 .auth-buttons .btn{
   border: 1px solid #c78b99;
   background-color: white;
-  color: #c78b99;
+  color: #7d4955 !important;
 }
 
 .auth-buttons .btn:hover {

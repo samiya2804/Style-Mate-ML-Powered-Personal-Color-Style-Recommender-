@@ -6,23 +6,27 @@
     <title>Navbar</title>
     <!-- <link rel="stylesheet" href="./css/navbar.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 
 </head>
 <body>
-    <header class="navbar">
+    <header class="">
         <div class="navbar-container">
             <div class="logo">      
               <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_final.jpg') }}" class="style" alt="logo">
-              </a></div>
-            <nav class="nav-links" id="navLinks">
+              </a>
+            </div>
+            <div>
+              <nav class="nav-links" id="navLinks">
                 <div class="close-btn" id="closeBtn">&times;</div>
                 <!-- <div class="sidebar-menu">
                   <img src="{{ url_for('static', filename='images/logo.png') }}" class="style" alt="logo"></div>
                   <hr>
                 </div> -->
                 <div class="nav-items">
-                <a class="nav-logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt=""></a>
+                <a class="nav-logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_final.jpg') }}" alt=""></a>
                 <a class="hidden sidebar-icon" href="{{ url_for('index') }}"><i class="fa-solid fa-house"></i>Home</a>
                 {% if session.get("user_id") %}
                 <a class="hidden sidebar-icon" href="{{ url_for('upload') }}"><i class="fa-solid fa-cloud-arrow-up"></i>Upload</a>
@@ -44,6 +48,8 @@
                 {% endif %}
               </div>  
             </nav>
+          </div>
+            
               <div class="menu-toggle" id="menuToggle">
                 <span></span><span></span><span></span>
               </div>  

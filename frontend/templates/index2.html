@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="./static/css/index2.css">
+</head>
+<body>
+    <div class="hero-container">
+  <img class="background-img" src="./static/images/Background_img.jpg" alt="no image found">
+
+  <div class="overlay-content">
+    {% if session.get('user_id') %}
+      <a href="{{ url_for('upload') }}">
+        <p class="catchyline">
+          <span class="word">Find</span>
+          <span class="word">Your</span>
+          <span class="word">Tone,</span>
+          <span class="word">Define</span>
+          <span class="word">Your</span>
+          <span class="word">Style.</span>
+        </p>
+        <button type="submit" class="start-button">Start now</button>
+      </a>
+    {% else %}
+      <a href="{{ url_for('login', next='upload') }}">
+        <button type="submit" class="start-button">Start now</button>
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+</body>
+</html>

@@ -43,35 +43,160 @@
         <div class="card upload-card" data-aos="fade-right">
           <h2>Upload Your Selfie</h2>
           <p>Select a well-lit image for best results:</p>
+         <span style="color: #6c757d; font-size: 13px; font-style: italic; display: block;">
+  <i class="fas fa-info-circle" style="margin-right: 4px;"></i>
+  Supported formats: <strong>JPG</strong>, <strong>PNG</strong>, and <strong>JPEG</strong>
+</span>
+
+
           <div class="file-input-wrapper">
-            <form action="/upload" method="POST" enctype="multipart/form-data" >
-            <input type="file" id="upload" name="file" class="file-input" required />
+            <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data" >
+            <input type="file" id="upload" name="file" class="file-input" accept=".jpg, .jpeg .png" required />
             <label for="upload">Choose File</label>
+        
+             <input type="hidden" name="hair" id="hairPoint">
+            <input type="hidden" name="eye" id="eyePoint">
+            <input type="hidden" name="skin" id="skinPoint">
+
             <button type="submit">Upload & Analyze</button>
             </form>
             </div>
               <!--  Filename will appear here -->
            <p id="file-name-display" class="file-name-bottom"></p>
         </div>
-      </section>
+<!-- Canvas Preview (Initially Hidden) -->
+    <div class="card" id="canvas-card" style="padding: 20px; display: none;" data-aos="fade-up">
+    <h3 style="margin-bottom: 10px;">Image Preview & Color Selection</h3>
+    <p id="instructions" style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">
+ Drag the swatch onto the image to pick a color. <br>
+  Follow this order:
+  <span style="color: #ca4242;">1️⃣ Hair</span> → 
+  <span style="color: #1c7ed6;">2️⃣ Eyes</span> → 
+  <span style="color: #2b8a3e;">3️⃣ Skin</span><br>
+  Then, click <strong>Analyze</strong> to proceed.</p>
+     <div style="position: relative;">
+    <canvas id="imageCanvas" style="max-width: 100%; border: 1px solid #ddd;"></canvas>
+    <div id="swatch" style="
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        border: 2px solid black;
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        cursor: grab;
+        display: none;
+      ">
+      </div>
+  </div>
+</div>
+<input type="hidden" name="hair" id="hairPoint">
+<input type="hidden" name="eye" id="eyePoint">
+<input type="hidden" name="skin" id="skinPoint">
+</section>
 
 
 
     <!-- AOS JavaScript -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-  const uploadInput = document.getElementById('upload');
-  const fileNameDisplay = document.getElementById('file-name-display');
-
-  uploadInput.addEventListener('change', function () {
-    const fileName = uploadInput.files[0]?.name || "No file selected";
-    fileNameDisplay.textContent = "File selected: " + fileName;
-  });
-</script>
-
-    <script>
+       <script>
     AOS.init();
    </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const uploadInput = document.getElementById("upload");
+  const fileNameDisplay = document.getElementById("file-name-display");
+  const canvasCard = document.getElementById("canvas-card");
+  const canvas = document.getElementById("imageCanvas");
+  const ctx = canvas.getContext("2d");
+  const swatch = document.getElementById("swatch");
+  const instructions = document.getElementById("instructions");
+
+  const labels = ["hair", "eye", "skin"];
+  let currentStep = 0;
+
+  let dragging = false;
+  let offsetX = 0, offsetY = 0;
+
+  const image = new Image();
+
+  uploadInput.addEventListener("change", function () {
+    const file = uploadInput.files[0];
+    if (!file) return;
+
+    fileNameDisplay.textContent = "File selected: " + file.name;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      image.onload = function () {
+        canvas.width = image.width;
+        canvas.height = image.height;
+        ctx.drawImage(image, 0, 0);
+        swatch.style.display = "block";
+        canvasCard.style.display = "block";
+        instructions.textContent = `Drag the swatch to select ${labels[currentStep].toUpperCase()} and click`;
+      };
+      image.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Draw the canvas image
+  function redrawCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(image, 0, 0);
+  }
+
+  // Mouse dragging for swatch
+  swatch.addEventListener("mousedown", (e) => {
+    dragging = true;
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
+    swatch.style.cursor = "grabbing";
+  });
+
+  document.addEventListener("mouseup", () => {
+    dragging = false;
+    swatch.style.cursor = "grab";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+
+    const rect = canvas.getBoundingClientRect();
+    let x = e.clientX - rect.left - offsetX;
+    let y = e.clientY - rect.top - offsetY;
+
+    // Clamp to canvas bounds
+    x = Math.max(0, Math.min(x, canvas.width - swatch.offsetWidth));
+    y = Math.max(0, Math.min(y, canvas.height - swatch.offsetHeight));
+
+    swatch.style.left = x + "px";
+    swatch.style.top = y + "px";
+  });
+
+  // When user clicks the swatch to confirm
+  swatch.addEventListener("click", (e) => {
+    if (currentStep >= labels.length) return;
+
+    const swatchX = parseInt(swatch.style.left) + swatch.offsetWidth / 2;
+    const swatchY = parseInt(swatch.style.top) + swatch.offsetHeight / 2;
+
+    // Save to hidden input
+    document.getElementById(labels[currentStep] + "Point").value = `${Math.round(swatchX)},${Math.round(swatchY)}`;
+
+    currentStep++;
+    if (currentStep < labels.length) {
+      instructions.textContent = `Now drag to select ${labels[currentStep].toUpperCase()} and click`;
+    } else {
+      instructions.textContent = "All points selected. Click Analyze.";
+    }
+  });
+});
+</script>
+
+
 
     {% endblock %}
     

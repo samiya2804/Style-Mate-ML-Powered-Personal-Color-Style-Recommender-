@@ -1,0 +1,801 @@
+Hair Color,Skin Color,Eye Color,Season 
+Black,Rosy Beige,Icy Blue,Winter
+Dark Brown,Fair Cool,Deep Gray,Winter
+Cool Brown,Deep Cool Brown,Cool Green,Winter
+Silver,Rosy Beige,Dark Brown,Winter
+Ash Brown,Deep Cool Brown,Dark Brown,Winter
+White,Porcelain,Icy Blue,Winter
+Silver,Deep Cool Brown,Icy Blue,Winter
+Dark Brown,Fair Cool,Icy Blue,Winter
+Cool Brown,Fair Cool,Icy Blue,Winter
+Dark Brown,Fair Cool,Cool Green,Winter
+Cool Brown,Porcelain,Icy Blue,Winter
+White,Porcelain,Cool Green,Winter
+Cool Brown,Rosy Beige,Dark Brown,Winter
+Silver,Deep Cool Brown,Dark Brown,Winter
+Dark Brown,Fair Cool,Deep Gray,Winter
+Dark Brown,Deep Cool Brown,Icy Blue,Winter
+Ash Brown,Rosy Beige,Cool Green,Winter
+Ash Brown,Porcelain,Dark Brown,Winter
+Ash Brown,Deep Cool Brown,Dark Brown,Winter
+White,Fair Cool,Deep Gray,Winter
+Silver,Rosy Beige,Dark Brown,Winter
+White,Rosy Beige,Deep Gray,Winter
+Silver,Porcelain,Dark Brown,Winter
+Ash Brown,Porcelain,Icy Blue,Winter
+Dark Brown,Rosy Beige,Icy Blue,Winter
+Black,Porcelain,Deep Gray,Winter
+Cool Brown,Deep Cool Brown,Dark Brown,Winter
+Cool Brown,Rosy Beige,Icy Blue,Winter
+Dark Brown,Fair Cool,Deep Gray,Winter
+Ash Brown,Deep Cool Brown,Icy Blue,Winter
+Black,Fair Cool,Deep Gray,Winter
+Ash Brown,Deep Cool Brown,Icy Blue,Winter
+Black,Fair Cool,Deep Gray,Winter
+Dark Brown,Rosy Beige,Deep Gray,Winter
+Cool Brown,Fair Cool,Deep Gray,Winter
+Dark Brown,Rosy Beige,Dark Brown,Winter
+Dark Brown,Deep Cool Brown,Icy Blue,Winter
+Dark Brown,Deep Cool Brown,Cool Green,Winter
+Black,Porcelain,Dark Brown,Winter
+Ash Brown,Porcelain,Deep Gray,Winter
+Dark Brown,Deep Cool Brown,Dark Brown,Winter
+Dark Brown,Porcelain,Icy Blue,Winter
+Ash Brown,Fair Cool,Cool Green,Winter
+White,Rosy Beige,Deep Gray,Winter
+Ash Brown,Deep Cool Brown,Dark Brown,Winter
+Dark Brown,Porcelain,Cool Green,Winter
+White,Fair Cool,Cool Green,Winter
+Silver,Rosy Beige,Dark Brown,Winter
+Ash Brown,Porcelain,Icy Blue,Winter
+Ash Brown,Rosy Beige,Deep Gray,Winter
+Ash Blonde,Fair Pink,Green,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Medium Ash Brown,Light Rose,Gray,Summer
+Medium Ash Brown,Cool Ivory,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Muted Hazel,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Medium Ash Brown,Soft Beige,Green,Summer
+Medium Ash Brown,Soft Beige,Green,Summer
+Medium Ash Brown,Light Rose,Muted Hazel,Summer
+Medium Ash Brown,Fair Pink,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Medium Ash Brown,Fair Pink,Blue,Summer
+Ash Blonde,Cool Ivory,Gray,Summer
+Medium Ash Brown,Cool Ivory,Muted Hazel,Summer
+Ash Blonde,Light Rose,Muted Hazel,Summer
+Medium Ash Brown,Cool Ivory,Blue,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Ash Blonde,Soft Beige,Green,Summer
+Medium Ash Brown,Light Rose,Muted Hazel,Summer
+Ash Blonde,Fair Pink,Blue,Summer
+Ash Blonde,Cool Ivory,Green,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Ash Blonde,Cool Ivory,Green,Summer
+Medium Ash Brown,Light Rose,Gray,Summer
+Medium Ash Brown,Fair Pink,Green,Summer
+Medium Ash Brown,Fair Pink,Gray,Summer
+Medium Ash Brown,Soft Beige,Blue,Summer
+Medium Ash Brown,Soft Beige,Gray,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Soft Beige,Gray,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Medium Ash Brown,Fair Pink,Blue,Summer
+Medium Ash Brown,Light Rose,Gray,Summer
+Medium Ash Brown,Fair Pink,Blue,Summer
+Medium Ash Brown,Fair Pink,Blue,Summer
+Ash Blonde,Cool Ivory,Gray,Summer
+Medium Ash Brown,Cool Ivory,Muted Hazel,Summer
+Ash Blonde,Fair Pink,Blue,Summer
+Medium Ash Brown,Soft Beige,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Ash Blonde,Light Rose,Blue,Summer
+Medium Ash Brown,Soft Beige,Gray,Summer
+Ash Blonde,Soft Beige,Green,Summer
+Medium Ash Brown,Soft Beige,Gray,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Rich Brown,Golden Beige,Warm Brown,Autumn
+Copper,Olive,Warm Brown,Autumn
+Auburn,Olive,Olive Green,Autumn
+Copper,Peach,Warm Brown,Autumn
+Rich Brown,Peach,Amber,Autumn
+Rich Brown,Peach,Hazel,Autumn
+Auburn,Freckled Fair,Amber,Autumn
+Golden Blonde,Olive,Hazel,Autumn
+Auburn,Peach,Hazel,Autumn
+Auburn,Freckled Fair,Amber,Autumn
+Auburn,Peach,Amber,Autumn
+Copper,Peach,Amber,Autumn
+Rich Brown,Golden Beige,Amber,Autumn
+Golden Blonde,Peach,Amber,Autumn
+Copper,Peach,Amber,Autumn
+Golden Blonde,Olive,Warm Brown,Autumn
+Auburn,Olive,Amber,Autumn
+Auburn,Freckled Fair,Amber,Autumn
+Golden Blonde,Peach,Olive Green,Autumn
+Copper,Freckled Fair,Amber,Autumn
+Copper,Peach,Hazel,Autumn
+Golden Blonde,Olive,Amber,Autumn
+Copper,Golden Beige,Hazel,Autumn
+Rich Brown,Olive,Olive Green,Autumn
+Copper,Golden Beige,Hazel,Autumn
+Auburn,Olive,Warm Brown,Autumn
+Rich Brown,Freckled Fair,Olive Green,Autumn
+Golden Blonde,Freckled Fair,Olive Green,Autumn
+Copper,Peach,Warm Brown,Autumn
+Auburn,Olive,Olive Green,Autumn
+Rich Brown,Peach,Amber,Autumn
+Copper,Peach,Hazel,Autumn
+Rich Brown,Golden Beige,Olive Green,Autumn
+Rich Brown,Olive,Hazel,Autumn
+Copper,Peach,Hazel,Autumn
+Auburn,Olive,Hazel,Autumn
+Auburn,Olive,Olive Green,Autumn
+Copper,Freckled Fair,Hazel,Autumn
+Auburn,Peach,Amber,Autumn
+Rich Brown,Peach,Hazel,Autumn
+Rich Brown,Olive,Warm Brown,Autumn
+Golden Blonde,Freckled Fair,Hazel,Autumn
+Golden Blonde,Freckled Fair,Warm Brown,Autumn
+Auburn,Peach,Amber,Autumn
+Rich Brown,Golden Beige,Hazel,Autumn
+Golden Blonde,Peach,Warm Brown,Autumn
+Copper,Peach,Olive Green,Autumn
+Copper,Freckled Fair,Hazel,Autumn
+Rich Brown,Freckled Fair,Warm Brown,Autumn
+Golden Blonde,Freckled Fair,Warm Brown,Autumn
+Light Auburn,Blushing Light,Warm Green,Spring
+Strawberry Blonde,Peachy,Light Warm Brown,Spring
+Golden Blonde,Peachy,Light Hazel,Spring
+Light Auburn,Peachy,Light Hazel,Spring
+Strawberry Blonde,Clear Beige,Aqua,Spring
+Golden Blonde,Blushing Light,Warm Green,Spring
+Light Auburn,Clear Beige,Light Warm Brown,Spring
+Golden Brown,Blushing Light,Warm Green,Spring
+Golden Blonde,Peachy,Bright Blue,Spring
+Light Auburn,Blushing Light,Bright Blue,Spring
+Golden Brown,Clear Beige,Bright Blue,Spring
+Golden Brown,Golden Fair,Light Warm Brown,Spring
+Light Auburn,Clear Beige,Aqua,Spring
+Golden Brown,Golden Fair,Warm Green,Spring
+Golden Brown,Blushing Light,Light Warm Brown,Spring
+Light Auburn,Peachy,Aqua,Spring
+Golden Blonde,Clear Beige,Warm Green,Spring
+Golden Blonde,Clear Beige,Bright Blue,Spring
+Golden Blonde,Blushing Light,Bright Blue,Spring
+Golden Brown,Golden Fair,Warm Green,Spring
+Golden Blonde,Blushing Light,Bright Blue,Spring
+Golden Blonde,Blushing Light,Aqua,Spring
+Golden Blonde,Peachy,Light Hazel,Spring
+Light Auburn,Peachy,Bright Blue,Spring
+Light Auburn,Clear Beige,Warm Green,Spring
+Golden Brown,Clear Beige,Warm Green,Spring
+Golden Brown,Clear Beige,Light Warm Brown,Spring
+Golden Blonde,Blushing Light,Aqua,Spring
+Golden Blonde,Clear Beige,Aqua,Spring
+Light Auburn,Blushing Light,Bright Blue,Spring
+Golden Blonde,Golden Fair,Bright Blue,Spring
+Golden Blonde,Blushing Light,Bright Blue,Spring
+Golden Brown,Blushing Light,Warm Green,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Golden Blonde,Clear Beige,Aqua,Spring
+Strawberry Blonde,Clear Beige,Warm Green,Spring
+Golden Brown,Golden Fair,Warm Green,Spring
+Golden Blonde,Blushing Light,Light Hazel,Spring
+Golden Blonde,Clear Beige,Light Hazel,Spring
+Golden Brown,Golden Fair,Light Hazel,Spring
+Strawberry Blonde,Golden Fair,Warm Green,Spring
+Golden Blonde,Blushing Light,Light Warm Brown,Spring
+Light Auburn,Golden Fair,Light Warm Brown,Spring
+Golden Blonde,Blushing Light,Light Hazel,Spring
+Golden Blonde,Golden Fair,Light Hazel,Spring
+Strawberry Blonde,Golden Fair,Light Hazel,Spring
+Strawberry Blonde,Blushing Light,Bright Blue,Spring
+Golden Brown,Blushing Light,Aqua,Spring
+Golden Brown,Peachy,Warm Green,Spring
+Golden Blonde,Golden Fair,Aqua,Spring
+Black,Deep Cool Brown,Dark Brown,Winter
+Ash Brown,Rosy Beige,Cool Green,Winter
+Black,Porcelain,Deep Gray,Winter
+Black,Deep Cool Brown,Deep Gray,Winter
+White,Fair Cool,Deep Gray,Winter
+Black,Porcelain,Icy Blue,Winter
+Silver,Deep Cool Brown,Deep Gray,Winter
+Dark Brown,Deep Cool Brown,Cool Green,Winter
+Cool Brown,Fair Cool,Deep Gray,Winter
+Black,Fair Cool,Icy Blue,Winter
+Black,Rosy Beige,Icy Blue,Winter
+White,Porcelain,Cool Green,Winter
+White,Deep Cool Brown,Icy Blue,Winter
+Silver,Porcelain,Deep Gray,Winter
+Cool Brown,Fair Cool,Deep Gray,Winter
+Cool Brown,Porcelain,Deep Gray,Winter
+Cool Brown,Rosy Beige,Cool Green,Winter
+Cool Brown,Porcelain,Cool Green,Winter
+Silver,Porcelain,Deep Gray,Winter
+Black,Deep Cool Brown,Dark Brown,Winter
+Silver,Porcelain,Cool Green,Winter
+White,Rosy Beige,Dark Brown,Winter
+Black,Deep Cool Brown,Deep Gray,Winter
+Cool Brown,Porcelain,Dark Brown,Winter
+Dark Brown,Porcelain,Cool Green,Winter
+Ash Brown,Porcelain,Dark Brown,Winter
+Ash Brown,Porcelain,Cool Green,Winter
+Black,Deep Cool Brown,Dark Brown,Winter
+Ash Brown,Porcelain,Deep Gray,Winter
+Dark Brown,Deep Cool Brown,Icy Blue,Winter
+Silver,Deep Cool Brown,Dark Brown,Winter
+Cool Brown,Rosy Beige,Icy Blue,Winter
+Ash Brown,Fair Cool,Deep Gray,Winter
+Ash Brown,Porcelain,Deep Gray,Winter
+Ash Brown,Porcelain,Deep Gray,Winter
+Ash Brown,Deep Cool Brown,Dark Brown,Winter
+Dark Brown,Deep Cool Brown,Deep Gray,Winter
+Silver,Rosy Beige,Deep Gray,Winter
+Cool Brown,Fair Cool,Dark Brown,Winter
+Black,Fair Cool,Dark Brown,Winter
+Dark Brown,Porcelain,Cool Green,Winter
+Dark Brown,Fair Cool,Cool Green,Winter
+Black,Porcelain,Dark Brown,Winter
+Cool Brown,Fair Cool,Icy Blue,Winter
+White,Rosy Beige,Icy Blue,Winter
+White,Fair Cool,Deep Gray,Winter
+Ash Brown,Porcelain,Cool Green,Winter
+White,Deep Cool Brown,Deep Gray,Winter
+White,Fair Cool,Dark Brown,Winter
+Ash Brown,Deep Cool Brown,Icy Blue,Winter
+Ash Blonde,Fair Pink,Muted Hazel,Summer
+Ash Blonde,Light Rose,Green,Summer
+Medium Ash Brown,Light Rose,Gray,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Fair Pink,Blue,Summer
+Ash Blonde,Fair Pink,Gray,Summer
+Ash Blonde,Fair Pink,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Ash Blonde,Soft Beige,Green,Summer
+Medium Ash Brown,Cool Ivory,Muted Hazel,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Medium Ash Brown,Cool Ivory,Blue,Summer
+Ash Blonde,Fair Pink,Green,Summer
+Ash Blonde,Light Rose,Muted Hazel,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Ash Blonde,Light Rose,Blue,Summer
+Ash Blonde,Cool Ivory,Muted Hazel,Summer
+Medium Ash Brown,Soft Beige,Blue,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Medium Ash Brown,Light Rose,Gray,Summer
+Medium Ash Brown,Fair Pink,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Ash Blonde,Fair Pink,Blue,Summer
+Medium Ash Brown,Light Rose,Muted Hazel,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Ash Blonde,Light Rose,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Ash Blonde,Cool Ivory,Muted Hazel,Summer
+Ash Blonde,Light Rose,Blue,Summer
+Medium Ash Brown,Light Rose,Muted Hazel,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Ash Blonde,Light Rose,Green,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Ash Blonde,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Ash Blonde,Soft Beige,Green,Summer
+Medium Ash Brown,Light Rose,Gray,Summer
+Ash Blonde,Cool Ivory,Blue,Summer
+Medium Ash Brown,Soft Beige,Green,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Golden Blonde,Peach,Warm Brown,Autumn
+Rich Brown,Golden Beige,Amber,Autumn
+Rich Brown,Olive,Amber,Autumn
+Copper,Golden Beige,Amber,Autumn
+Auburn,Olive,Hazel,Autumn
+Golden Blonde,Olive,Hazel,Autumn
+Rich Brown,Golden Beige,Amber,Autumn
+Copper,Peach,Amber,Autumn
+Rich Brown,Golden Beige,Warm Brown,Autumn
+Golden Blonde,Olive,Warm Brown,Autumn
+Copper,Peach,Warm Brown,Autumn
+Auburn,Freckled Fair,Olive Green,Autumn
+Copper,Golden Beige,Warm Brown,Autumn
+Copper,Freckled Fair,Warm Brown,Autumn
+Rich Brown,Olive,Amber,Autumn
+Auburn,Peach,Hazel,Autumn
+Rich Brown,Peach,Warm Brown,Autumn
+Copper,Golden Beige,Olive Green,Autumn
+Golden Blonde,Golden Beige,Olive Green,Autumn
+Auburn,Freckled Fair,Olive Green,Autumn
+Auburn,Golden Beige,Olive Green,Autumn
+Copper,Olive,Warm Brown,Autumn
+Auburn,Golden Beige,Olive Green,Autumn
+Auburn,Olive,Amber,Autumn
+Auburn,Freckled Fair,Hazel,Autumn
+Auburn,Golden Beige,Hazel,Autumn
+Golden Blonde,Freckled Fair,Hazel,Autumn
+Auburn,Freckled Fair,Olive Green,Autumn
+Copper,Olive,Amber,Autumn
+Copper,Peach,Hazel,Autumn
+Rich Brown,Golden Beige,Warm Brown,Autumn
+Auburn,Freckled Fair,Amber,Autumn
+Golden Blonde,Golden Beige,Warm Brown,Autumn
+Golden Blonde,Golden Beige,Hazel,Autumn
+Rich Brown,Olive,Warm Brown,Autumn
+Golden Blonde,Freckled Fair,Hazel,Autumn
+Copper,Freckled Fair,Warm Brown,Autumn
+Golden Blonde,Olive,Amber,Autumn
+Copper,Olive,Amber,Autumn
+Golden Blonde,Olive,Hazel,Autumn
+Golden Blonde,Olive,Hazel,Autumn
+Rich Brown,Freckled Fair,Warm Brown,Autumn
+Rich Brown,Golden Beige,Amber,Autumn
+Golden Blonde,Olive,Warm Brown,Autumn
+Auburn,Golden Beige,Hazel,Autumn
+Rich Brown,Golden Beige,Amber,Autumn
+Auburn,Freckled Fair,Hazel,Autumn
+Copper,Golden Beige,Olive Green,Autumn
+Copper,Freckled Fair,Warm Brown,Autumn
+Auburn,Peach,Hazel,Autumn
+Light Auburn,Golden Fair,Light Hazel,Spring
+Golden Blonde,Peachy,Light Warm Brown,Spring
+Light Auburn,Blushing Light,Bright Blue,Spring
+Golden Brown,Clear Beige,Light Hazel,Spring
+Strawberry Blonde,Golden Fair,Aqua,Spring
+Golden Blonde,Blushing Light,Light Warm Brown,Spring
+Golden Brown,Clear Beige,Light Hazel,Spring
+Golden Blonde,Peachy,Light Warm Brown,Spring
+Light Auburn,Clear Beige,Light Hazel,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Strawberry Blonde,Blushing Light,Light Hazel,Spring
+Golden Brown,Golden Fair,Light Warm Brown,Spring
+Golden Brown,Clear Beige,Warm Green,Spring
+Light Auburn,Clear Beige,Light Warm Brown,Spring
+Light Auburn,Clear Beige,Aqua,Spring
+Strawberry Blonde,Peachy,Light Warm Brown,Spring
+Golden Blonde,Clear Beige,Bright Blue,Spring
+Strawberry Blonde,Peachy,Bright Blue,Spring
+Golden Blonde,Clear Beige,Light Warm Brown,Spring
+Golden Brown,Golden Fair,Light Hazel,Spring
+Strawberry Blonde,Clear Beige,Aqua,Spring
+Golden Blonde,Golden Fair,Warm Green,Spring
+Light Auburn,Blushing Light,Aqua,Spring
+Strawberry Blonde,Golden Fair,Light Hazel,Spring
+Strawberry Blonde,Clear Beige,Bright Blue,Spring
+Golden Brown,Blushing Light,Aqua,Spring
+Golden Brown,Clear Beige,Light Warm Brown,Spring
+Golden Blonde,Peachy,Light Warm Brown,Spring
+Light Auburn,Blushing Light,Warm Green,Spring
+Golden Blonde,Golden Fair,Light Warm Brown,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Light Auburn,Blushing Light,Light Warm Brown,Spring
+Golden Brown,Clear Beige,Aqua,Spring
+Golden Brown,Clear Beige,Light Hazel,Spring
+Golden Blonde,Clear Beige,Aqua,Spring
+Golden Blonde,Peachy,Light Hazel,Spring
+Golden Blonde,Peachy,Warm Green,Spring
+Golden Brown,Clear Beige,Bright Blue,Spring
+Golden Brown,Clear Beige,Aqua,Spring
+Light Auburn,Blushing Light,Aqua,Spring
+Light Auburn,Blushing Light,Aqua,Spring
+Strawberry Blonde,Golden Fair,Light Warm Brown,Spring
+Golden Brown,Golden Fair,Warm Green,Spring
+Light Auburn,Clear Beige,Warm Green,Spring
+Golden Brown,Clear Beige,Light Warm Brown,Spring
+Golden Blonde,Blushing Light,Aqua,Spring
+Golden Blonde,Peachy,Light Hazel,Spring
+Golden Brown,Blushing Light,Aqua,Spring
+Strawberry Blonde,Blushing Light,Warm Green,Spring
+Golden Brown,Peachy,Warm Green,Spring
+White,Rosy Beige,Icy Blue,Winter
+Silver,Porcelain,Deep Gray,Winter
+Ash Brown,Fair Cool,Icy Blue,Winter
+Ash Brown,Porcelain,Icy Blue,Winter
+Ash Brown,Porcelain,Deep Gray,Winter
+Black,Deep Cool Brown,Icy Blue,Winter
+Ash Brown,Fair Cool,Dark Brown,Winter
+Dark Brown,Porcelain,Icy Blue,Winter
+Black,Fair Cool,Deep Gray,Winter
+Silver,Fair Cool,Cool Green,Winter
+Black,Fair Cool,Icy Blue,Winter
+Dark Brown,Porcelain,Deep Gray,Winter
+White,Fair Cool,Icy Blue,Winter
+Cool Brown,Rosy Beige,Icy Blue,Winter
+Ash Brown,Porcelain,Dark Brown,Winter
+Silver,Rosy Beige,Cool Green,Winter
+Silver,Fair Cool,Dark Brown,Winter
+Black,Rosy Beige,Cool Green,Winter
+Silver,Rosy Beige,Deep Gray,Winter
+White,Rosy Beige,Cool Green,Winter
+Dark Brown,Rosy Beige,Icy Blue,Winter
+Black,Deep Cool Brown,Cool Green,Winter
+Cool Brown,Fair Cool,Dark Brown,Winter
+Dark Brown,Porcelain,Cool Green,Winter
+White,Rosy Beige,Cool Green,Winter
+White,Deep Cool Brown,Icy Blue,Winter
+Ash Brown,Fair Cool,Dark Brown,Winter
+White,Deep Cool Brown,Dark Brown,Winter
+Silver,Rosy Beige,Deep Gray,Winter
+Dark Brown,Fair Cool,Cool Green,Winter
+Ash Brown,Rosy Beige,Cool Green,Winter
+Black,Porcelain,Dark Brown,Winter
+Black,Fair Cool,Icy Blue,Winter
+White,Porcelain,Cool Green,Winter
+Silver,Fair Cool,Dark Brown,Winter
+Ash Brown,Rosy Beige,Deep Gray,Winter
+Black,Deep Cool Brown,Icy Blue,Winter
+Black,Porcelain,Cool Green,Winter
+Ash Brown,Deep Cool Brown,Cool Green,Winter
+Black,Deep Cool Brown,Cool Green,Winter
+Cool Brown,Deep Cool Brown,Icy Blue,Winter
+Cool Brown,Fair Cool,Icy Blue,Winter
+Cool Brown,Deep Cool Brown,Dark Brown,Winter
+Black,Fair Cool,Dark Brown,Winter
+Black,Deep Cool Brown,Deep Gray,Winter
+Silver,Rosy Beige,Icy Blue,Winter
+Silver,Deep Cool Brown,Deep Gray,Winter
+White,Porcelain,Deep Gray,Winter
+Black,Deep Cool Brown,Icy Blue,Winter
+Silver,Deep Cool Brown,Icy Blue,Winter
+Medium Ash Brown,Fair Pink,Blue,Summer
+Medium Ash Brown,Soft Beige,Blue,Summer
+Medium Ash Brown,Light Rose,Muted Hazel,Summer
+Ash Blonde,Cool Ivory,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Medium Ash Brown,Fair Pink,Muted Hazel,Summer
+Ash Blonde,Light Rose,Green,Summer
+Ash Blonde,Fair Pink,Gray,Summer
+Ash Blonde,Fair Pink,Muted Hazel,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Medium Ash Brown,Fair Pink,Blue,Summer
+Ash Blonde,Fair Pink,Gray,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Ash Blonde,Light Rose,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Medium Ash Brown,Soft Beige,Blue,Summer
+Ash Blonde,Soft Beige,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Fair Pink,Green,Summer
+Ash Blonde,Cool Ivory,Blue,Summer
+Ash Blonde,Cool Ivory,Blue,Summer
+Medium Ash Brown,Cool Ivory,Muted Hazel,Summer
+Ash Blonde,Light Rose,Green,Summer
+Ash Blonde,Cool Ivory,Gray,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Ash Blonde,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Fair Pink,Blue,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Medium Ash Brown,Cool Ivory,Green,Summer
+Medium Ash Brown,Cool Ivory,Blue,Summer
+Ash Blonde,Light Rose,Blue,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Soft Beige,Gray,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Ash Blonde,Cool Ivory,Blue,Summer
+Ash Blonde,Cool Ivory,Muted Hazel,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Ash Blonde,Cool Ivory,Blue,Summer
+Medium Ash Brown,Fair Pink,Muted Hazel,Summer
+Ash Blonde,Light Rose,Muted Hazel,Summer
+Medium Ash Brown,Cool Ivory,Muted Hazel,Summer
+Medium Ash Brown,Fair Pink,Green,Summer
+Medium Ash Brown,Light Rose,Muted Hazel,Summer
+Rich Brown,Golden Beige,Amber,Autumn
+Auburn,Olive,Warm Brown,Autumn
+Auburn,Olive,Hazel,Autumn
+Copper,Golden Beige,Hazel,Autumn
+Auburn,Olive,Warm Brown,Autumn
+Auburn,Freckled Fair,Olive Green,Autumn
+Auburn,Peach,Olive Green,Autumn
+Auburn,Olive,Olive Green,Autumn
+Auburn,Golden Beige,Hazel,Autumn
+Auburn,Peach,Warm Brown,Autumn
+Golden Blonde,Golden Beige,Amber,Autumn
+Golden Blonde,Peach,Hazel,Autumn
+Golden Blonde,Peach,Warm Brown,Autumn
+Auburn,Peach,Amber,Autumn
+Rich Brown,Peach,Hazel,Autumn
+Copper,Golden Beige,Olive Green,Autumn
+Golden Blonde,Golden Beige,Warm Brown,Autumn
+Auburn,Peach,Olive Green,Autumn
+Auburn,Golden Beige,Olive Green,Autumn
+Golden Blonde,Olive,Olive Green,Autumn
+Auburn,Peach,Amber,Autumn
+Golden Blonde,Peach,Olive Green,Autumn
+Auburn,Freckled Fair,Warm Brown,Autumn
+Rich Brown,Peach,Amber,Autumn
+Rich Brown,Golden Beige,Hazel,Autumn
+Auburn,Peach,Amber,Autumn
+Golden Blonde,Peach,Olive Green,Autumn
+Rich Brown,Olive,Olive Green,Autumn
+Golden Blonde,Golden Beige,Olive Green,Autumn
+Golden Blonde,Golden Beige,Olive Green,Autumn
+Auburn,Freckled Fair,Amber,Autumn
+Golden Blonde,Peach,Warm Brown,Autumn
+Golden Blonde,Freckled Fair,Amber,Autumn
+Rich Brown,Golden Beige,Olive Green,Autumn
+Auburn,Peach,Hazel,Autumn
+Auburn,Freckled Fair,Hazel,Autumn
+Golden Blonde,Golden Beige,Olive Green,Autumn
+Copper,Peach,Hazel,Autumn
+Auburn,Golden Beige,Amber,Autumn
+Auburn,Peach,Warm Brown,Autumn
+Copper,Peach,Warm Brown,Autumn
+Copper,Golden Beige,Olive Green,Autumn
+Auburn,Golden Beige,Hazel,Autumn
+Rich Brown,Peach,Hazel,Autumn
+Rich Brown,Peach,Hazel,Autumn
+Copper,Freckled Fair,Amber,Autumn
+Golden Blonde,Olive,Warm Brown,Autumn
+Auburn,Olive,Amber,Autumn
+Rich Brown,Peach,Warm Brown,Autumn
+Copper,Freckled Fair,Olive Green,Autumn
+Light Auburn,Golden Fair,Warm Green,Spring
+Strawberry Blonde,Golden Fair,Bright Blue,Spring
+Golden Brown,Golden Fair,Bright Blue,Spring
+Light Auburn,Clear Beige,Warm Green,Spring
+Golden Brown,Blushing Light,Bright Blue,Spring
+Strawberry Blonde,Blushing Light,Bright Blue,Spring
+Light Auburn,Blushing Light,Warm Green,Spring
+Golden Blonde,Peachy,Warm Green,Spring
+Golden Brown,Peachy,Warm Green,Spring
+Strawberry Blonde,Golden Fair,Light Hazel,Spring
+Light Auburn,Peachy,Warm Green,Spring
+Light Auburn,Peachy,Light Warm Brown,Spring
+Strawberry Blonde,Peachy,Aqua,Spring
+Light Auburn,Clear Beige,Light Warm Brown,Spring
+Golden Brown,Clear Beige,Light Hazel,Spring
+Strawberry Blonde,Clear Beige,Warm Green,Spring
+Golden Brown,Peachy,Bright Blue,Spring
+Golden Blonde,Clear Beige,Aqua,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Light Auburn,Blushing Light,Bright Blue,Spring
+Golden Brown,Clear Beige,Aqua,Spring
+Golden Brown,Peachy,Bright Blue,Spring
+Strawberry Blonde,Peachy,Light Warm Brown,Spring
+Light Auburn,Peachy,Light Warm Brown,Spring
+Light Auburn,Clear Beige,Bright Blue,Spring
+Golden Blonde,Clear Beige,Bright Blue,Spring
+Strawberry Blonde,Blushing Light,Bright Blue,Spring
+Strawberry Blonde,Blushing Light,Bright Blue,Spring
+Golden Brown,Golden Fair,Warm Green,Spring
+Golden Brown,Peachy,Light Warm Brown,Spring
+Golden Blonde,Blushing Light,Light Warm Brown,Spring
+Golden Brown,Blushing Light,Warm Green,Spring
+Golden Brown,Golden Fair,Light Hazel,Spring
+Golden Brown,Blushing Light,Light Hazel,Spring
+Golden Blonde,Clear Beige,Light Warm Brown,Spring
+Light Auburn,Golden Fair,Bright Blue,Spring
+Strawberry Blonde,Golden Fair,Warm Green,Spring
+Light Auburn,Peachy,Warm Green,Spring
+Golden Brown,Blushing Light,Light Hazel,Spring
+Golden Blonde,Peachy,Light Hazel,Spring
+Golden Blonde,Peachy,Light Hazel,Spring
+Strawberry Blonde,Clear Beige,Light Hazel,Spring
+Strawberry Blonde,Blushing Light,Light Hazel,Spring
+Light Auburn,Clear Beige,Warm Green,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Golden Blonde,Clear Beige,Light Hazel,Spring
+Golden Blonde,Golden Fair,Light Hazel,Spring
+Light Auburn,Blushing Light,Light Warm Brown,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Strawberry Blonde,Clear Beige,Aqua,Spring
+Cool Brown,Deep Cool Brown,Icy Blue,Winter
+Dark Brown,Fair Cool,Icy Blue,Winter
+Dark Brown,Rosy Beige,Cool Green,Winter
+Dark Brown,Deep Cool Brown,Icy Blue,Winter
+Silver,Rosy Beige,Dark Brown,Winter
+Cool Brown,Fair Cool,Deep Gray,Winter
+Black,Fair Cool,Deep Gray,Winter
+Ash Brown,Deep Cool Brown,Deep Gray,Winter
+Silver,Deep Cool Brown,Dark Brown,Winter
+Silver,Deep Cool Brown,Dark Brown,Winter
+Dark Brown,Rosy Beige,Icy Blue,Winter
+Ash Brown,Deep Cool Brown,Deep Gray,Winter
+Ash Brown,Fair Cool,Deep Gray,Winter
+Ash Brown,Rosy Beige,Icy Blue,Winter
+White,Rosy Beige,Dark Brown,Winter
+Ash Brown,Deep Cool Brown,Deep Gray,Winter
+Black,Deep Cool Brown,Deep Gray,Winter
+Black,Deep Cool Brown,Dark Brown,Winter
+White,Rosy Beige,Cool Green,Winter
+Black,Porcelain,Dark Brown,Winter
+White,Fair Cool,Dark Brown,Winter
+White,Deep Cool Brown,Cool Green,Winter
+Cool Brown,Fair Cool,Cool Green,Winter
+Cool Brown,Rosy Beige,Icy Blue,Winter
+Dark Brown,Fair Cool,Deep Gray,Winter
+Black,Fair Cool,Dark Brown,Winter
+Cool Brown,Deep Cool Brown,Dark Brown,Winter
+Cool Brown,Fair Cool,Dark Brown,Winter
+Cool Brown,Porcelain,Dark Brown,Winter
+Ash Brown,Deep Cool Brown,Deep Gray,Winter
+Dark Brown,Fair Cool,Cool Green,Winter
+Ash Brown,Porcelain,Cool Green,Winter
+Cool Brown,Deep Cool Brown,Cool Green,Winter
+Black,Porcelain,Dark Brown,Winter
+Cool Brown,Deep Cool Brown,Icy Blue,Winter
+White,Rosy Beige,Icy Blue,Winter
+Silver,Porcelain,Cool Green,Winter
+Cool Brown,Fair Cool,Dark Brown,Winter
+Silver,Fair Cool,Dark Brown,Winter
+White,Rosy Beige,Icy Blue,Winter
+Cool Brown,Porcelain,Cool Green,Winter
+White,Deep Cool Brown,Icy Blue,Winter
+Dark Brown,Porcelain,Cool Green,Winter
+White,Deep Cool Brown,Dark Brown,Winter
+Cool Brown,Fair Cool,Cool Green,Winter
+Black,Rosy Beige,Icy Blue,Winter
+Ash Brown,Deep Cool Brown,Dark Brown,Winter
+Silver,Fair Cool,Dark Brown,Winter
+Dark Brown,Fair Cool,Deep Gray,Winter
+Black,Fair Cool,Cool Green,Winter
+Ash Blonde,Light Rose,Green,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Ash Blonde,Fair Pink,Muted Hazel,Summer
+Ash Blonde,Cool Ivory,Gray,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Medium Ash Brown,Fair Pink,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Ash Blonde,Fair Pink,Blue,Summer
+Medium Ash Brown,Soft Beige,Green,Summer
+Medium Ash Brown,Light Rose,Green,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Ash Blonde,Soft Beige,Blue,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Ash Blonde,Fair Pink,Gray,Summer
+Ash Blonde,Fair Pink,Green,Summer
+Medium Ash Brown,Fair Pink,Muted Hazel,Summer
+Medium Ash Brown,Fair Pink,Blue,Summer
+Medium Ash Brown,Cool Ivory,Muted Hazel,Summer
+Medium Ash Brown,Soft Beige,Blue,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Medium Ash Brown,Fair Pink,Gray,Summer
+Ash Blonde,Light Rose,Gray,Summer
+Ash Blonde,Cool Ivory,Gray,Summer
+Medium Ash Brown,Fair Pink,Green,Summer
+Ash Blonde,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Light Rose,Blue,Summer
+Medium Ash Brown,Cool Ivory,Blue,Summer
+Ash Blonde,Soft Beige,Gray,Summer
+Medium Ash Brown,Light Rose,Blue,Summer
+Medium Ash Brown,Cool Ivory,Blue,Summer
+Ash Blonde,Light Rose,Muted Hazel,Summer
+Medium Ash Brown,Fair Pink,Blue,Summer
+Ash Blonde,Fair Pink,Gray,Summer
+Medium Ash Brown,Soft Beige,Gray,Summer
+Ash Blonde,Cool Ivory,Gray,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Medium Ash Brown,Fair Pink,Gray,Summer
+Ash Blonde,Cool Ivory,Green,Summer
+Ash Blonde,Fair Pink,Green,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Soft Beige,Muted Hazel,Summer
+Ash Blonde,Fair Pink,Gray,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Medium Ash Brown,Cool Ivory,Gray,Summer
+Ash Blonde,Light Rose,Green,Summer
+Copper,Peach,Olive Green,Autumn
+Copper,Peach,Warm Brown,Autumn
+Golden Blonde,Olive,Warm Brown,Autumn
+Rich Brown,Freckled Fair,Warm Brown,Autumn
+Auburn,Freckled Fair,Hazel,Autumn
+Golden Blonde,Olive,Hazel,Autumn
+Copper,Golden Beige,Olive Green,Autumn
+Golden Blonde,Golden Beige,Olive Green,Autumn
+Copper,Olive,Olive Green,Autumn
+Copper,Golden Beige,Warm Brown,Autumn
+Golden Blonde,Freckled Fair,Amber,Autumn
+Rich Brown,Olive,Amber,Autumn
+Golden Blonde,Olive,Amber,Autumn
+Rich Brown,Golden Beige,Warm Brown,Autumn
+Copper,Peach,Olive Green,Autumn
+Copper,Peach,Amber,Autumn
+Rich Brown,Olive,Amber,Autumn
+Copper,Olive,Warm Brown,Autumn
+Rich Brown,Freckled Fair,Olive Green,Autumn
+Copper,Peach,Hazel,Autumn
+Auburn,Golden Beige,Warm Brown,Autumn
+Rich Brown,Peach,Warm Brown,Autumn
+Auburn,Golden Beige,Warm Brown,Autumn
+Golden Blonde,Golden Beige,Amber,Autumn
+Copper,Olive,Warm Brown,Autumn
+Auburn,Freckled Fair,Hazel,Autumn
+Golden Blonde,Peach,Hazel,Autumn
+Rich Brown,Golden Beige,Olive Green,Autumn
+Rich Brown,Peach,Hazel,Autumn
+Auburn,Golden Beige,Warm Brown,Autumn
+Copper,Peach,Hazel,Autumn
+Copper,Olive,Warm Brown,Autumn
+Rich Brown,Golden Beige,Amber,Autumn
+Copper,Golden Beige,Warm Brown,Autumn
+Auburn,Peach,Hazel,Autumn
+Golden Blonde,Olive,Olive Green,Autumn
+Copper,Peach,Warm Brown,Autumn
+Auburn,Peach,Warm Brown,Autumn
+Copper,Golden Beige,Olive Green,Autumn
+Auburn,Peach,Amber,Autumn
+Auburn,Peach,Olive Green,Autumn
+Auburn,Peach,Hazel,Autumn
+Auburn,Peach,Hazel,Autumn
+Golden Blonde,Freckled Fair,Hazel,Autumn
+Auburn,Peach,Amber,Autumn
+Rich Brown,Freckled Fair,Hazel,Autumn
+Auburn,Peach,Amber,Autumn
+Golden Blonde,Golden Beige,Warm Brown,Autumn
+Golden Blonde,Golden Beige,Warm Brown,Autumn
+Golden Blonde,Peach,Hazel,Autumn
+Golden Brown,Peachy,Warm Green,Spring
+Light Auburn,Clear Beige,Warm Green,Spring
+Strawberry Blonde,Blushing Light,Aqua,Spring
+Light Auburn,Blushing Light,Light Hazel,Spring
+Golden Blonde,Golden Fair,Bright Blue,Spring
+Strawberry Blonde,Peachy,Bright Blue,Spring
+Golden Blonde,Blushing Light,Warm Green,Spring
+Golden Blonde,Peachy,Light Hazel,Spring
+Golden Blonde,Blushing Light,Light Warm Brown,Spring
+Light Auburn,Blushing Light,Bright Blue,Spring
+Light Auburn,Clear Beige,Warm Green,Spring
+Golden Blonde,Clear Beige,Light Hazel,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Golden Blonde,Peachy,Warm Green,Spring
+Light Auburn,Golden Fair,Bright Blue,Spring
+Golden Brown,Clear Beige,Bright Blue,Spring
+Golden Blonde,Golden Fair,Warm Green,Spring
+Strawberry Blonde,Golden Fair,Bright Blue,Spring
+Golden Blonde,Blushing Light,Warm Green,Spring
+Golden Brown,Blushing Light,Aqua,Spring
+Golden Brown,Clear Beige,Light Hazel,Spring
+Strawberry Blonde,Golden Fair,Light Hazel,Spring
+Strawberry Blonde,Golden Fair,Light Hazel,Spring
+Golden Brown,Golden Fair,Bright Blue,Spring
+Strawberry Blonde,Blushing Light,Light Hazel,Spring
+Strawberry Blonde,Blushing Light,Aqua,Spring
+Light Auburn,Blushing Light,Aqua,Spring
+Golden Brown,Blushing Light,Bright Blue,Spring
+Light Auburn,Clear Beige,Light Warm Brown,Spring
+Light Auburn,Peachy,Light Warm Brown,Spring
+Golden Blonde,Blushing Light,Light Warm Brown,Spring
+Golden Brown,Clear Beige,Bright Blue,Spring
+Strawberry Blonde,Golden Fair,Light Warm Brown,Spring
+Golden Blonde,Clear Beige,Light Warm Brown,Spring
+Strawberry Blonde,Blushing Light,Light Warm Brown,Spring
+Golden Blonde,Golden Fair,Warm Green,Spring
+Golden Brown,Clear Beige,Light Hazel,Spring
+Golden Blonde,Golden Fair,Light Warm Brown,Spring
+Golden Blonde,Clear Beige,Aqua,Spring
+Golden Brown,Golden Fair,Light Hazel,Spring
+Strawberry Blonde,Clear Beige,Bright Blue,Spring
+Strawberry Blonde,Clear Beige,Warm Green,Spring
+Light Auburn,Blushing Light,Light Warm Brown,Spring
+Golden Brown,Golden Fair,Aqua,Spring
+Light Auburn,Clear Beige,Aqua,Spring
+Light Auburn,Blushing Light,Bright Blue,Spring
+Golden Blonde,Golden Fair,Bright Blue,Spring
+Golden Brown,Blushing Light,Aqua,Spring
+Light Auburn,Peachy,Light Warm Brown,Spring
+Golden Brown,Blushing Light,Warm Green,Spring

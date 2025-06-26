@@ -14,11 +14,12 @@
     {% block content %}
     <div id="row">
         <a href="/dashboard"><i class="fa-solid fa-circle-arrow-left"></i></a>
-          <h1 class="heading3">Uploaded Images</h1>
+          <h1 class="heading3" style="font-family:'Poppins', 'Segoe UI', Roboto, sans-serif;">Uploaded Images</h1>
 
     </div>
     <div class="container">
         {% for upload in uploads %}
+          <div class="card {% if uploads|length == 1 %}single-card{% endif %}">
         <div class="card" id="card-{{ loop.index }}">
             <img src="{{ url_for('uploaded_file', filename=upload.filename) }}" alt="Uploaded Image">
             <div class="details">
@@ -35,8 +36,9 @@
                 </div>
             </div>
         </div>
+        </div>
         {% endfor %}
-    </div>
+        </div>
     <script>
         function toggleDetail(id) {
             let card = document.getElementById(id);

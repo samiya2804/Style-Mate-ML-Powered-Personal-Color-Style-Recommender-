@@ -1,33 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <!-- <font awesome links -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital@0;1&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/index.css">
-    <!-- <link rel="stylesheet" href="./css/navbar.css"> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-    <link rel="stylesheet" href="./css/footer.css">
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-</head>
-<body>
     {% extends "base.html" %}
 
     {% block title %}Home - StyleMate{% endblock %}
     
     {% block content %}
     <div class="main">
-        <!-- heading -->
-        <div class="heading">
+    
+    
+          <!-- Background image section -->
+        <div class="imgsec">
+            <img class="img" src="{{ url_for('static', filename='images/Background_img.jpg') }}" alt="no image found">
+        </div>
+
+          <!-- start button+ Text Overlay -->
+        <div class="button">
+            <div class="heading">
             <p class="catchyline">
                 <span class="word">Find</span>
                 <span class="word">Your</span>
@@ -36,52 +23,54 @@
                 <span class="word"> Your</span>
                 <span class="word"> Style.</span>
             </p>
-        </div>
-    
-        <!-- start button -->
-        <div class="button">
+            </div>
             {% if session.get('user_id') %}
-            <a href="{{ url_for('upload') }}">
-                <button type="submit" class="btn btn-primary btn-lg start">Start now</button>
-              </a>
-            {% else %}
-            <a href="{{ url_for('login', next='upload') }}"><button type="submit" class="btn btn-primary btn-lg start">Start now</button></a>
-            {% endif %}
-        </div>
-    
-        <div class="imgsec">
-            <img class="img" src="./static/images/Background_img.jpg" alt="no image found">
+  <a href="{{ url_for('upload') }}" class="btn btn-primary btn-lg start">Start now</a>
+{% else %}
+  <a href="{{ url_for('login', next='upload') }}" class="btn btn-primary btn-lg start">Start now
+  </a>
+{% endif %}
         </div>
     
         <div class="container">
             <div class="row">
                 <div class="col-6" data-aos="fade-up">
-                    <h1 style="overflow:hidden;">Color-Analyze Yourself</h1>
+                    <h1 style="overflow:hidden; font-family: 'Poppins', 'Segoe UI', 'sans-serif';">Color-Analyze Yourself</h1>
                     <p>Start your color analysis with three easy steps. First, take a face-only selfie. Next, select the most prominent tones from your skin, hair and eyes. StyleMate will use these features as the basis for a palette perfectly suited to you!</p>
-                    <a href="{{ url_for('details') }}"><img src="./static/images/self-test.a2217fcb.png" class="self-image" alt="some image"></a>
+                    <a href="{{ url_for('details') }}">
+                    <img src="{{ url_for('static', filename='images/self-test.a2217fcb.png') }}" class="self-image" alt="some image">
+                </a>
                 </div>
     
                 <div class="col-6" data-aos="fade-up">
-                    <h1 style="overflow:hidden;">My Best Colors App</h1>
-                    <p>My Best Colors is a stellar shopping companion which uses your smartphone camera to instantly recognize colors that flatter you. It's easy, accurate and fun to use! Eliminate the guesswork and make great choices when updating your wardrobe</p>
-                    <a href="{{ url_for('details') }}"><img src="./static/images/styleclothes.png" class="self-image" alt="some image"></a>
+                    <h1 style="overflow:hidden; font-family: 'Poppins', 'Segoe UI', 'sans-serif' ;">My Best Colors App</h1>
+                    <p>My Best Colors is a stellar shopping companion which uses your smartphone camera to instantly recognize colors that flatter you. It's easy, accurate and fun to use! Find your best colors which will make you stand out,Eliminate the guesswork and make great choices when updating your wardrobe.</p>
+                    <a href="{{ url_for('details') }}"><img src="{{ url_for('static', filename='images/styleclothes.png') }}" class="self-image" alt="some image"></a>
                 </div>
             </div>
     
-            <div class="button-container" data-aos="fade-left">
-                <form action="{{ url_for('login') }}" method="get">
-                    <button class="reg" type="submit">Login</button>
-                </form>
-                <form action="{{ url_for('signup') }}">
-                    <button class="reg" type="submit">Register</button>
-                </form>
-            </div>
+<!-- login button on page  -->
+<div class="cta-section">
+  <div class="cta-text">
+    <h2 style="font-family: 'Poppins', 'Segoe UI', 'sans-serif';">What are you waiting for?</h2>
+    <p>Discover your perfect style based on your skin tone.</p>
+  </div>
+  <div class="button-container">
+    <form action="{{ url_for('login') }}" method="get">
+      <button class="reg" type="submit">Login</button>
+    </form>
+    <form action="{{ url_for('signup') }}">
+      <button class="reg" type="submit">Register</button>
+    </form>
+  </div>
+</div>
+
 
             <!-- palette layout -->
 
-            <div class="container" style="margin-bottom: 3rem;">
+            <div class="container2" style="margin-bottom: 3rem;">
                 <div class="row">
-                    <h2 style=" margin: 2rem 0 2rem 0 ;">Palette Designes</h2>
+                    <h2 style=" margin: 2rem 0 2rem 0 ; font-family: 'Poppins', 'Segoe UI', 'sans-serif';">Palette Designes</h2>
                 </div>
                 <div class="row">
                     <div class="col-6" data-aos="fade-right">
@@ -98,31 +87,22 @@
 
 
     
-            <div class="container">
+            <div class="container2">
                 <div class="row">
                     <div class="col-6" data-aos="fade-right">
                         <h1 style="overflow:hidden;">Picture to Palette</h1>
                         <p>Build the foundation of your personal palette using items already in your wardrobe. Our algorithm automatically suggests a palette based on the dominant colors in your photo.</p>
-                        <a href="details.html"><img src="./static/images/picture-to-palette.95c69b3d.png" class="self-image circle" alt="some image"></a>
+                        <a href="{{ url_for('details') }}"><img src="{{ url_for('static', filename='images/picture-to-palette.95c69b3d.png') }}" class="self-image circle" alt="some image"></a>
                     </div>
     
                     <div class="col-6" data-aos="fade-left">
                         <h1 style="overflow:hidden;">Capsule Palettes</h1>
                         <p>Explore the internet's largest collection of community-curated capsule wardrobe palettes, tailored to your color type. Use them as inspiration to build your own custom palettes.</p>
-                        <a href="details.html"><img src="./static/images/capsule-palette.f767f875.png" class="self-image circle" alt="some image"></a>
+                        <a href="{{ url_for('details') }}"><img src="{{ url_for('static', filename='images/capsule-palette.f767f875.png') }}" class="self-image circle" alt="some image">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- AOS JavaScript -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-     AOS.init();
-    </script>
-
-    {% endblock %}
     
-</body>
-</html>
+    {% endblock %}

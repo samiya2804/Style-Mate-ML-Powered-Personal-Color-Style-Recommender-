@@ -1,6 +1,9 @@
 from flask import Flask, render_template,  request, redirect, flash , session , url_for
 from datetime import timedelta 
 import os  
+import numpy as np
+from extract_colors import extract_colors_from_photo
+import cv2
 from flask import send_from_directory
 import time
 from datetime import datetime
@@ -12,7 +15,13 @@ import sqlite3
 import smtplib
 import bcrypt
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    # template_folder="../frontend/templates",
+    # static_folder="../frontend/static"
+     template_folder=os.path.join("..", "frontend", "templates"),
+            static_folder=os.path.join("..", "frontend", "static")
+)
 app.secret_key = "skinanalysis"
 
 # MySQL Configuration
@@ -39,6 +48,34 @@ def allowed_file(filename):
 def index():
     return render_template("index.html")
 
+def rgb_to_lab(color):
+    rgb_color = np.uint8([[color]])
+    lab_color = cv2.cvtColor(rgb_color, cv2.COLOR_RGB2LAB)
+    return lab_color[0][0]
+def lab_to_rgb(lab_color):
+    # Convert standard LAB to OpenCV scale
+    L = lab_color[0] * 255 / 100
+    a = lab_color[1] + 128
+    b = lab_color[2] + 128
+
+    lab_scaled = np.uint8([[[L, a, b]]])
+    rgb = cv2.cvtColor(lab_scaled, cv2.COLOR_LAB2RGB)[0][0]
+    rgb = [int(x) for x in rgb]
+
+    # # 🔍 Print for debugging
+    # print(f"LAB: {lab_color}, Converted RGB: {rgb}")
+
+    return rgb
+
+
+def parse_point(coord_str):
+ try:
+    x, y = map(int, coord_str.split(','))
+    return x, y
+ except:
+        return 0, 0  # fallback
+
+
 @app.route('/upload', methods=['GET', 'POST']  ,endpoint='upload')
 def upload_file():
     if request.method == 'POST':
@@ -51,49 +88,103 @@ def upload_file():
             filename = secure_filename(file.filename)
             timestamp = datetime.now()  # actual datetime
 
-            #  timestamp unique
-            ts_str = timestamp.strftime("%Y%m%d%H%M%S")
-            unique_filename = f"{filename.rsplit('.', 1)[0]}_{ts_str}.{filename.rsplit('.', 1)[1]}"
+            unique_filename = f"{filename.rsplit('.', 1)[0]}_{timestamp.strftime('%Y%m%d%H%M%S')}.{filename.rsplit('.', 1)[1]}"
             save_path = os.path.join(UPLOAD_FOLDER, unique_filename)
             file.save(save_path)
 
-            # ✅ Save to MySQL database
+              # ✅ Save to MySQL database
             user_id = session.get('user_id')
             sql = "INSERT INTO uploaded_images (user_id, filename, timestamp) VALUES (%s, %s, %s)"
             val = (user_id, unique_filename, timestamp)
             cursor.execute(sql, val)
             db.commit()
 
-            return redirect(url_for('upload'))  # reload page
+             # Loading image and extract user-selected points
+            
+            # image = cv2.imread(save_path)
+            # image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB
+
+            # Read image and get color
+            image = cv2.imread(save_path)
+            if image is None:
+                return "Image processing failed", 500
+            
+              # Get swatch coordinates from form
+            hair_coord = request.form.get('hair')
+            eye_coord = request.form.get('eye')
+            skin_coord = request.form.get('skin')
+
+            if not (hair_coord and eye_coord and skin_coord):
+                return "Missing one or more swatch points", 400
+
+            def get_rgb(coord):
+                x, y = map(int, coord.split(','))
+                return image[y, x][::-1]  # BGR to RGB
+
+            hair_rgb = get_rgb(hair_coord)
+            eye_rgb = get_rgb(eye_coord)
+            skin_rgb = get_rgb(skin_coord)
+           
+
+            hair_lab = rgb_to_lab(hair_rgb)
+            eye_lab = rgb_to_lab(eye_rgb)
+            skin_lab = rgb_to_lab(skin_rgb)
+
+            print("\n✅ Final Extracted Colors:")
+            print("Hair LAB:", hair_lab, "→ RGB:", hair_rgb)
+            print("Eye  LAB:", eye_lab, "→ RGB:", eye_rgb)
+            print("Skin LAB:", skin_lab, "→ RGB:", skin_rgb)
+
+            return render_template('results.html',
+                                   hair_color=hair_rgb,
+                                   skin_color=skin_rgb,
+                                   eye_color=eye_rgb,
+                                   filename=unique_filename)
+
+
+
+
+            
+        # return redirect(url_for('upload'))  # reload page
     return render_template('upload.html')
+
+
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')  # backend/uploads
+
+@app.route('/uploads/<path:filename>')
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)
+
+@app.route('/results')
+def results():
+    return render_template("results.html")
 
 @app.route('/recommendations')
 def recommendations():
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # secure the page
+        return redirect(url_for('login'))  # Ensure only logged-in users access this
 
     user_id = session['user_id']
     cursor.execute("SELECT filename, timestamp FROM uploaded_images WHERE user_id = %s", (user_id,))
     raw_uploads = cursor.fetchall()
 
-    uploads=[]
+    uploads = []
 
-    for filename, timestamp in raw_uploads: 
-           if isinstance(timestamp, str):
-            timestamp = datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S')
-           uploads.append({
+    for filename, timestamp in raw_uploads:
+        if timestamp is None:
+          continue 
+        uploads.append({
             'filename': filename,
             'date': timestamp.strftime('%Y-%m-%d'),
-            'time': timestamp.strftime('%I:%M:%S %p')
+            'time': timestamp.strftime('%I:%M:%S %p')  
         })
-
 
     return render_template('recommendations.html', uploads=uploads)
 
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+# @app.route('/uploads/<filename>')
+# def uploaded_file(filename):
+#     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
 @app.route('/dashboard')

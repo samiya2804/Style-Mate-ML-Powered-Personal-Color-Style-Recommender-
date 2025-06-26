@@ -14,11 +14,11 @@
   {% block content %}
   
     <!-- Header -->
-    <header>
+    <section>
       <h1>Hello Samiya! You are a Winter Season<i class="fa-solid fa-heart"></i></h1>
       <p>Hope you enjoyed & learned about skin analyis.</p>
       <button class="cta-btn"><a style="text-decoration: none;  color:#c78b99; " href="{{('upload')}}">Try Now</a></button>
-      </header>
+      </section>
   
     <!-- Stats Cards -->
     <div class="grid" style="margin-top: 2rem;" data-aos="fade-up">
@@ -33,7 +33,7 @@
         <a href="{{('upload')}}" class="profilebtn">Retake analysis</a>
       </div>
       <div class="card">
-        <h3 class="small"><i class="fas fa-tshirt"></i> Looks Recommended</h3>
+        <h3 class="small" style="font-size: 0.9rem;"><i class="fas fa-tshirt"></i> Looks Recommended</h3>
         <p class="stat">4</p>
         <a href="{{('Looks')}}" class="profilebtn">Explore</a>
       </div>
@@ -46,7 +46,7 @@
 
 
 
-    <div class="grid" style="margin-top: 2rem;" data-aos="fade-up">
+    <div class="grid" style="margin-top: 2rem; margin-bottom: 2rem;" data-aos="fade-up">
       <div class="card" >
         <h3><i class="fa-solid fa-user" style="margin-right: 5px;"></i>Profile</h3>
         <a href="{{('profile')}}" class="profilebtn">View profile</a>
