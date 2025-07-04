@@ -31,8 +31,27 @@
                 <div class="full-detail">
                     <strong>Date:</strong> {{ upload.date }}<br>
                     <strong>Time:</strong> {{ upload.time }}<br>
-                    <strong>Skin Tone:</strong> Not analyzed yet<br>
-                    <strong>Recommended Colors: </strong> Not Found<br>
+                    <strong>Skin Tone:</strong>{{ upload.skin_tone or "Not Found" }}<br>
+                    <strong>Recommended Colors: </strong>
+                     {% if upload.season_colors %}
+                    <div class="color-swatches">
+                        {% for color in upload.season_colors[:9] %}
+                            <div class="swatch" style="background-color: {{ color }};" title="{{ color }}"></div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    Not Found
+                {% endif %} 
+                <strong style="display:block;margin-top:1rem;">Avoid Colors:</strong>
+                {% if upload.avoid_colors %}
+                    <div class="color-swatches">
+                        {% for color in upload.avoid_colors[:5] %}
+                            <div class="swatch" style="background-color: {{ color }};" title="{{ color }}"></div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    Not Found
+                {% endif %}
                 </div>
             </div>
         </div>

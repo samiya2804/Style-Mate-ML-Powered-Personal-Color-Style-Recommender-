@@ -28,22 +28,19 @@
     
           <!-- Skin Tone Card -->
           <div class="card">
-            <h3><i class="fas fa-palette"></i> Skin Tone</h3>
-            <p>Selected: <strong>Medium</strong></p>
-            <div class="color-swatches">
-              <div class="swatch" style="background: #fbe9e7;" title="Fair"></div>
-              <div class="swatch" style="background: #f5cba7;" title="Medium"></div>
-              <div class="swatch" style="background: #d2a679;" title="Olive"></div>
-              <div class="swatch" style="background: #8d5524;" title="Brown"></div>
-              <div class="swatch" style="background: #3d1f00;" title="Deep Brown"></div>
+            <h3><i class="fas fa-palette" style="margin-right: 0.5rem;"></i>Extracted Colors </h3>
+            <p>Selected: <strong>Eye Hair Skin</strong></p>
+            <div class="color-swatches" style="margin-bottom: 1.5rem;">
+              <div class="swatch" style="background-color: rgb({{ eye_color[0] }}, {{ eye_color[1] }}, {{ eye_color[2] }});" title="Eye Color"></div>
+             <div class="swatch" style="background-color: rgb({{ hair_color[0] }}, {{ hair_color[1] }}, {{ hair_color[2] }});" title="Hair Color"></div>
+              <div class="swatch" style="background-color: rgb({{ skin_color[0] }}, {{ skin_color[1] }}, {{ skin_color[2] }});" title="Skin Color"></div>
             </div>
             <div class="color-swatches" style="margin-bottom: 1.5rem;">
               <div class="swatch" style="background: #dac7c5;" title="Fair"></div>
               <div class="swatch" style="background: #af9782;" title="Medium"></div>
             </div>
-            <a href="#" class="profilebtn recheck">Re-check Skin Tone</a>
+            <a href="{{ url_for('upload')}}" class="profilebtn recheck">Re-check Skin Tone</a>
           </div>
-    
         </div>
     
         <div class="profile-section">
@@ -113,20 +110,18 @@
           <div class="card">
             <h3><i class="fas fa-heart"></i> Your Recommended Colors</h3>
             <div class="color-swatches">
-              <div class="swatch" style="background: #000000;" title="Black"></div>
-              <div class="swatch" style="background: #ffffff;" title="White"></div>
-              <div class="swatch" style="background: #ff69b4;" title="Candy Pink"></div>
-              <div class="swatch" style="background: #98fb98;" title="Pista Green"></div>
-              <div class="swatch" style="background: #ff1493;" title="Bright Pink"></div>
-            </div>
+               {% for color in season_colors[:12] %}
+          <div class="swatch" style="background: {{ color }};"></div>
+          {% endfor %}
+          </div>
             <hr>
               
 
             <h3 style="margin-top: 1rem;"><i class="fa-solid fa-xmark"></i>Colors to avoid</h3>
             <div class="color-swatches">
-              <div class="swatch" style="background: #1c3a1d;" title="Black"></div>
-              <div class="swatch" style="background: #917c47;" title="Pista Green"></div>
-              <div class="swatch" style="background: #0326c0;" title="Bright Pink"></div>
+              {% for color in avoid_colors %}
+                <div class="swatch" style="background-color: {{ color }};" title="Avoid Color"></div>
+              {% endfor %}
             </div>
             <hr>
             <a href="{{ url_for('upload') }}" class="profilebtn resize">Retake analysis</a>

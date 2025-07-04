@@ -1,0 +1,12 @@
+Hair_L,Hair_A,Hair_B,Skin_L,Skin_A,Skin_B,Eye_L,Eye_A,Eye_B,Expected_Season,Predicted_Season
+20,18,25,60,18,28,35,10,25,Autumn,Autumn
+15,22,30,55,20,32,30,8,20,Autumn,Autumn
+45,5,10,75,10,15,50,0,10,Summer,Spring
+70,-2,5,78,3,8,65,0,5,Summer,Spring
+68,-1,6,80,2,7,67,-1,6,Summer,Spring
+72,0,4,76,1,9,70,0,5,Summer,Spring
+65,-2,3,74,3,10,62,0,4,Summer,Spring
+69,1,6,77,2,7,66,1,6,Summer,Spring
+71,0,5,79,2,8,64,0,5,Summer,Spring
+66,-1,5,75,1,6,68,-1,4,Summer,Winter
+73,0,7,81,2,9,69,0,6,Summer,Spring

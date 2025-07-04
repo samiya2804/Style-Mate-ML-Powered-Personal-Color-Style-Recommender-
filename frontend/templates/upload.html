@@ -53,35 +53,40 @@
             <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data" >
             <input type="file" id="upload" name="file" class="file-input" accept=".jpg, .jpeg .png" required />
             <label for="upload">Choose File</label>
+
+            <input type="hidden" name="hair" id="hairPoint">
+<input type="hidden" name="eye" id="eyePoint">
+<input type="hidden" name="skin" id="skinPoint">
         
              <input type="hidden" name="hair" id="hairPoint">
             <input type="hidden" name="eye" id="eyePoint">
             <input type="hidden" name="skin" id="skinPoint">
 
-            <button type="submit">Upload & Analyze</button>
+            <button type="submit"  id="analyzeButton">Upload & Analyze</button>
             </form>
-            </div>
-              <!--  Filename will appear here -->
+             </div>
+         
            <p id="file-name-display" class="file-name-bottom"></p>
         </div>
 <!-- Canvas Preview (Initially Hidden) -->
     <div class="card" id="canvas-card" style="padding: 20px; display: none;" data-aos="fade-up">
     <h3 style="margin-bottom: 10px;">Image Preview & Color Selection</h3>
     <p id="instructions" style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">
- Drag the swatch onto the image to pick a color. <br>
-  Follow this order:
-  <span style="color: #ca4242;">1️⃣ Hair</span> → 
-  <span style="color: #1c7ed6;">2️⃣ Eyes</span> → 
-  <span style="color: #2b8a3e;">3️⃣ Skin</span><br>
-  Then, click <strong>Analyze</strong> to proceed.</p>
-     <div style="position: relative;">
+    Click and drag the circle to select Hair color</p>
+     <div class="preview-boxes" style="margin-bottom: 10px;">
+      <div id="hairColorBox" class="color-box"  onclick="reselect('hair')">Hair</div>
+      <div id="eyeColorBox" class="color-box"  onclick="resetStep('eye')">Eye</div>
+      <div id="skinColorBox" class="color-box"  onclick="resetStep('skin')">Skin</div>
+    </div>
+     <div style="position: relative; ">
     <canvas id="imageCanvas" style="max-width: 100%; border: 1px solid #ddd;"></canvas>
+     
     <div id="swatch" style="
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.3);
-        border: 2px solid black;
+        border: 1.7px solid rgb(66, 65, 65);
         position: absolute;
         top: 100px;
         left: 100px;
@@ -89,12 +94,57 @@
         display: none;
       ">
       </div>
+       <canvas id="zoomCanvas" width="150" height="150" style=" border: 2px solid #333; margin-left: 1.5rem;  top: 10px; left: calc(100% + 20px);"></canvas>
   </div>
-</div>
-<input type="hidden" name="hair" id="hairPoint">
-<input type="hidden" name="eye" id="eyePoint">
-<input type="hidden" name="skin" id="skinPoint">
+  </div>
 </section>
+
+<style>
+.color-box {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  margin-right: 10px;
+  border: 2px solid #000;
+  line-height: 60px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+#canvas-card {
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media(max-width:768px){
+  #zoomCanvas{
+    margin-left: 5.5rem;
+    margin-top: 2rem;
+  }
+}
+
+@media(min-width:768px){
+  #zoomCanvas{
+    position: absolute;
+  }
+}
+
+
+/* #zoomCanvas {
+  position: absolute;
+  border: 2px solid #000;
+  display: none;
+  pointer-events: none;
+  width: 100px;
+  height: 100px;
+  z-index: 999;
+} */
+</style>
+
+<!-- <canvas id="zoomCanvas"></canvas> -->
 
 
 
@@ -103,6 +153,8 @@
        <script>
     AOS.init();
    </script>
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const uploadInput = document.getElementById("upload");
@@ -112,6 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const ctx = canvas.getContext("2d");
   const swatch = document.getElementById("swatch");
   const instructions = document.getElementById("instructions");
+  const zoomCanvas = document.getElementById("zoomCanvas");
+  const zoomCtx = zoomCanvas.getContext("2d");
 
   const labels = ["hair", "eye", "skin"];
   let currentStep = 0;
@@ -136,19 +190,46 @@ document.addEventListener("DOMContentLoaded", function () {
         swatch.style.display = "block";
         canvasCard.style.display = "block";
         instructions.textContent = `Drag the swatch to select ${labels[currentStep].toUpperCase()} and click`;
+        swatch.style.left = "100px";
+        swatch.style.top = "100px";
       };
       image.src = e.target.result;
     };
     reader.readAsDataURL(file);
   });
 
-  // Draw the canvas image
-  function redrawCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(image, 0, 0);
+  function getRGBat(canvasX, canvasY) {
+    const data = ctx.getImageData(canvasX, canvasY, 1, 1).data;
+    return [data[0], data[1], data[2]];
   }
 
-  // Mouse dragging for swatch
+  function updateColorBox(id, rgb) {
+    const box = document.getElementById(id + "ColorBox");
+    box.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+  }
+
+  function updateZoom(x, y) {
+    const size = 10;
+    const zoom = 5;
+    const imageData = ctx.getImageData(x - size / 2, y - size / 2, size, size);
+    zoomCtx.clearRect(0, 0, zoomCanvas.width, zoomCanvas.height);
+    zoomCtx.imageSmoothingEnabled = false;
+    // Create an offscreen canvas to scale the image
+const tempCanvas = document.createElement("canvas");
+tempCanvas.width = size;
+tempCanvas.height = size;
+const tempCtx = tempCanvas.getContext("2d");
+tempCtx.putImageData(imageData, 0, 0);
+
+// Draw scaled-up image onto zoomCanvas
+zoomCtx.clearRect(0, 0, zoomCanvas.width, zoomCanvas.height);
+zoomCtx.imageSmoothingEnabled = false;
+zoomCtx.drawImage(tempCanvas, 0, 0, size, size, 0, 0, zoomCanvas.width, zoomCanvas.height);
+
+    zoomCtx.putImageData(imageData, 0, 0);
+    zoomCtx.drawImage(zoomCanvas, 0, 0, size, size, 0, 0, size * zoom, size * zoom);
+  }
+
   swatch.addEventListener("mousedown", (e) => {
     dragging = true;
     offsetX = e.offsetX;
@@ -168,22 +249,26 @@ document.addEventListener("DOMContentLoaded", function () {
     let x = e.clientX - rect.left - offsetX;
     let y = e.clientY - rect.top - offsetY;
 
-    // Clamp to canvas bounds
     x = Math.max(0, Math.min(x, canvas.width - swatch.offsetWidth));
     y = Math.max(0, Math.min(y, canvas.height - swatch.offsetHeight));
 
     swatch.style.left = x + "px";
     swatch.style.top = y + "px";
+
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    updateZoom((x + swatch.offsetWidth / 2) * scaleX, (y + swatch.offsetHeight / 2) * scaleY);
   });
 
-  // When user clicks the swatch to confirm
   swatch.addEventListener("click", (e) => {
     if (currentStep >= labels.length) return;
 
-    const swatchX = parseInt(swatch.style.left) + swatch.offsetWidth / 2;
-    const swatchY = parseInt(swatch.style.top) + swatch.offsetHeight / 2;
+    const rect = canvas.getBoundingClientRect();
+    const swatchX = (parseInt(swatch.style.left) + swatch.offsetWidth / 2) * (canvas.width / rect.width);
+    const swatchY = (parseInt(swatch.style.top) + swatch.offsetHeight / 2) * (canvas.height / rect.height);
 
-    // Save to hidden input
+    const rgb = getRGBat(Math.round(swatchX), Math.round(swatchY));
+    updateColorBox(labels[currentStep], rgb);
     document.getElementById(labels[currentStep] + "Point").value = `${Math.round(swatchX)},${Math.round(swatchY)}`;
 
     currentStep++;
@@ -191,14 +276,22 @@ document.addEventListener("DOMContentLoaded", function () {
       instructions.textContent = `Now drag to select ${labels[currentStep].toUpperCase()} and click`;
     } else {
       instructions.textContent = "All points selected. Click Analyze.";
+      document.getElementById("analyzeButton").disabled = false;
     }
   });
 });
 </script>
-
-
-
-    {% endblock %}
-    
+<script>
+function reselect(label) {
+  const labels = ["hair", "eye", "skin"];
+  const index = labels.indexOf(label);
+  if (index !== -1) {
+    currentStep = index;
+    instructions.textContent = `Now reselect ${label.toUpperCase()} color by dragging and clicking the swatch`;
+    document.getElementById("analyzeButton").disabled = true;
+  }
+}
+</script>
+    {% endblock %}  
 </body>
 </html>

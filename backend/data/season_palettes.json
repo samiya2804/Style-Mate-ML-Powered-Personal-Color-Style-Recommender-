@@ -1,0 +1,82 @@
+{
+  "Spring": {
+    "description": "Warm, clear, and light tones. Spring types glow in fresh, bright hues like peach, coral, and golden yellows.",
+    "colors": [
+      "#FFDAB9", "#FFE4B5", "#FA8072", "#FFFACD", "#F0E68C",
+      "#F5DEB3", "#FAD6A5", "#FFC0CB", "#E6E200", "#FFD700",
+      "#E9967A", "#FFA07A", "#F08080", "#FFB347", "#FFDAB9",
+      "#D8BFD8", "#FFF8DC", "#FFEBCD", "#FF69B4", "#FF7F50"
+    ],
+    "avoid_colors": [
+      "#000000", "#808080", "#2F4F4F", "#5F9EA0", "#8A2BE2",
+      "#4B0082", "#191970", "#708090", "#1C1C1C", "#A9A9A9"
+    ],
+    "makeup": {
+      "lip": ["coral", "peach", "warm pink"],
+      "eyes": ["gold", "champagne", "soft brown"],
+      "blush": ["apricot", "peach"]
+    },
+    "fabrics": ["cotton", "linen", "light silk", "chiffon"],
+    "tone_contrast": "Low to medium"
+  },
+  "Summer": {
+    "description": "Soft, cool, and muted tones. Summers shine in pastels, rose, and misty blues.",
+    "colors": [
+      "#ADD8E6", "#FFB6C1", "#E6E6FA", "#B0C4DE", "#D8BFD8",
+      "#AFEEEE", "#87CEFA", "#BA55D3", "#DB7093", "#BFEFFF",
+      "#F0F8FF", "#C1CDCD", "#D3D3D3", "#DDA0DD", "#F4A7B9",
+      "#C6E2FF", "#B0E0E6", "#E0FFFF", "#F5F5F5", "#EED5D2"
+    ],
+    "avoid_colors": [
+      "#FFA500", "#FF0000", "#FFD700", "#A52A2A", "#8B0000",
+      "#FF8C00", "#FF4500", "#DAA520", "#B22222", "#CD5C5C"
+    ],
+    "makeup": {
+      "lip": ["soft rose", "mauve", "raspberry"],
+      "eyes": ["cool taupe", "lavender", "gray"],
+      "blush": ["soft pink", "rose"]
+    },
+    "fabrics": ["cotton voile", "crepe", "cashmere", "brushed cotton"],
+    "tone_contrast": "Low contrast"
+  },
+  "Autumn": {
+    "description": "Rich, warm, and earthy tones. Autumns glow in rust, olive, mustard, and terracotta.",
+    "colors": [
+      "#D2691E", "#CD853F", "#808000", "#BDB76B", "#A0522D",
+      "#8B4513", "#DAA520", "#BC8F8F", "#D2B48C", "#DEB887",
+      "#C68642", "#FF8C00", "#F4A460", "#FFD700", "#E9967A",
+      "#8B0000", "#A52A2A", "#C04000", "#C19A6B", "#9B7653"
+    ],
+    "avoid_colors": [
+      "#00CED1", "#00FFFF", "#E0FFFF", "#1E90FF", "#B0E0E6",
+      "#87CEFA", "#4682B4", "#7B68EE", "#4169E1", "#0000FF"
+    ],
+    "makeup": {
+      "lip": ["brick red", "terracotta", "warm berry"],
+      "eyes": ["bronze", "olive", "warm brown"],
+      "blush": ["burnt apricot", "rust"]
+    },
+    "fabrics": ["wool", "suede", "tweed", "denim", "corduroy"],
+    "tone_contrast": "Medium to high"
+  },
+  "Winter": {
+    "description": "Cool, bold, and dramatic tones. Winters dazzle in black, icy shades, and jewel tones.",
+    "colors": [
+      "#4682B4", "#8A2BE2", "#DC143C", "#00008B", "#2F4F4F",
+      "#800000", "#000080", "#8B008B", "#483D8B", "#6A5ACD",
+      "#5F9EA0", "#00CED1", "#6495ED", "#B0C4DE", "#1E90FF",
+      "#708090", "#C0C0C0", "#778899", "#4169E1", "#191970"
+    ],
+    "avoid_colors": [
+      "#FFDAB9", "#FFE4B5", "#FAFAD2", "#F5DEB3", "#FFFACD",
+      "#FAD6A5", "#FFDEAD", "#FFF8DC", "#FFFFE0", "#FDF5E6"
+    ],
+    "makeup": {
+      "lip": ["deep red", "fuchsia", "plum"],
+      "eyes": ["charcoal", "silver", "cool black"],
+      "blush": ["berry", "cool pink"]
+    },
+    "fabrics": ["satin", "silk", "velvet", "leather", "structured cotton"],
+    "tone_contrast": "High contrast"
+  }
+}

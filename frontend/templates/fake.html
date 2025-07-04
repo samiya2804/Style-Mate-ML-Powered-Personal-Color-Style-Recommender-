@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Areas</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+  <style>
+    #cropper-container { max-width: 600px; margin: auto; }
+    #canvas { border:1px solid #ccc; margin-top:20px; }
+    .swatch { width:20px; height:20px; border-radius:50%; position:absolute; border:2px solid #fff; pointer-events:none; }
+    #swatch-label { margin-top:10px; font-weight:bold; }
+  </style>
+      <link rel="stylesheet" href="./static/css/upload.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/cropperjs"></script>
+  <link href="https://unpkg.com/cropperjs/dist/cropper.min.css" rel="stylesheet"/>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block title %}Home - StyleMate{% endblock %}
+    
+    {% block content %}
+  <h1>Select Hair, Eye & Skin</h1>
+  <form id="upload-form" enctype="multipart/form-data">
+    <input type="file" name="file"   id="imageUpload" accept=".jpg, .jpeg .png" required>
+    <button  onclick="loadImage()">Load Image</button>
+  </form>
+
+  <div id="cropper-container">
+  <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Uploaded image" style="max-width: 400px;">
+
+  </div>
+
+  <div id="canvas-container">
+    <canvas id="canvas"></canvas>
+  </div>
+  <div id="swatch-label"></div>
+
+  <button id="analyze-btn" style="display:none;">Upload & Analyze</button>
+
+  <form id="coords-form" method="POST" action="/analyze" style="display:none;">
+    <input type="hidden" name="coords_json" id="coords_json">
+    <input type="hidden" name="filename" id="filename">
+  </form>
+
+
+  <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+       <script>
+    AOS.init();
+   </script>
+
+  <script>
+
+  function loadImage() {
+    const input = document.getElementById('imageUpload');
+    const file = input.files[0];
+    if (!file) {
+        alert("Please select an image first!");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+            const canvas = document.getElementById('imageCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+    let cropper, img = document.getElementById('raw-image'),
+        canvas = document.getElementById('canvas'),
+        ctx = canvas.getContext('2d'),
+        coords = [], stage = 0,
+        labels = ['Hair', 'Eye', 'Skin'];
+
+    document.getElementById('upload-form').onsubmit = async e => {
+      e.preventDefault();
+      let data = new FormData(e.target),
+          res = await fetch('/upload', {method:'POST', body:data}),
+          j = await res.json();
+      img.src = j.url; img.style.display = 'block';
+      document.getElementById('filename').value = j.filename;
+      if (cropper) cropper.destroy();
+      cropper = new Cropper(img, { aspectRatio: 1, viewMode: 1 });
+    };
+
+    document.getElementById('analyze-btn').onclick = () => {
+      document.getElementById('coords_json').value = JSON.stringify(coords);
+      document.getElementById('coords-form').submit();
+    };
+
+    document.getElementById('canvas-container').addEventListener('click', e => {
+      if (stage >= 3) return;
+      let r = canvas.getBoundingClientRect(),
+          x = e.clientX - r.left,
+          y = e.clientY - r.top;
+      ctx.fillStyle = 'rgba(255,0,0,0.7)';
+      ctx.beginPath(); ctx.arc(x, y, 8, 0, 2*Math.PI); ctx.fill();
+
+      coords.push({ x, y });
+      stage++;
+      if (stage < 3) {
+        document.getElementById('swatch-label').innerText = `Click to select ${labels[stage]}`;
+      } else {
+        document.getElementById('swatch-label').innerText = 'Ready to analyze!';
+        document.getElementById('analyze-btn').style.display = 'inline-block';
+      }
+    });
+
+    // Once cropping done (mouse up on cropper), initialize canvas
+    img.addEventListener('cropend', () => {
+      let crop = cropper.getData();
+      canvas.width = crop.width;
+      canvas.height = crop.height;
+      ctx.drawImage(img, crop.x, crop.y, crop.width, crop.height, 0, 0, crop.width, crop.height);
+      document.getElementById('swatch-label').innerText = `Click to select ${labels[0]}`;
+      stage = 0; coords = [];
+      document.getElementById('analyze-btn').style.display = 'none';
+    });
+  </script>
+    {% endblock %}  
+</body>
+</html>

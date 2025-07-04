@@ -1,12 +1,16 @@
 from flask import Flask, render_template,  request, redirect, flash , session , url_for
 from datetime import timedelta 
 import os  
+import json
+from extract_colors import rgb_to_lab, draw_color_swatch
+import pandas as pd
+import joblib
 import numpy as np
 from extract_colors import extract_colors_from_photo
 import cv2
 from flask import send_from_directory
 import time
-from datetime import datetime
+from datetime import datetime ,  timezone
 from werkzeug.utils import secure_filename
 from email.mime.text import MIMEText
 import mysql.connector
@@ -14,6 +18,8 @@ import random
 import sqlite3
 import smtplib
 import bcrypt
+from extract_colors import rgb_to_lab
+from predict_season import predict_season
 
 app = Flask(
     __name__,
@@ -32,7 +38,6 @@ db = mysql.connector.connect(
     database="myapp"
 )
 cursor = db.cursor()
-
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Auto-create uploads
 # save_path = os.path.join(UPLOAD_FOLDER, unique_filename)
@@ -44,14 +49,23 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+BASE_DIR = os.path.dirname(__file__)
+PALETTE_PATH = os.path.join(BASE_DIR, 'data', 'season_palettes.json')
+
+# Load the palette data
+with open(PALETTE_PATH, 'r') as f:
+    SEASON_PALETTES = json.load(f)
+
 @app.route('/')
 def index():
     return render_template("index.html")
 
 def rgb_to_lab(color):
     rgb_color = np.uint8([[color]])
-    lab_color = cv2.cvtColor(rgb_color, cv2.COLOR_RGB2LAB)
-    return lab_color[0][0]
+    lab_color = cv2.cvtColor(rgb_color, cv2.COLOR_RGB2LAB)[0][0]
+    return lab_color
 def lab_to_rgb(lab_color):
     # Convert standard LAB to OpenCV scale
     L = lab_color[0] * 255 / 100
@@ -60,13 +74,28 @@ def lab_to_rgb(lab_color):
 
     lab_scaled = np.uint8([[[L, a, b]]])
     rgb = cv2.cvtColor(lab_scaled, cv2.COLOR_LAB2RGB)[0][0]
-    rgb = [int(x) for x in rgb]
+    return [int(x) for x in rgb]
+  
+# @app.route('/analyze', methods=['POST'])
+# def analyze():
+#     coords = request.form['coords_json']
+#     coords = __import__('json').loads(coords)
+#     fn = request.form['filename']
+#     img = cv2.imread(os.path.join(app.config['UPLOAD_FOLDER'], fn))
+#     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+#     results = {}
+#     labels = ['hair', 'eye', 'skin']
 
-    # # 🔍 Print for debugging
-    # print(f"LAB: {lab_color}, Converted RGB: {rgb}")
+#     for i, pt in enumerate(coords):
+#         x, y = map(int, (pt['x'], pt['y']))
+#         region = img_rgb[max(y-3,0):y+3, max(x-3,0):x+3]
+#         avg = np.mean(region.reshape(-1,3), axis=0)
+#         lab = rgb_to_lab(avg)
+#         rgb = lab_to_rgb(lab)
+#         results[f'{labels[i]}_lab'] = [round(float(v)) for v in lab]
+#         results[f'{labels[i]}_rgb'] = [int(v) for v in rgb]
 
-    return rgb
-
+#     return render_template('results.html', **results)
 
 def parse_point(coord_str):
  try:
@@ -75,6 +104,18 @@ def parse_point(coord_str):
  except:
         return 0, 0  # fallback
 
+def classify_skin_tone(skin_lab):
+    L = skin_lab[0]
+    if L > 80:
+        return "Fair"
+    elif L > 65:
+        return "Medium"
+    elif L > 50:
+        return "Olive"
+    elif L > 35:
+        return "Brown"
+    else:
+        return "Deep Brown"
 
 @app.route('/upload', methods=['GET', 'POST']  ,endpoint='upload')
 def upload_file():
@@ -92,13 +133,13 @@ def upload_file():
             save_path = os.path.join(UPLOAD_FOLDER, unique_filename)
             file.save(save_path)
 
-              # ✅ Save to MySQL database
+              #Save to MySQL database
             user_id = session.get('user_id')
             sql = "INSERT INTO uploaded_images (user_id, filename, timestamp) VALUES (%s, %s, %s)"
             val = (user_id, unique_filename, timestamp)
             cursor.execute(sql, val)
             db.commit()
-
+            upload_id = cursor.lastrowid
              # Loading image and extract user-selected points
             
             # image = cv2.imread(save_path)
@@ -120,31 +161,78 @@ def upload_file():
             def get_rgb(coord):
                 x, y = map(int, coord.split(','))
                 return image[y, x][::-1]  # BGR to RGB
-
+               # Extract RGB
             hair_rgb = get_rgb(hair_coord)
             eye_rgb = get_rgb(eye_coord)
             skin_rgb = get_rgb(skin_coord)
            
+         # Convert to LAB
+            hair_lab = [float(x) for x in rgb_to_lab(hair_rgb)]
+            eye_lab = [float(x) for x in rgb_to_lab(eye_rgb)]
+            skin_lab = [float(x) for x in rgb_to_lab(skin_rgb)]
 
-            hair_lab = rgb_to_lab(hair_rgb)
-            eye_lab = rgb_to_lab(eye_rgb)
-            skin_lab = rgb_to_lab(skin_rgb)
+            # Predict season
+            season = predict_season(save_path)
 
-            print("\n✅ Final Extracted Colors:")
-            print("Hair LAB:", hair_lab, "→ RGB:", hair_rgb)
-            print("Eye  LAB:", eye_lab, "→ RGB:", eye_rgb)
-            print("Skin LAB:", skin_lab, "→ RGB:", skin_rgb)
+            # Save prediction
+            sql = """
+                INSERT INTO predictions (
+                    user_id, upload_id,
+                    hair_L, hair_A, hair_B,
+                    skin_L, skin_A, skin_B,
+                    eye_L, eye_A, eye_B,
+                    predicted_season
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            val = (
+                user_id, upload_id,
+                *hair_lab,
+                *skin_lab,
+                *eye_lab,
+                season
+            )
+            cursor.execute(sql, val)
+            db.commit()
+            def parse_coord(coord):
+                x, y = map(int, coord.split(','))
+                return (x, y)
+
+            overlay_image = image.copy()
+            draw_color_swatch(overlay_image, parse_coord(hair_coord), hair_rgb, "Hair")
+            draw_color_swatch(overlay_image, parse_coord(skin_coord), skin_rgb, "Skin")
+            draw_color_swatch(overlay_image, parse_coord(eye_coord), eye_rgb, "Eye")
+
+            swatch_output_path = os.path.join(UPLOAD_FOLDER, f"{filename.rsplit('.', 1)[0]}_swatches.jpg")
+            cv2.imwrite(swatch_output_path, overlay_image)
+
+            overlay_filename = os.path.basename(swatch_output_path)
+            season_data = SEASON_PALETTES.get(season, {})
+            skin_tone_name = classify_skin_tone(skin_lab)
+
+            season_description = season_data.get("description", "")
+            season_colors = season_data.get("colors", [])
+            avoid_colors = season_data.get("avoid_colors", [])
+            makeup = season_data.get("makeup", {})
+            fabrics = season_data.get("fabrics", [])
+            tone_contrast = season_data.get("tone_contrast", "")
 
             return render_template('results.html',
                                    hair_color=hair_rgb,
                                    skin_color=skin_rgb,
                                    eye_color=eye_rgb,
-                                   filename=unique_filename)
+                                   season=season,
+                                   filename=unique_filename,
+                                   overlay_image= overlay_filename,
+                                   season_description=season_description,
+                                   avoid_colors=avoid_colors,
+                                   makeup=makeup,
+                                   fabrics=fabrics,
+                                   tone_contrast=tone_contrast,
+                                   season_colors=season_colors,
+                                   skin_tone_name=skin_tone_name,
+                                   )
 
-
-
-
-            
+      
         # return redirect(url_for('upload'))  # reload page
     return render_template('upload.html')
 
@@ -165,18 +253,42 @@ def recommendations():
         return redirect(url_for('login'))  # Ensure only logged-in users access this
 
     user_id = session['user_id']
-    cursor.execute("SELECT filename, timestamp FROM uploaded_images WHERE user_id = %s", (user_id,))
+    cursor.execute("SELECT id ,filename, timestamp FROM uploaded_images WHERE user_id = %s", (user_id,))
     raw_uploads = cursor.fetchall()
 
     uploads = []
 
-    for filename, timestamp in raw_uploads:
-        if timestamp is None:
-          continue 
+    for upload_id ,filename, timestamp in raw_uploads:
+        cursor.execute("""
+            SELECT skin_L, skin_A, skin_B, predicted_season
+            FROM predictions
+            WHERE upload_id = %s
+        """, (upload_id,))
+        prediction = cursor.fetchone()
+
+        if prediction:
+          skin_lab = prediction[:3]
+          season = prediction[3]
+          skin_tone = classify_skin_tone(skin_lab)
+
+          season_data = SEASON_PALETTES.get(season, {})
+          season_colors = season_data.get("colors", [])
+          avoid_colors = season_data.get("avoid_colors", [])
+        else:
+          skin_tone = None
+          season_colors = []
+          avoid_colors = []
+
+
+        # if timestamp is None:
+        #   continue 
         uploads.append({
             'filename': filename,
-            'date': timestamp.strftime('%Y-%m-%d'),
-            'time': timestamp.strftime('%I:%M:%S %p')  
+            'date': timestamp.strftime('%Y-%m-%d')  if timestamp else 'Unknown',
+            'time': timestamp.strftime('%I:%M:%S %p')  if timestamp else 'Unknown' ,
+            'skin_tone': skin_tone,
+            'season_colors': season_colors,
+            'avoid_colors': avoid_colors
         })
 
     return render_template('recommendations.html', uploads=uploads)
@@ -193,7 +305,60 @@ def dashboard():
 
 @app.route('/profile')
 def profile():
-    return render_template("profile.html")
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
+    # Fetch the most recent prediction data for the logged-in user
+    cursor.execute("""
+        SELECT 
+            hair_L, hair_A, hair_B,
+            skin_L, skin_A, skin_B,
+            eye_L, eye_A, eye_B,
+            predicted_season
+        FROM predictions
+        WHERE user_id = %s
+        ORDER BY id DESC
+        LIMIT 1
+    """, (user_id,))
+
+    result = cursor.fetchone()
+
+    if not result:
+        flash("No color analysis data found. Please upload a photo first.", "warning")
+        return redirect(url_for('upload'))
+
+    hair_lab = result[0:3]
+    skin_lab = result[3:6]
+    eye_lab = result[6:9]
+    season = result[9]
+
+    def lab_to_rgb(lab_color):
+        L = lab_color[0] * 255 / 100
+        a = lab_color[1] + 128
+        b = lab_color[2] + 128
+        lab_scaled = np.uint8([[[L, a, b]]])
+        rgb = cv2.cvtColor(lab_scaled, cv2.COLOR_LAB2RGB)[0][0]
+        return [int(x) for x in rgb]
+
+    hair_color = lab_to_rgb(hair_lab)
+    skin_color = lab_to_rgb(skin_lab)
+    eye_color = lab_to_rgb(eye_lab)
+
+    season_data = SEASON_PALETTES.get(season, {})
+    season_colors = season_data.get("colors", [])
+    avoid_colors = season_data.get("avoid_colors", [])
+
+    return render_template("profile.html",
+                           hair_color=hair_color,
+                           skin_color=skin_color,
+                           eye_color=eye_color,
+                           season_colors=season_colors,
+                           avoid_colors=avoid_colors,
+                           season=season
+                           )
+
 
 @app.route('/chatbot')
 def chatbot():

@@ -1,46 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result of analyis</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result of analysis</title>
 </head>
 <body>
-
-   {% extends "base.html" %}
+  {% extends "base.html" %}
 
 {% block title %}StyleMate - Color Analysis Result{% endblock %}
 
 {% block content %}
-<div class="container text-center my-5">
-  <h2 class="mb-4">✨ Your Color Analysis</h2>
-  <div class="row justify-content-center">
+<a  class="back" href="/upload"><i class="fa-solid fa-circle-arrow-left mt-2"></i></a>
+<div class="container text-center my-2">
+  <h2 class="mb-4">✨Your Season Type: {{ season }}</h2>
+  <p class="lead">{{ season_description }}</p>
 
-    <!-- Hair Color -->
-    <div class="col-md-3">
-      <div class="swatch" style="background-color: rgb({{ hair_color[0] }}, {{ hair_color[1] }}, {{ hair_color[2] }});"></div>
-      <p class="mt-2 fw-bold">Hair Color</p>
-    </div>
+  <!-- <div class="row justify-content-center"> -->
+    <section class="grid-container">
+        <!-- Cards -->  <!-- Left Column: Image -->
+        <div class="card" data-aos="fade-left">
+          <h2 style="margin-bottom: 1rem;">Uploaded Image</h2>
+          <img style=" margin-bottom: 1rem;" src="{{ url_for('uploaded_file', filename=overlay_image) }}" alt="Swatch Overlay" class="img-fluid rounded">
+        </div>
+    <!-- <div class="col-md-6">
+    </div> -->
 
-    <!-- Skin Color -->
-    <div class="col-md-3">
-      <div class="swatch" style="background-color: rgb({{ skin_color[0] }}, {{ skin_color[1] }}, {{ skin_color[2] }});"></div>
-      <p class="mt-2 fw-bold">Skin Color</p>
+    <!-- Right Column: Color Swatches -->
+      <div class="card" data-aos="fade-left">
+    <div class="col-md-6 d-flex gap-5 align-items-start justify-content-center colors">
+      <div class="text-center">
+        <div class="swatch" style="background-color: rgb({{ hair_color[0] }}, {{ hair_color[1] }}, {{ hair_color[2] }});"></div>
+        <p class="mt-2 fw-bold">Hair Color</p>
+      </div>
+      <div class="text-center">
+        <div class="swatch" style="background-color: rgb({{ skin_color[0] }}, {{ skin_color[1] }}, {{ skin_color[2] }});"></div>
+        <p class="mt-2 fw-bold">Skin Color</p>
+      </div>
+      <div class="text-center">
+        <div class="swatch" style="background-color: rgb({{ eye_color[0] }}, {{ eye_color[1] }}, {{ eye_color[2] }});"></div>
+        <p class="mt-2 fw-bold">Eye Color</p>
+      </div>
     </div>
+    </div>
+    </section>
 
-    <!-- Eye Color -->
-    <div class="col-md-3">
-      <div class="swatch" style="background-color: rgb({{ eye_color[0] }}, {{ eye_color[1] }}, {{ eye_color[2] }});"></div>
-      <p class="mt-2 fw-bold">Eye Color</p>
-    </div>
+  <!-- Recommended Colors -->
+     <section class="grid-container">
+        <!-- Cards -->  <!-- Left Column: Image -->
+        <div class="card" data-aos="fade-left">
+  <h4>🎨 Your Color Palette</h4>
+  <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+    {% for color in season_colors %}
+      <div class="color-box" style="background-color: {{ color }};"></div>
+    {% endfor %}
   </div>
 
-  <div class="mt-4">
-    <a href="{{ url_for('upload') }}" class="btn btn-outline-primary">Upload Another Photo</a>
+  <!-- Avoid Colors -->
+  <h4 class="mt-4 text-danger">🚫 Avoid These Colors</h4>
+  <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+    {% for color in avoid_colors %}
+      <div class="color-box" style="background-color: {{ color }};"></div>
+    {% endfor %}
+  </div>
+   <!-- Download Palette Button -->
+    <button class="profilebtn" onclick="downloadFullPalette()">Download Palette</button>
+    <canvas id="paletteCanvas" width="400" height="80" style="display: none;"></canvas>
+  </div>
+  </section>
+
+  <!-- Makeup Suggestions -->
+     <section class="grid-container">
+        <!-- Cards -->
+        <div class="card" data-aos="fade-left">
+  <h4 >💄 Makeup Recommendations</h4>
+  <ul class="list-unstyled">
+    <li><strong>Lip:</strong> {{ makeup.lip | join(', ') }}</li>
+    <li><strong>Eyes:</strong> {{ makeup.eyes | join(', ') }}</li>
+    <li><strong>Blush:</strong> {{ makeup.blush | join(', ') }}</li>
+  </ul>
+  </div>
+   <div class="card" data-aos="fade-left">
+  <!-- Fabrics -->
+  <h4 >🧵 Recommended Fabrics</h4>
+  <p>{{ fabrics | join(', ') }}</p>
+  </div>
+     <div class="card" data-aos="fade-left">
+  <!-- Tone Contrast -->
+  <h4>🎭 Tone Contrast</h4>
+  <p>{{ tone_contrast }}</p>
+</div>
+</section>
+  <div class="mt-4 mb-2">
+    <a href="{{ url_for('upload') }}" class="reupload btn btn-outline-primary">Upload Another Photo</a>
   </div>
 </div>
 
 <style>
+.reupload{
+  color:  #c36e82;
+  border: 1.5px solid #c16379;
+}
+.reupload:hover{
+  background-color:#c07586;
+  color: aliceblue;
+  border: #c44b68;
+}
+  .colors{
+    margin-top: 4rem;
+    margin-left: 8rem;
+  }
+  .card img{
+    height: auto; width: 80%;
+    margin-left: 3rem;
+  }
+  .back{
+    color:   #c36e82;
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
 .swatch {
   width: 100px;
   height: 100px;
@@ -49,9 +127,98 @@
   border: 3px solid #333;
   margin: auto;
 }
+.color-box {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.profilebtn{
+  width: 20%;
+    align-self: center;
+    background-color: #cb79a2;
+    color: white;
+    border-radius: 25px;
+    padding: 3px;
+    border: 1px solid black;
+}
+
+@media (max-width: 768px) {
+  .swatch {
+    width: 60px;
+    height: 60px;
+    /* margin-left: 3rem; */
+  }
+  .colors{
+    margin-top: 0rem;
+    margin-left: 0rem;
+    gap: 0;
+  }
+  .card img{
+    width:100%;
+     margin-left: 0rem;
+  }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Cards */
+  .card {
+    background-color: #f9f2f4 !important;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  .card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #2c3e50;
+  }
 </style>
+<script>
+function downloadFullPalette() {
+  const seasonColors = {{ season_colors | tojson }};
+  const avoidColors = {{ avoid_colors | tojson }};
+  const canvas = document.getElementById('paletteCanvas');
+  const ctx = canvas.getContext('2d');
+
+  const boxWidth = canvas.width / seasonColors.length;
+  const boxHeight = canvas.height / 2;
+
+  // Draw season colors (top row)
+  seasonColors.forEach((color, i) => {
+    ctx.fillStyle = color;
+    ctx.fillRect(i * boxWidth, 0, boxWidth, boxHeight);
+  });
+
+  // Draw avoid colors (bottom row)
+  avoidColors.forEach((color, i) => {
+    ctx.fillStyle = color;
+    ctx.fillRect(i * boxWidth, boxHeight, boxWidth, boxHeight);
+  });
+
+  const link = document.createElement('a');
+  link.download = 'stylemate_color_palette.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+</script>
 {% endblock %}
 
-    
 </body>
 </html>

@@ -22,6 +22,9 @@ def rgb_to_lab(color):
     b = lab_color[2] - 128
     return np.array([round(L), round(a), round(b)])
 
+
+
+
 def draw_color_swatch(image, position, color_rgb, label):
     cv2.circle(image, position, 15, tuple(map(int, color_rgb[::-1])), -1)  # BGR format
     cv2.putText(image, label, (position[0] + 20, position[1] + 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1)

@@ -15,7 +15,7 @@
   
     <!-- Header -->
     <section>
-      <h1>Hello Samiya! You are a Winter Season<i class="fa-solid fa-heart"></i></h1>
+      <h1>Hello {{ session['username'] }}! You are a {{ season }} Season<i class="fa-solid fa-heart"></i></h1>
       <p>Hope you enjoyed & learned about skin analyis.</p>
       <button class="cta-btn"><a style="text-decoration: none;  color:#c78b99; " href="{{('upload')}}">Try Now</a></button>
       </section>
