@@ -39,7 +39,8 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=30)
 app.config["SESSION_PERMANENT"] = True
 # SQLite Configuration
-DB_PATH = os.path.join(os.getcwd(), "myapp.db")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "myapp.db")
 
 def get_db():
     if 'db' not in g:
@@ -901,5 +902,7 @@ def register():
     return redirect("/login")
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
