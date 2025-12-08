@@ -1,15 +1,15 @@
 body {
-     /* background: linear-gradient(to right,#6a11cb, #2575fc); */
-     background: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1);
-     font-family: Arial, sans-serif;
-   
+    /* background: linear-gradient(to right,#6a11cb, #2575fc); */
+    background: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1);
+    font-family: Arial, sans-serif;
+
     color: white;
     margin: 0;
     padding: 0;
-  }
+}
 
-  /* Chat Button */
-  .chat-button {
+/* Chat Button */
+.chat-button {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -21,134 +21,218 @@ body {
     height: 60px;
     font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure button is on top */
+}
 
-  /* Chat Popup */
-  .chat-popup {
+.suggestions {
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #f7f7f7; /* Light background for suggestions */
+    border-radius: 8px;
+    color: #333; /* Darker text for readability */
+}
+
+.suggestions h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.suggestion-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.suggest-btn {
+    padding: 8px 14px;
+    background: #8e44ad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.3s ease;
+}
+
+.suggest-btn:hover {
+    background: #6d2f8a;
+    transform: scale(1.03);
+}
+
+
+/* Chat Popup - Maximize/Enlarge */
+.chat-popup {
     display: none;
     position: fixed;
-    bottom: 100px;
+    bottom: 30px; /* Aligned with chat button */
     right: 30px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    width: 350px;
-    max-height: 500px;
+    width: 80vw; /* Take 80% of viewport width */
+    max-width: 900px; /* Max size for large screens */
+    height: 80vh; /* Take 80% of viewport height */
+    max-height: 700px; /* Max height for large screens */
     background: white;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     flex-direction: column;
     overflow: hidden;
-  }
+    z-index: 999; /* Below the chat button */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
 
-  .chat-header {
+/* Responsive adjustment for small screens (e.g., mobile) */
+@media (max-width: 768px) {
+    .chat-popup {
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        max-height: none;
+        border-radius: 0;
+    }
+}
+
+
+.chat-header {
     background: #e37fa4;
     color: white;
     padding: 15px;
     text-align: center;
     font-size: 18px;
     position: relative;
-  }
+    flex-shrink: 0; /* Prevents shrinking */
+}
 
-  .chat-header .close {
+.chat-header .close {
     position: absolute;
     right: 15px;
     top: 12px;
     cursor: pointer;
-  }
+}
 
-  .chat-messages {
-    padding: 65px;
-     flex: 1;
+.chat-messages {
+    padding: 15px; /* Reduced padding from 65px for better space usage */
+    flex: 1;
     overflow-y: auto;
-    height: 300px;
-  }
+    height: auto; /* Let flex control height */
+    display: flex;
+    flex-direction: column;
+}
 
-  .chat-input {
+.chat-input {
     display: flex;
     border-top: 1px solid #ddd;
-  }
+    flex-shrink: 0; /* Prevents shrinking */
+}
 
-  .chat-input input {
+.chat-input input {
     flex: 1;
     border: none;
     padding: 10px;
     font-size: 16px;
-  }
+}
 
-  .chat-input button {
+.chat-input button {
     background: #e37fa4;
     border: none;
     color: white;
     padding: 0 20px;
     cursor: pointer;
-  }
+    flex-shrink: 0;
+}
 
-  .message {
+.message {
     margin: 10px 0;
-  }
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
 
-  .user {
-    text-align: right;
-    color: #e37fa4;
-  }
-
-  .bot {
-    text-align: left;
+.user {
+    align-self: flex-end; /* Align user message to the right */
+    background-color: #ffe3f0; /* Light pink background */
     color: #333;
-  }
+}
 
-  .history-link {
+.bot {
+    align-self: flex-start; /* Align bot message to the left */
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333;
+    position: relative;
+    /* Remove text-align: left; as it's now controlled by flex-start */
+}
+
+/* Style for bot images */
+.bot-images img {
+    max-width: 100px;
+    height: auto;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.bot-images img:hover {
+    transform: scale(1.05);
+}
+
+.history-link {
     display: block;
     text-align: center;
-    margin: 10px 0;
+    padding: 10px 0;
     font-size: 14px;
-    color: #3b82f6;
-    cursor: pointer;
-  }
-  .history-link a{
+    /* Added background to separate it clearly */
+    background: #f7f7f7;
+    border-top: 1px solid #eee;
+    flex-shrink: 0;
+}
+.history-link a{
     text-decoration: none;
-      color: #d8648f !important;
-  }
+    color: #d8648f !important;
+}
 
-
-  /* //page html */
- section {
+/* //page html (Keeping existing page styles) */
+section {
     text-align: center;
     padding: 80px 20px;
-  }
+}
 section h1 {
     font-size: 3em;
     margin-bottom: 10px;
     animation: fadeIn 2s ease;
-  }
+}
 section p {
     font-size: 1.2em;
     margin-bottom: 30px;
-  }
-  .cta-btn {
+}
+.cta-btn {
     background: white;
-  color: #d8648f;
+    color: #d8648f;
     padding: 12px 24px;
     border: none;
     border-radius: 25px;
     font-size: 1em;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .cta-btn:hover {
+}
+.cta-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 15px rgba(255,255,255,0.5);
-  }
+}
 
-  .features {
+.features {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 50px 20px;
     background: white;
     color: #333;
-  }
-  .feature-card {
+}
+.feature-card {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
     padding: 20px;
@@ -156,45 +240,45 @@ section p {
     width: 220px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .feature-card:hover {
+}
+.feature-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  }
-  .feature-card i {
+}
+.feature-card i {
     font-size: 2em;
-      color: #d8648f;
+    color: #d8648f;
     margin-bottom: 10px;
-  }
+}
 
-  .steps {
+.steps {
     padding: 50px 20px;
     text-align: center;
-  }
-  .steps h2 {
+}
+.steps h2 {
     font-size: 2em;
     margin-bottom: 30px;
-  }
-  .step {
+}
+.step {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 20px;
     margin: 10px auto;
     max-width: 500px;
     animation: fadeInUp 1s ease;
-  }
-  /* footer {
+}
+/* footer {
     background: #111;
     text-align: center;
     padding: 30px;
     margin-top: 30px;
-  } */
+} */
 
-  @keyframes fadeIn {
+@keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInUp {
+}
+@keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
-  }
+}

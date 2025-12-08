@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block title %}Our Services – StyleMate{% endblock %}
+{% block content %}
+
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<style>
+  :root {
+    --accent: #d9467c;
+    --card-bg: #ffffff;
+    --text-muted: #6b7280;
+  }
+
+  body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .services-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .services-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .services-header p {
+    max-width: 600px;
+    margin: auto;
+    color: var(--text-muted);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    padding: 30px 22px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Glow Hover Effect */
+  .service-card::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(217, 70, 124, 0.28), transparent);
+    border-radius: 50%;
+    transition: 0.4s ease;
+  }
+
+  .service-card:hover::before {
+    transform: translate(130px, 130px);
+  }
+
+  .service-icon {
+    font-size: 48px;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .service-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .learn-more {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .learn-more:hover {
+    text-decoration: underline;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 992px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .services-header h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<div class="services-section" data-aos="fade-up">
+  <div class="services-header">
+    <h1>Our Premium Services</h1>
+    <p>
+      Explore world-class personalized styling solutions designed to help you
+      look your best—powered by AI, science, and professional analysis.
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- Service 1 -->
+    <div class="service-card" data-aos="zoom-in">
+      <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+      <div class="service-title">Personal Color Analysis</div>
+      <div class="service-desc">
+        Discover your exact season based on undertone, depth, temperature, and contrast—backed by Korean color science.
+      </div>
+      <div class="learn-more">Learn More →</div>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="150">
+      <div class="service-icon"><i class="fa-solid fa-user"></i></div>
+      <div class="service-title">Face Shape & Features Mapping</div>
+      <div class="service-desc">
+        Identify your face shape, proportions, balance, and optimal haircuts using computer vision.
+      </div>
+      <div class="learn-more">Learn More →</div>
+    </div>
+
+    <!-- Service 3 -->
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+      <div class="service-icon"><i class="fa-solid fa-shirt"></i></div>
+      <div class="service-title">Wardrobe Styling</div>
+      <div class="service-desc">
+        Get custom outfit suggestions curated for your color season, style essence, and body proportions.
+      </div>
+      <div class="learn-more">Learn More →</div>
+    </div>
+
+    <!-- Service 4 -->
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="450">
+      <div class="service-icon"><i class="fa-solid fa-camera"></i></div>
+      <div class="service-title">Photo-Based AI Styling</div>
+      <div class="service-desc">
+        Upload your photo and instantly receive color palette, makeup shades, and outfit recommendations.
+      </div>
+      <div class="learn-more">Learn More →</div>
+    </div>
+
+    <!-- Service 5 -->
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="600">
+      <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+      <div class="service-title">Makeup Shade Matching</div>
+      <div class="service-desc">
+        Foundation, blush, and lipstick shades generated directly from your undertone and harmony.
+      </div>
+      <div class="learn-more">Learn More →</div>
+    </div>
+
+    <!-- Service 6 -->
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="750">
+      <div class="service-icon"><i class="fa-solid fa-brush"></i></div>
+      <div class="service-title">Digital Style Consultation</div>
+      <div class="service-desc">
+        1:1 live Zoom session with a professional stylist to guide wardrobe, makeup, and color decisions.
+      </div>
+      <div class="learn-more">Learn More →</div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,130 +1,227 @@
- body {
-            font-family: 'Segoe UI', sans-serif;
-            /* background-color: #fff8f2; */
-             background-color: 	#F8E8EE !important;
-            margin: 0;
-            /* padding: 20px; */
-        }
-           #row a{
-            margin-top: 1.8rem;
-                font-size: 2rem;
-                text-decoration: none;
-                margin-left: 3rem;
-                  color: #c78b99;
-            }
-            #row a  :hover{
-                    color: #c55d75;
-
-            }
-
-
-        .heading3 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
-            /* margin-top: 2rem; */
-            color: #222;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color:   #F9F5F6 !important;
-            border: 1px solid #f4d4ba;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-        .swatch {
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    margin: 2px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+/* --- Global Styles and Variables --- */
+:root {
+    --primary-color: #c36e82; /* Soft Rose */
+    --primary-dark: #a95e70; 
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --border-color: #f0f0f0;
 }
+
+body {
+    background-color: #f9f9f9;
+}
+
+/* --- Header & Back Button --- */
+.header-section {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px 10px;
+}
+
+.heading3 {
+    margin: 0 0 0 20px;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.back-btn {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: var(--primary-dark);
+}
+
+/* --- Uploads Grid Container --- */
+.container.uploads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 40px 50px;
+}
+
+/* --- Card Styling --- */
+.upload-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.upload-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-5px);
+}
+
+/* --- Image and Content Layout --- */
+.image-container {
+    width: 100%;
+    height: 250px; /* Fixed height for consistent look */
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    transition: transform 0.3s ease;
+}
+
+.upload-card:hover .image-container img {
+    transform: scale(1.05);
+}
+
+.upload-card-content {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Short Detail --- */
+.short-detail {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.short-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.tone-tag {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* --- Show More/Less Button --- */
+.show-more-btn, .show-less-btn {
+    width: 100%;
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s, color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.show-more-btn:hover, .show-less-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.toggle-icon {
+    transition: transform 0.3s;
+}
+
+/* Hide Full Detail by default and set transition properties */
+.full-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* State when 'show' class is applied */
+.upload-card.show .full-detail {
+    max-height: 500px; /* Sufficient height to show content */
+    opacity: 1;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+}
+
+.upload-card.show .short-detail {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* Rotate icon on 'show' */
+.upload-card.show .show-more-btn .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Hide show-more button when full detail is visible */
+.upload-card.show .show-more-btn {
+    display: none;
+}
+
+.show-less-btn {
+    display: none; /* Hidden by default */
+    margin-top: 20px;
+}
+
+.upload-card.show .show-less-btn {
+    display: flex;
+}
+
+/* --- Full Detail Content --- */
+.detail-section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    display: block;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
 .color-swatches {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 8px;
+}
+
+.swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+}
+
+.swatch-avoid {
+    border: 2px dashed #9f304a; /* Highlight colors to avoid */
+}
+
+.no-data {
+    font-style: italic;
+    color: #999;
+    font-size: 0.9rem;
 }
 
 
-        
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-              width: 100%;
-        height: 250px; /* Set a common height */
-        object-fit:contain; /* Ensures cropping without distortion */
-        }
-
-        .details {
-        display: block; /* Always show on all devices */
-            padding: 15px;
-            font-size: 14px;
-            color: #333;
-        }
-
-       /* Default: mobile-first approach */
-.short-detail {
-    display: block;
-}
-
-.full-detail {
-    display: none;
-}
-
-/* When the card has the .show class, show full detail */
-.card.show .full-detail {
-    display: block;
-}
-
-.card.show .short-detail {
-    display: none;
-}
-    .show-more {
-            color: #e67e22;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        @media(max-width:768px){
-                  #row a{
-                margin-left: 1rem;
-            }
-        }
-
-/* On tablets and larger: show full detail directly */
-@media (min-width: 768px) {
-    .short-detail {
-        display: none;
+/* --- Media Query for Mobile (Adjust header and padding) --- */
+@media (max-width: 600px) {
+    .header-section {
+        padding: 15px 20px 10px;
     }
-
-    .full-detail {
-        display: block;
+    .container.uploads-grid {
+        grid-template-columns: 1fr;
+        padding: 15px 20px 30px;
+        gap: 20px;
     }
-
-    .show-more {
-        display: none; /* hide show-more on desktop since full detail is always shown */
+    .heading3 {
+        font-size: 1.5rem;
     }
 }
-
-
-        /* @media (min-width: 768px) {
-            .short-detail { display: none; }
-            .full-detail { display: block; }
-        } */

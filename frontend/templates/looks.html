@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Season Looks{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <a href="/dashboard" class="back-btn"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+
+    <h1 class="page-title">Seasonal Looks Gallery</h1>
+
+    {% for season, data in seasons.items() %}
+        <section class="season-section">
+            <h2 class="season-title">{{ season }}</h2>
+
+            <div class="gallery">
+                {% for img in data.looks.images %}
+                    <div class="gallery-item">
+                        <img 
+                            src="{{ url_for('static', filename=img.replace('frontend/static/', '').replace('static/', '')) }}"
+                            alt="{{ season }} Look {{ loop.index }}"
+                        >
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endfor %}
+</div>
+
+<style>
+/* ---------- Layout ---------- */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #8e44ad;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: 0.2s ease;
+}
+.back-btn:hover {
+    color: #5e337a;
+}
+
+/* ---------- Titles ---------- */
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.season-section {
+    margin-bottom: 3rem;
+}
+
+.season-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: #8e44ad;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Gallery Grid ---------- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+}
+
+/* ---------- Equal Size Cards ---------- */
+.gallery-item {
+    width: 100%;
+    height: 250px; /* fixed height for uniform cards */
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* maintain equal size nicely */
+    transition: 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 992px) {
+    .page-title { font-size: 1.8rem; }
+    .season-title { font-size: 1.4rem; }
+    .gallery-item { height: 220px; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+    .page-title { font-size: 1.5rem; }
+    .season-title { font-size: 1.2rem; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item { height: 180px; }
+}
+</style>
+{% endblock %}

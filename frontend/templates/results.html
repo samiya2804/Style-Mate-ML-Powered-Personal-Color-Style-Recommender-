@@ -1,224 +1,306 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Result of analysis</title>
-</head>
-<body>
-  {% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block title %}StyleMate - Color Analysis Result{% endblock %}
 
 {% block content %}
-<a  class="back" href="/upload"><i class="fa-solid fa-circle-arrow-left mt-2"></i></a>
-<div class="container text-center my-2">
-  <h2 class="mb-4">✨Your Season Type: {{ season }}</h2>
-  <p class="lead">{{ season_description }}</p>
 
-  <!-- <div class="row justify-content-center"> -->
-    <section class="grid-container">
-        <!-- Cards -->  <!-- Left Column: Image -->
-        <div class="card" data-aos="fade-left">
-          <h2 style="margin-bottom: 1rem;">Uploaded Image</h2>
-          <img style=" margin-bottom: 1rem;" src="{{ url_for('uploaded_file', filename=overlay_image) }}" alt="Swatch Overlay" class="img-fluid rounded">
+<div class="back-frame animate__animated animate__fadeInLeft">
+    <a href="/dashboard" class="back-btn " title="Back to Dashboard">
+        <i class="fa-solid fa-circle-arrow-left back"></i> Back to Dashboard
+    </a>
+</div>
+<div class="container my-5">
+
+    <div class="text-center mb-5 section-header">
+        <h2 class="display-5 animate__animated animate__fadeInDown">✨ Your Season Type: {{ season | upper }}</h2>
+        <p class="lead animate__animated animate__fadeInUp">{{ season_description }}</p>
+    </div>
+    
+    <hr class="separator">
+
+    <section class="grid-layout analysis-grid my-4">
+        
+        <div class="card shadow-lg animate__animated animate__zoomIn">
+            <h5 class="text-center card-title">Uploaded Image</h5>
+            <img src="{{ url_for('uploaded_file', filename=image_url) }}" class="img-fluid rounded img-result" alt="Uploaded image" />
         </div>
-    <!-- <div class="col-md-6">
-    </div> -->
 
-    <!-- Right Column: Color Swatches -->
-      <div class="card" data-aos="fade-left">
-    <div class="col-md-6 d-flex gap-5 align-items-start justify-content-center colors">
-      <div class="text-center">
-        <div class="swatch" style="background-color: rgb({{ hair_color[0] }}, {{ hair_color[1] }}, {{ hair_color[2] }});"></div>
-        <p class="mt-2 fw-bold">Hair Color</p>
-      </div>
-      <div class="text-center">
-        <div class="swatch" style="background-color: rgb({{ skin_color[0] }}, {{ skin_color[1] }}, {{ skin_color[2] }});"></div>
-        <p class="mt-2 fw-bold">Skin Color</p>
-      </div>
-      <div class="text-center">
-        <div class="swatch" style="background-color: rgb({{ eye_color[0] }}, {{ eye_color[1] }}, {{ eye_color[2] }});"></div>
-        <p class="mt-2 fw-bold">Eye Color</p>
-      </div>
-    </div>
-    </div>
+        <div class="card shadow-lg animate__animated animate__zoomIn delay-1">
+            <h5 class="card-title text-center mb-4">Primary Analysis</h5>
+            
+            <div class="d-flex justify-content-around flex-wrap mb-4">
+                <div class="swatch-group">
+                    <div class="swatch-square hover-scale" style="background-color: rgb({{ hair_color[0] }}, {{ hair_color[1] }}, {{ hair_color[2] }});" title="Hair Color"></div>
+                    <span class="swatch-label">Hair</span>
+                </div>
+                <div class="swatch-group">
+                    <div class="swatch-square hover-scale" style="background-color: rgb({{ skin_color[0] }}, {{ skin_color[1] }}, {{ skin_color[2] }});" title="Skin Color"></div>
+                    <span class="swatch-label">Skin</span>
+                </div>
+                <div class="swatch-group">
+                    <div class="swatch-square hover-scale" style="background-color: rgb({{ eye_color[0] }}, {{ eye_color[1] }}, {{ eye_color[2] }});" title="Eye Color"></div>
+                    <span class="swatch-label">Eyes</span>
+                </div>
+            </div>
+
+            <h5 class="h6 text-center text-primary-custom mb-3">Key Characteristics:</h5>
+            <ul class="characteristics-list list-unstyled">
+                {% if characteristics %}
+                    {% for char in characteristics %}
+                        <li><i class="fa-solid fa-check-circle text-success"></i> {{ char }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>Detailed characteristics for this season is inside palettes.</li>
+                {% endif %}
+            </ul>
+        </div>
     </section>
 
-  <!-- Recommended Colors -->
-     <section class="grid-container">
-        <!-- Cards -->  <!-- Left Column: Image -->
-        <div class="card" data-aos="fade-left">
-  <h4>🎨 Your Color Palette</h4>
-  <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-    {% for color in season_colors %}
-      <div class="color-box" style="background-color: {{ color }};"></div>
-    {% endfor %}
-  </div>
+    <section class="grid-layout palette-grid my-5">
+        
+        <div class="card palette-card animate__animated animate__fadeInUp delay-2">
+            <h5 class="card-title text-success">🎨 Recommended Color Palette</h5>
+            <div class="palette-container mt-3">
+                {% for color in season_colors %}
+                    <div class="color-box hover-scale" style="background-color: {{ color }}" title="{{ color }}"></div>
+                {% endfor %}
+            </div>
+        </div>
 
-  <!-- Avoid Colors -->
-  <h4 class="mt-4 text-danger">🚫 Avoid These Colors</h4>
-  <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-    {% for color in avoid_colors %}
-      <div class="color-box" style="background-color: {{ color }};"></div>
-    {% endfor %}
-  </div>
-   <!-- Download Palette Button -->
-    <button class="profilebtn" onclick="downloadFullPalette()">Download Palette</button>
-    <canvas id="paletteCanvas" width="400" height="80" style="display: none;"></canvas>
-  </div>
-  </section>
+        <div class="card avoid-card animate__animated animate__fadeInUp delay-3">
+            <h5 class="card-title text-danger">🚫 Colors to Avoid</h5>
+            <div class="palette-container mt-3">
+                {% for color in avoid_colors %}
+                    <div class="color-box hover-scale" style="background-color: {{ color }}" title="{{ color }}"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+    <div class="text-center animate__animated animate__fadeInUp delay-4 mb-5">
+        <button class="btn btn-primary-custom down-btn btn-lg" onclick="downloadFullPalette()">
+            <i class="fa-solid fa-download"></i> Download Full Palette
+        </button>
+        <canvas id="paletteCanvas" width="400" height="120" style="display: none;"></canvas>
+    </div>
 
-  <!-- Makeup Suggestions -->
-     <section class="grid-container">
-        <!-- Cards -->
-        <div class="card" data-aos="fade-left">
-  <h4 >💄 Makeup Recommendations</h4>
-  <ul class="list-unstyled">
-    <li><strong>Lip:</strong> {{ makeup.lip | join(', ') }}</li>
-    <li><strong>Eyes:</strong> {{ makeup.eyes | join(', ') }}</li>
-    <li><strong>Blush:</strong> {{ makeup.blush | join(', ') }}</li>
-  </ul>
-  </div>
-   <div class="card" data-aos="fade-left">
-  <!-- Fabrics -->
-  <h4 >🧵 Recommended Fabrics</h4>
-  <p>{{ fabrics | join(', ') }}</p>
-  </div>
-     <div class="card" data-aos="fade-left">
-  <!-- Tone Contrast -->
-  <h4>🎭 Tone Contrast</h4>
-  <p>{{ tone_contrast }}</p>
-</div>
-</section>
-  <div class="mt-4 mb-2">
-    <a href="{{ url_for('upload') }}" class="reupload btn btn-outline-primary">Upload Another Photo</a>
-  </div>
+    <section class="grid-layout recommendations-grid my-5">
+        
+        <div class="card shadow-md animate__animated animate__fadeInRight delay-5">
+            {% if gender == "male" %}
+                <h5 class="card-title">🪒 Grooming Tips</h5>
+                <ul class="tips-list list-unstyled">
+                    {% for tip in grooming_tips %}
+                        <li>{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h5 class="card-title">💄 Makeup Recommendations</h5>
+                <ul class="tips-list list-unstyled">
+                    <li> <strong>Lip :</strong> {{ makeup.lip | join(', ') }}</li>
+                    <li> <strong>Eyes :</strong> {{ makeup.eyes | join(', ') }}</li>
+                    <li> <strong>Blush :</strong>  {{ makeup.blush | join(', ') }}</li>
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="card shadow-md animate__animated animate__fadeInUp delay-6">
+            <h5 class="card-title">🧵 Recommended Fabrics</h5>
+            <ul class="tips-list list-unstyled">
+                {% for fabric in fabrics %}
+                    <li>{{ fabric }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card shadow-md animate__animated animate__fadeInLeft delay-7">
+            <h5 class="card-title">🎭 Tone Contrast</h5>
+            <p class="tone-contrast-text">{{ tone_contrast }}</p>
+        </div>
+    </section>
+
+    <div class="text-center mt-5 mb-4 animate__animated animate__fadeInUp delay-8">
+        <a href="{{ url_for('upload') }}" class="btn btn-outline-primary-custom btn-lg hover-scale">Upload Another Photo</a>
+    </div>
+
 </div>
 
 <style>
-.reupload{
-  color:  #c36e82;
-  border: 1.5px solid #c16379;
-}
-.reupload:hover{
-  background-color:#c07586;
-  color: aliceblue;
-  border: #c44b68;
-}
-  .colors{
-    margin-top: 4rem;
-    margin-left: 8rem;
-  }
-  .card img{
-    height: auto; width: 80%;
-    margin-left: 3rem;
-  }
-  .back{
-    color:   #c36e82;
-    font-size: 2rem;
-    margin-left: 2rem;
-  }
-.swatch {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: inline-block;
-  border: 3px solid #333;
-  margin: auto;
-}
-.color-box {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.profilebtn{
-  width: 20%;
-    align-self: center;
-    background-color: #cb79a2;
-    color: white;
-    border-radius: 25px;
-    padding: 3px;
-    border: 1px solid black;
+/* --- ANIMATION DELAYS --- */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+.delay-8 { animation-delay: 0.8s; }
+
+/* --- CUSTOM COLORS --- */
+:root {
+    --primary-color: #c36e82; /* Soft Rose/Mauve */
+    --primary-dark: #a95e70; /* Deeper tone for hover */
+    --card-bg: #ffffff;
+    --shadow-light: rgba(0,0,0,0.08);
+    --shadow-medium: rgba(0,0,0,0.15);
 }
 
-@media (max-width: 768px) {
-  .swatch {
-    width: 60px;
-    height: 60px;
-    /* margin-left: 3rem; */
-  }
-  .colors{
-    margin-top: 0rem;
-    margin-left: 0rem;
-    gap: 0;
-  }
-  .card img{
-    width:100%;
-     margin-left: 0rem;
-  }
+/* Button & Text Styling */
+.text-primary-custom { color: var(--primary-color) !important; }
+.btn-primary-custom { background-color: var(--primary-color); border-color: var(--primary-dark); color: white; }
+.btn-primary-custom:hover { background-color: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-outline-primary-custom { color: var(--primary-color); border-color: var(--primary-color); }
+.btn-outline-primary-custom:hover { background-color: var(--primary-color); color: white; }
+.down-btn { max-width: 500px; width: 100%; }
+
+/* Layouts */
+.separator { border-top: 1px solid #f0f0f0; margin: 3rem 0; }
+.grid-layout { display: grid; gap: 20px; margin-bottom: 25px; }
+.analysis-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.palette-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.recommendations-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.back{
+  color: rgb(204, 118, 132);
+  text-decoration: none;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: auto;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-  
-  /* Cards */
-  .card {
-    background-color: #f9f2f4 !important;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    padding: 2rem;
-    cursor: pointer;
+.back-btn{
+  color: rgb(204, 118, 132);
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+:hover .back-frame{
+  border: 1px solid rgb(234, 101, 123);
+}
+
+/* Components */
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px var(--shadow-light);
+    border: 1px solid #f5f5f5;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-  .card h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: #2c3e50;
-  }
+}
+
+.card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px var(--shadow-medium); }
+
+/* Image */
+.img-result {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+/* Swatches */
+.swatch-square {
+    width: 70px; height: 70px; border-radius: 50%;
+    box-shadow: 0 3px 8px var(--shadow-medium);
+    margin-bottom: 5px; border: 3px solid #eee;
+}
+
+/* Color Palette Boxes */
+.palette-container {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    justify-content: center; padding: 10px 0;
+}
+.color-box { width: 55px; height: 55px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+/* Lists & Text */
+.characteristics-list, .tips-list {
+    padding-left: 20px;
+    text-align: left;
+}
+.characteristics-list li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+.characteristics-list li i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+.tips-list li {
+    margin-bottom: 5px;
+    list-style-type: none; /* Remove default bullets */
+    position: relative;
+    padding-left: 1.5em;
+}
+.tips-list li:before {
+    content: '•'; /* Custom bullet point */
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Tone Contrast Text Styling */
+.tone-contrast-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    padding: 10px;
+    border-left: 3px solid var(--primary-color);
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Back Button */
+.back-frame { position: absolute; top: 1.5rem; left: 20px; z-index: 1000; padding: 10px 15px; background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+@media (max-width: 768px) {
+    .back-frame { position: static; margin: 15px; box-shadow: none; }
+}
+
+/* Animations and Hover Effects */
+.hover-scale { transition: transform 0.3s ease; cursor: pointer; }
+.hover-scale:hover { transform: scale(1.05); }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container { padding: 0 15px; }
+    .grid-layout { grid-template-columns: 1fr; }
+    .card { padding: 20px; }
+    .img-result { max-height: 300px; }
+}
 </style>
+
 <script>
 function downloadFullPalette() {
-  const seasonColors = {{ season_colors | tojson }};
-  const avoidColors = {{ avoid_colors | tojson }};
-  const canvas = document.getElementById('paletteCanvas');
-  const ctx = canvas.getContext('2d');
+    const seasonColors = {{ season_colors | tojson }};
+    const avoidColors = {{ avoid_colors | tojson }};
+    const canvas = document.getElementById("paletteCanvas");
+    const ctx = canvas.getContext("2d");
 
-  const boxWidth = canvas.width / seasonColors.length;
-  const boxHeight = canvas.height / 2;
+    // Recalculate dimensions based on the number of items
+    const totalColors = Math.max(seasonColors.length, avoidColors.length, 6);
+    canvas.width = totalColors * 60; // 60px per color
+    canvas.height = 120; // 60px height per row
 
-  // Draw season colors (top row)
-  seasonColors.forEach((color, i) => {
-    ctx.fillStyle = color;
-    ctx.fillRect(i * boxWidth, 0, boxWidth, boxHeight);
-  });
+    const boxWidth = 60;
+    const boxHeight = 60;
 
-  // Draw avoid colors (bottom row)
-  avoidColors.forEach((color, i) => {
-    ctx.fillStyle = color;
-    ctx.fillRect(i * boxWidth, boxHeight, boxWidth, boxHeight);
-  });
+    // Draw Recommended Colors (Top Row)
+    seasonColors.forEach((color, i) => {
+        ctx.fillStyle = color;
+        ctx.fillRect(i * boxWidth, 0, boxWidth, boxHeight);
+    });
 
-  const link = document.createElement('a');
-  link.download = 'stylemate_color_palette.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+    // Draw Avoid Colors (Bottom Row)
+    avoidColors.forEach((color, i) => {
+        ctx.fillStyle = color;
+        ctx.fillRect(i * boxWidth, boxHeight, boxWidth, boxHeight);
+    });
+
+    const link = document.createElement("a");
+    link.download = "stylemate_color_palette.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
 }
 </script>
-{% endblock %}
 
-</body>
-</html>
+{% endblock %}

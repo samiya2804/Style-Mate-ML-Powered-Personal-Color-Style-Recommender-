@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}About StyleMate{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    .about-container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+    .about-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .about-header h1 {
+        font-size: 2.8rem;
+        color: #b4556b;
+        margin-bottom: 10px;
+        font-weight: 800;
+    }
+    .about-header p {
+        color: #6b7280;
+        font-size: 1.1rem;
+    }
+    .mission-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        margin-bottom: 30px;
+        border-left: 6px solid #e37fa4;
+    }
+    .mission-card h2 {
+        font-size: 1.8rem;
+        color: #e37fa4;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    .mission-card p {
+        color: #333;
+        line-height: 1.7;
+        font-size: 1.05rem;
+    }
+    .tech-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+    }
+    .tech-list li {
+        background: #f1dbe1;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: 600;
+        color: #b4556b;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .tech-list li i {
+        margin-right: 10px;
+        color: #e37fa4;
+    }
+    
+    @media (max-width: 768px) {
+        .about-container {
+            margin: 30px auto;
+            padding: 15px;
+        }
+        .about-header h1 {
+            font-size: 2.2rem;
+        }
+        .mission-card {
+            padding: 25px;
+        }
+    }
+</style>
+
+<div class="about-container" data-aos="fade-in">
+    <div class="about-header">
+        <h1>Empowering Your Style, Scientifically</h1>
+        <p>StyleMate bridges the gap between digital colorimetry and personal fashion consultation.</p>
+    </div>
+
+    <div class="mission-card" data-aos="fade-up">
+        <h2><i class="fas fa-lightbulb"></i> Our Mission</h2>
+        <p>We believe finding your perfect color palette should be accessible, accurate, and fun. StyleMate was founded on the principle of combining classic color analysis theory (like the 4-season method) with modern computer vision technology (CIELAB color space analysis) to deliver highly personalized style recommendations.</p>
+    </div>
+    
+    <div class="mission-card" data-aos="fade-up" data-aos-delay="100">
+        <h2><i class="fas fa-tools"></i> Technology Under the Hood</h2>
+        <p>Our analysis relies on reliable, industry-standard metrics to determine your true undertone and contrast level.</p>
+        <ul class="tech-list">
+            <li><i class="fas fa-microchip"></i> CIELAB Color Space</li>
+            <li><i class="fas fa-calculator"></i> Delta-E Metrics</li>
+            <li><i class="fas fa-user-check"></i> Personalized Swatch Selection</li>
+            <li><i class="fas fa-brain"></i> Seasonal Pattern Matching</li>
+        </ul>
+    </div>
+    
+    <div class="mission-card" data-aos="fade-up" data-aos-delay="200">
+        <h2><i class="fas fa-handshake"></i> Our Commitment to You</h2>
+        <p>Your privacy is paramount. We do not store or share uploaded photos. Our goal is to provide you with the confidence and knowledge to make brilliant wardrobe and makeup choices, ensuring you always look your most vibrant self.</p>
+    </div>
+</div>
+
+{% endblock %}

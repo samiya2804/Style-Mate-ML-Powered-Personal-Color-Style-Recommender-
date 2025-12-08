@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    .contact-container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        font-family: 'Inter', sans-serif;
+    }
+    .contact-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .contact-header h1 {
+        font-size: 2.5rem;
+        color: #b4556b;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    .contact-header p {
+        color: #6b7280;
+        font-size: 1.05rem;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #444;
+    }
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+        border-color: #e37fa4;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(227, 127, 164, 0.2);
+    }
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+    .contact-submit-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(90deg, #b4556b, #e37fa4);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: opacity 0.3s;
+    }
+    .contact-submit-btn:hover {
+        opacity: 0.9;
+    }
+    .info-box {
+        margin-top: 30px;
+        padding: 20px;
+        background: #f8f8ff;
+        border-radius: 10px;
+        border: 1px dashed #e37fa4;
+        text-align: center;
+    }
+    .info-box p {
+        margin: 5px 0;
+        color: #6b7280;
+    }
+    .info-box i {
+        color: #b4556b;
+        margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .contact-container {
+            margin: 30px auto;
+            padding: 15px;
+        }
+        .contact-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<div class="contact-container" data-aos="zoom-in">
+    <div class="contact-header">
+        <h1>Get in Touch with StyleMate</h1>
+        <p>We're here to answer any questions about your color analysis or our technology.</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}" style="padding: 10px; margin-bottom: 15px; border-radius: 5px; background: {% if category == 'success' %}#d4edda{% else %}#f8d7da{% endif %}; color: #155724;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('contact') }}">
+        <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="subject"><i class="fas fa-tag"></i> Subject (Optional)</label>
+            <input type="text" id="subject" name="subject">
+        </div>
+        <div class="form-group">
+            <label for="message"><i class="fas fa-comment-alt"></i> Your Message</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="contact-submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+    </form>
+
+    <div class="info-box">
+        <p><i class="fas fa-clock"></i> Response Time: Typically 24-48 hours</p>
+        <p><i class="fas fa-map-marker-alt"></i> Location: Digital Headquarters (Worldwide)</p>
+    </div>
+</div>
+
+{% endblock %}

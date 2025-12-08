@@ -1,0 +1,507 @@
+{% extends "base.html" %}
+{% block title %}Consulting StyleMate{% endblock %}
+{% block content %}
+  <!-- Chart.js for visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+
+<style>
+  :root{
+    --bg:#F8E8EE; 
+    --card:#ffffff; 
+    --muted:#6b7280; 
+    --accent:linear-gradient(90deg,#dd4785,#c35e8c);
+  }
+
+  body{
+    font-family:Inter,system-ui,Arial,sans-serif;
+    background:var(--bg);
+  }
+
+  /* --- PAGE WRAPPER FIX (so content is NOT inside navbar) --- */
+  .consult-wrapper {
+    padding-top: 30px; 
+  }
+
+  /* Back button */
+  .back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    border-radius:10px;
+    background:#f3f4f6;
+    border:none;
+    cursor:pointer;
+    margin-bottom:14px;
+    font-size:14px;
+    color:#444;
+    transition:0.2s;
+  }
+  .back-btn:hover{
+    background:#e5e7eb;
+  }
+
+  /* Section Header */
+  .section-header{
+    margin-bottom:20px;
+    padding:20px;
+    border-radius:12px;
+    background:var(--card);
+    box-shadow:0 6px 18px rgba(17,24,39,0.06);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+
+  .section-header h1{
+    margin:0;
+    font-size:22px;
+    font-weight:700;
+  }
+
+  .tagline{
+    color:var(--muted);
+    font-size:14px;
+    margin-top:4px;
+  }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    padding:10px 14px;
+    border-radius:10px;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-size:14px;
+  }
+
+  .container-consult{
+    max-width:1180px;
+    margin:auto;
+    padding:0 20px;
+  }
+
+  /* Layout grid */
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 420px;
+    gap:24px;
+    align-items:start;
+  }
+
+  .card{
+    background:var(--card);
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 8px 30px rgba(2,6,23,0.04)
+  }
+
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+  }
+
+  h2{
+    font-size:16px;
+    margin:0;
+  }
+
+  p.lead{
+    color:var(--muted);
+    margin-top:0;
+  }
+
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+
+  .swatch{
+    width:56px;
+    height:56px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(2,6,23,0.06);
+    border:1px solid rgba(0,0,0,0.06);
+  }
+
+  .swatch-label{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:6px;
+  }
+
+  .small{font-size:13px;color:var(--muted)}
+
+  /* Contrast bar */
+  .contrast-meter{
+    height:12px;background:#eef2ff;border-radius:999px;overflow:hidden;
+  }
+  .contrast-meter > i{
+    display:block;height:100%;background:linear-gradient(90deg,#6a11cb,#2575fc);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1020px){
+    .grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  @media (max-width:600px){
+    .section-header{
+      flex-direction:column;
+      text-align:center;
+    }
+    .section-header h1{
+      font-size:19px;
+    }
+    .cta{
+      margin-top:12px;
+      width:100%;
+      justify-content:center;
+    }
+  }
+
+</style>
+
+
+    
+<div class="consult-wrapper">
+  <div class="container-consult">
+
+    <!-- BACK BUTTON -->
+    <button class="back-btn" onclick="history.back()">
+      ← Back
+    </button>
+
+    <!-- HEADER CARD -->
+    <div class="section-header">
+      <div>
+        <h1>Professional Color-Season Consulting</h1>
+        <div class="tagline">
+          Scientific & practical—how undertone, value, chroma and contrast determine your palette
+        </div>
+      </div>
+      <!-- <button class="cta" onclick="downloadPDF()">Download Consultation PDF</button> -->
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: long content -->
+      <div>
+        <!-- WHAT IS PERSONAL COLOR? -->
+        <section class="card">
+          <div class="section-title"><h2>What is Personal Color / Seasonal Analysis?</h2></div>
+          <p class="lead">Personal color analysis finds the group of hues that best harmonize with a person's natural coloring (skin, eyes, hair). Professionals combine colorimetry (objective measurement) with draping and visual judgement to recommend palettes that enhance complexion and features.</p>
+          <p class="small muted">Core measurable elements: <strong>undertone</strong> (warm vs cool), <strong>value</strong> (lightness), <strong>chroma</strong> (color intensity), and <strong>contrast</strong> between features.</p>
+
+          <hr style="margin:12px 0">
+
+          <h3 style="margin:0 0 8px 0">How professionals do it — step by step</h3>
+          <ol style="padding-left:18px;margin-top:8px">
+            <li><strong>Controlled photo / light capture</strong> — neutral background, daylight-balanced lighting, no heavy filters.</li>
+            <li><strong>Skin segmentation & sampling</strong> — sample several small patches (cheek, jawline, forehead) and average them to avoid specular highlights. (We convert the patch RGB → CIELAB.)</li>
+            <li><strong>Color measurement</strong> — convert to LAB and compute distances (Delta-E) versus curated palette anchors.</li>
+            <li><strong>Contrast & value check</strong> — evaluate light/dark range across skin, hair and eyes to choose high/low/medium contrast palettes.</li>
+            <li><strong>Draping & validation</strong> — place fabric swatches (or virtual swatches) next to the face to subjectively verify the proposed palette.</li>
+          </ol>
+
+          <p class="muted small">Note: many Korean consultancies emphasize tone (how much white/black/grey is mixed into a hue) and use a detailed 12-season or 16-season breakdown to refine recommendations beyond the basic 4 seasons. :contentReference[oaicite:5]{index=5}</p>
+        </section>
+
+        <!-- SCIENCE: LAB & DELTA-E -->
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Color Measurement — CIELAB & Delta-E</h2></div>
+          <p class="lead">Raw pixels are captured in RGB but analyzed in <strong>CIELAB</strong> (L for lightness, a for green–red, b for blue–yellow). The Euclidean distance in LAB (Delta-E) quantifies perceptual difference between colors—used to find closet palette matches or measure harmony. Delta-E(2000) is the modern formula used in industry for perceptual accuracy. :contentReference[oaicite:6]{index=6}</p>
+
+          <div style="display:flex;gap:14px;align-items:center;margin-top:12px">
+            <div style="flex:1">
+              <canvas id="labChart" height="240"></canvas>
+            </div>
+            <div style="width:160px;text-align:center">
+              <div class="kpi"><div><div class="value" id="deltaE">—</div><div class="small muted">Delta-E to nearest anchor</div></div></div>
+              <div style="height:16px"></div>
+              <div class="small muted">Contrast</div>
+              <div class="contrast-meter" aria-hidden="true"><i id="contrastBar" style="width:40%"></i></div>
+              <div class="small muted" style="margin-top:8px">Value range: <span id="valueRange">—</span></div>
+            </div>
+          </div>
+
+          <p class="small muted" style="margin-top:12px">In advanced pipelines, skin tone maps and spectrophotometer readings are used to improve robustness; automated mapping methods using deep learning have been proposed in medical & cosmetic literature. :contentReference[oaicite:7]{index=7}</p>
+        </section>
+
+        <!-- KOREAN APPROACH & DRAPING -->
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Korean Methods & Tone-based Systems</h2></div>
+          <p class="lead mt-1">Korean consultancies often apply a <strong>12-tone</strong> or refined multi-season method that places strong emphasis on <em>tone</em> — the amount of white, black, or grey mixed into a hue — and on how fabrics/jewelry/whites interact with the complexion. Draping is the practical validation step, often accompanied by a printed color card and makeup/fabric recommendations. </p>
+
+          <div class="grid-3" style="margin-top:12px; margin-bottom: 2rem;">
+            <div>
+              <div class="swatch" style="background:#FFDAB9"></div>
+              <div class="swatch-label">Spring (Warm & Light)</div>
+            </div>
+            <div>
+              <div class="swatch" style="background:#ADD8E6"></div>
+              <div class="swatch-label">Summer (Cool & Soft)</div>
+            </div>
+            <div>
+              <div class="swatch" style="background:#D2691E"></div>
+              <div class="swatch-label">Autumn (Warm & Rich)</div>
+            </div>
+          </div>
+
+          <p class="small muted" style="margin-top:12px">Pro tip: Korean analyses may use neutral fabric panels (varying whites/creams) to detect subtle yellow vs blue undertone interactions, and metal tests (gold vs silver) to confirm undertone decisions.</p>
+        </section>
+
+
+    
+    </div>
+
+      <!-- RIGHT: interactive & summary -->
+      <aside>
+        <div class="card">
+          <div class="section-title"><h2>Instant Summary</h2></div>
+          <p class="small muted">Enter RGB values from a sample swatch (or upload) to see LAB conversion & Delta-E to seasonal anchors.</p>
+
+          <div style="margin-top:12px">
+            <label class="small">Sample RGB (comma separated)</label>
+            <input id="rgbInput" type="text" placeholder="e.g. 220,180,160" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee;margin-top:8px">
+            <button class="cta" style="margin-top:10px;width:100%" onclick="analyzeSample()">Analyze</button>
+          </div>
+
+          <div style="margin-top:16px">
+            <div class="small muted">Predicted closest season</div>
+            <div style="font-weight:700;font-size:18px" id="predSeason">—</div>
+            <div class="small muted" style="margin-top:8px">Primary recommendations</div>
+            <div id="predRec" class="small muted">—</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Palette Preview</h2></div>
+          <div id="palettePreview" style="display:flex;flex-direction:column;gap:8px"></div>
+          <div style="margin-top:10px"><button class="cta" onclick="copyPalette()">Copy Palette Hexes</button></div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Consultant Notes</h2></div>
+          <p class="small muted">Use spectrophotometers (e.g. X-Rite) for lab-grade color matching in product design and cosmetics. For consumer consulting, high-quality phone cameras + standardized capture protocols are usually sufficient.</p>
+        </div>
+           <!-- CONTRAST & STYLING GUIDES -->
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Contrast, Value & Styling Rules</h2></div>
+          <p class="lead">Contrast level (low/medium/high) is how strongly a person's features differ from each other (hair vs skin vs eyes). High contrast individuals can use bolder, saturated colors; low-contrast individuals usually look best in softer tonal palettes. Use a black-and-white photo to quickly assess contrast level.</p>
+
+          <div style="margin-top:10px">
+            <strong>Quick styling rules</strong>
+            <ul>
+              <li>High contrast → strong, vivid colors & crisp patterns</li>
+              <li>Low contrast → soft tonal dressing and gentle contrasts</li>
+              <li>Warm undertone → warm gold jewelry, warm makeup (coral, peach)</li>
+              <li>Cool undertone → silver jewelry, cool lip/eye choices (rose, mauve)</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CONSULT CHECKLIST -->
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Consultation Checklist (for pros)</h2></div>
+          <ol>
+            <li>Neutral lighting & camera settings (D65 / ~6500K recommended).</li>
+            <li>Ask client to remove heavy makeup and hair accessories.</li>
+            <li>Capture 3 face patches and compute median LAB values.</li>
+            <li>Compute Delta-E against seasonal anchors and rank closest matches.</li>
+            <li>Perform draping (fabric + jewelry) and confirm final palette.</li>
+            <li>Deliver a PDF with palette swatches, makeup & fabric recommendations.</li>
+          </ol>
+        </section>
+
+        <!-- RESOURCES -->
+        <section class="card" style="margin-top:16px; margin-bottom: 1rem;">
+          <div class="section-title"><h2>Further Reading & Tools</h2></div>
+          <div class="row" style="margin-top:10px">
+            <a class="chip" href="#" onclick="openLink('https://pmc.ncbi.nlm.nih.gov/')">Skin tone mapping (research)</a>
+            <a class="chip" href="#" onclick="openLink('https://colorwise.me')">Automated online analyzers</a>
+            <a class="chip" href="#" onclick="openLink('https://opentextbc.ca/graphicdesign/chapter/4-4-lab-colour-space-and-delta-e-measurements/')">CIELAB & Delta-E</a>
+            <a class="chip" href="#" onclick="openLink('https://mycoloury.ca')">Korean vs international systems (comparison)</a>
+          </div>
+          <p class="small muted" style="margin-top:12px">References: selected scientific and trade articles listed at the bottom of this page for verification.</p>
+        </section>
+      </div>
+
+      </aside>
+    </div>
+ </div>
+</div>
+    <!-- FOOTER / CITATIONS -->
+    <!-- <div style="margin-top:20px ; margin: 1rem;" class="card">
+      <div class="section-title"><h2>References & Evidence</h2></div>
+      <ol>
+        <li>Comparison & description of Korean multi-tone systems and their focus on tone and value. :contentReference[oaicite:10]{index=10}</li>
+        <li>Automated skin tone mapping & optical approach (research article / PMC). :contentReference[oaicite:11]{index=11}</li>
+        <li>CIELAB color space and Delta-E measurement methodology (explanation). :contentReference[oaicite:12]{index=12}</li>
+        <li>How South Korean studios conduct color draping & professional consultations. :contentReference[oaicite:13]{index=13}</li>
+        <li>Contrast / value guidance for personal color selection. :contentReference[oaicite:14]{index=14}</li>
+      </ol>
+    </div> -->
+
+
+
+<script>
+/* ---------- Utilities ---------- */
+// Convert 0-255 RGB to CIELAB (uses intermediate sRGB->XYZ->LAB)
+function rgbToXyz(r, g, b){
+  // normalize
+  r /= 255; g /= 255; b /= 255;
+  // sRGB gamma correction
+  r = (r <= 0.04045) ? r/12.92 : Math.pow((r+0.055)/1.055, 2.4);
+  g = (g <= 0.04045) ? g/12.92 : Math.pow((g+0.055)/1.055, 2.4);
+  b = (b <= 0.04045) ? b/12.92 : Math.pow((b+0.055)/1.055, 2.4);
+  // Observer = 2°, Illuminant = D65
+  let x = r * 0.4124564 + g * 0.3575761 + b * 0.1804375;
+  let y = r * 0.2126729 + g * 0.7151522 + b * 0.0721750;
+  let z = r * 0.0193339 + g * 0.1191920 + b * 0.9503041;
+  return [x*100, y*100, z*100];
+}
+function xyzToLab(x, y, z){
+  // D65 reference white
+  const refX = 95.047, refY = 100.000, refZ = 108.883;
+  x /= refX; y /= refY; z /= refZ;
+  function f(t){ return t > 0.008856 ? Math.cbrt(t) : (7.787 * t) + (16/116); }
+  const fx = f(x), fy = f(y), fz = f(z);
+  const L = (116 * fy) - 16;
+  const a = 500 * (fx - fy);
+  const b = 200 * (fy - fz);
+  return [L, a, b];
+}
+function rgbToLab(r,g,b){ const xyz = rgbToXyz(r,g,b); return xyzToLab(xyz[0], xyz[1], xyz[2]); }
+
+// Delta E (CIE76 basic)
+function deltaE(lab1, lab2){
+  const dl = lab1[0]-lab2[0], da = lab1[1]-lab2[1], db = lab1[2]-lab2[2];
+  return Math.sqrt(dl*dl + da*da + db*db);
+}
+
+/* ---------- Sample anchors (season anchors) ----------
+   These are simplified anchors used to compute nearest seasons.
+   In production you'd use a curated set of anchor LAB triplets.
+*/
+const SEASON_ANCHORS = {
+  Spring: { hex:'#FFDAB9', lab: rgbToLab(255,218,185) },
+  Summer: { hex:'#ADD8E6', lab: rgbToLab(173,216,230) },
+  Autumn: { hex:'#D2691E', lab: rgbToLab(210,105,30) },
+  Winter: { hex:'#4682B4', lab: rgbToLab(70,130,180) }
+};
+
+// Chart.js scatter using Lab a vs b (colored by L)
+let labChart;
+function initLabChart(){
+  const ctx = document.getElementById('labChart').getContext('2d');
+  labChart = new Chart(ctx, {
+    type:'scatter',
+    data:{datasets:[
+      {label:'Anchors (seasons)', data: Object.keys(SEASON_ANCHORS).map((k,i)=>({x:SEASON_ANCHORS[k].lab[1], y:SEASON_ANCHORS[k].lab[2], r:8, name:k, backgroundColor:SEASON_ANCHORS[k].hex})) ,
+       pointStyle:'rectRounded', pointRadius:10 }
+    ]},
+    options:{
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{title:{display:true,text:'a (green-red)'}},
+        y:{title:{display:true,text:'b (blue-yellow)'}}
+      },
+      onClick: (evt, items) => {
+        // optional: interactive click handler
+      }
+    }
+  });
+}
+initLabChart();
+
+/* ---------- Analysis UI ---------- */
+function visualizeSampleHexes(hexes){
+  const el = document.getElementById('palettePreview');
+  el.innerHTML = '';
+  hexes.forEach(h=>{
+    const node = document.createElement('div');
+    node.style.display='flex'; node.style.alignItems='center'; node.style.justifyContent='space-between';
+    node.innerHTML = `<div style="display:flex;gap:8px;align-items:center">
+                        <div class="swatch" style="background:${h}"></div>
+                        <div><div style="font-weight:600">${h}</div><div class="small muted">sample</div></div>
+                      </div>
+                      <div style="font-size:13px;color:var(--muted)">copy</div>`;
+    el.appendChild(node);
+  });
+}
+
+// derive palette from season name (uses SEASON_DATA from server if available)
+function paletteForSeason(season){
+  if(window.SEASON_DATA && window.SEASON_DATA[season] && window.SEASON_DATA[season].colors){
+    return window.SEASON_DATA[season].colors.slice(0,8);
+  }
+  // fallback
+  return [SEASON_ANCHORS[season].hex, '#ffffff','#f5f5f5','#e9e9e9','#cfcfcf'];
+}
+
+function analyzeSample(){
+  const inp = document.getElementById('rgbInput').value.trim();
+  if(!inp) return alert('Enter RGB, e.g. 220,180,160');
+  const parts = inp.split(',').map(s=>parseInt(s.trim()));
+  if(parts.length!==3 || parts.some(isNaN)) return alert('Enter three integers 0-255');
+  const lab = rgbToLab(parts[0], parts[1], parts[2]);
+  // compute delta to anchors
+  let best=null;
+  for(const s in SEASON_ANCHORS){
+    const d = deltaE(lab, SEASON_ANCHORS[s].lab);
+    if(!best || d < best.d){ best = {season:s, d}; }
+  }
+  document.getElementById('deltaE').innerText = best.d.toFixed(2);
+  document.getElementById('predSeason').innerText = best.season;
+  document.getElementById('predRec').innerText = 'Try core palette from ' + best.season + ' and test metallics / whites in draping step.';
+  document.getElementById('valueRange').innerText = Math.round(lab[0]) + ' (L)';
+  // update contrast bar (rough)
+  const contrastPercent = Math.min(100, Math.max(8, (lab[0]/100)*100)); // placeholder
+  document.getElementById('contrastBar').style.width = Math.max(6, contrastPercent*0.5) + '%';
+  // add sample point to chart
+  const ds = {x:lab[1], y:lab[2], r:8, backgroundColor: `rgb(${parts[0]},${parts[1]},${parts[2]})`};
+  labChart.data.datasets = labChart.data.datasets.slice(0,1); // keep anchors
+  labChart.data.datasets.push({label:'Sample', data:[ds], pointRadius:10, pointStyle:'circle'});
+  labChart.update();
+  // show palette
+  visualizeSampleHexes(paletteForSeason(best.season));
+}
+
+/* copy palette to clipboard */
+function copyPalette(){
+  const el = document.getElementById('palettePreview');
+  const hexes = Array.from(el.querySelectorAll('.swatch')).map(s=> {
+    const bg = s.style.background;
+    return bg;
+  }).filter(Boolean);
+  const text = hexes.join(', ');
+  navigator.clipboard.writeText(text).then(()=> alert('Palette copied!'), ()=> alert('Copy failed'));
+}
+
+/* Download PDF stub */
+function downloadPDF(){ alert('Download PDF functionality can be connected server-side to produce a custom report.'); }
+
+/* helper to open links */
+function openLink(u){ window.open(u,'_blank'); }
+
+/* if server injected season data into global variable (Flask + tojson), pick it up */
+(function checkServerSeasonData(){
+  try{
+    if(window.SEASON_DATA) window.SEASON_DATA = window.SEASON_DATA; // no-op but keeps reference
+  }catch(e){}
+})();
+</script>
+   {% endblock %}
+

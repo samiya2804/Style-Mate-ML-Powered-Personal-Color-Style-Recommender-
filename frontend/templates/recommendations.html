@@ -1,70 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Recommendations</title>
-    <link rel="stylesheet" href="./static/css/recommendations.css">
-</head>
-<body>
-        {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-    {% block title %}Reccomendations Page{% endblock %}
+{% block title %}Recommendation History{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/recommendations.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+
+<div class="back-frame animate__animated animate__fadeInLeft">
+    <a href="/dashboard" class="back-btn " title="Back to Dashboard">
+        <i class="fa-solid fa-circle-arrow-left back"></i> Back to Dashboard
+    </a>
     
-    {% block content %}
-    <div id="row">
-        <a href="/dashboard"><i class="fa-solid fa-circle-arrow-left"></i></a>
-          <h1 class="heading3" style="font-family:'Poppins', 'Segoe UI', Roboto, sans-serif;">Uploaded Images</h1>
+</div>
+
+   <div class="text-center mb-5 mt-4 section-header">
+      <h1 class="heading3 animate__animated animate__fadeInDown">✨ Your Style Analysis History</h1>
 
     </div>
-    <div class="container">
-        {% for upload in uploads %}
-          <div class="card {% if uploads|length == 1 %}single-card{% endif %}">
-        <div class="card" id="card-{{ loop.index }}">
-            <img src="{{ url_for('uploaded_file', filename=upload.filename) }}" alt="Uploaded Image">
-            <div class="details">
-                <div class="short-detail">
-                    <strong>Date:</strong> {{ upload.date }}<br>
-                    <strong>Time:</strong> {{ upload.time }}<br>
-                    <span class="show-more" onclick="toggleDetail('card-{{ loop.index }}')">Show More</span>
+
+<div class="container uploads-grid animate__animated animate__fadeInUp">
+    {% for upload in uploads %}
+    <div class="card upload-card" id="card-{{ loop.index }}">
+        
+        <div class="image-container">
+            <img src="{{ url_for('uploaded_file', filename=upload.image_url) }}" alt="Uploaded Image Preview">
+        </div>
+
+        <div class="upload-card-content">
+            
+            <div class="short-detail">
+                <div class="short-row">
+                    <strong>Date:</strong> <span>{{ upload.date }}</span>
                 </div>
-                <div class="full-detail">
-                    <strong>Date:</strong> {{ upload.date }}<br>
-                    <strong>Time:</strong> {{ upload.time }}<br>
-                    <strong>Skin Tone:</strong>{{ upload.skin_tone or "Not Found" }}<br>
-                    <strong>Recommended Colors: </strong>
-                     {% if upload.season_colors %}
+                <div class="short-row">
+                    <strong>Time:</strong> <span>{{ upload.time }}</span>
+                </div>
+                <div class="short-row">
+                    <strong>Tone:</strong> <span class="tone-tag">{{ upload.skin_tone or "Unknown" }}</span>
+                </div>
+                
+                <button class="show-more-btn" onclick="toggleDetail('card-{{ loop.index }}')">
+                    <span class="btn-label">Show More</span>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                </button>
+            </div>
+
+            <div class="full-detail">
+                <div class="detail-section">
+                    <strong class="section-title">🎨 Recommended Colors:</strong>
+                    {% if upload.season_colors %}
                     <div class="color-swatches">
                         {% for color in upload.season_colors[:9] %}
-                            <div class="swatch" style="background-color: {{ color }};" title="{{ color }}"></div>
+                            <div class="swatch hover-scale" style="background-color: {{ color }};" title="{{ color }}"></div>
                         {% endfor %}
                     </div>
-                {% else %}
-                    Not Found
-                {% endif %} 
-                <strong style="display:block;margin-top:1rem;">Avoid Colors:</strong>
-                {% if upload.avoid_colors %}
+                    {% else %}
+                    <p class="no-data">No data found.</p>
+                    {% endif %}
+                </div>
+
+                <div class="detail-section">
+                    <strong class="section-title text-danger">🚫 Avoid Colors:</strong>
+                    {% if upload.avoid_colors %}
                     <div class="color-swatches">
                         {% for color in upload.avoid_colors[:5] %}
-                            <div class="swatch" style="background-color: {{ color }};" title="{{ color }}"></div>
+                            <div class="swatch swatch-avoid hover-scale" style="background-color: {{ color }};" title="{{ color }}"></div>
                         {% endfor %}
                     </div>
-                {% else %}
-                    Not Found
-                {% endif %}
+                    {% else %}
+                    <p class="no-data">No data found.</p>
+                    {% endif %}
                 </div>
+
+                <button class="show-less-btn" onclick="toggleDetail('card-{{ loop.index }}')">
+                    <span class="btn-label">Show Less</span>
+                    <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                </button>
             </div>
         </div>
-        </div>
-        {% endfor %}
-        </div>
-    <script>
-        function toggleDetail(id) {
-            let card = document.getElementById(id);
-            card.classList.toggle("show");
-        }
-    </script>
-        {% endblock %}
-</body>
-</html>
+    </div>
+    {% endfor %}
+</div>
+<style>
+  .back{
+  color: rgb(204, 118, 132);
+  text-decoration: none;
+}
 
+.back-btn{
+  color: rgb(204, 118, 132);
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+:hover .back-frame{
+  border: 1px solid rgb(234, 101, 123);
+}
+/* Back Button */
+.back-frame { position: absolute; top: 1.5rem; left: 20px; z-index: 1000; padding: 10px 15px; background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+@media (max-width: 768px) {
+    .back-frame { position: static; margin: 15px; box-shadow: none; }
+}
+</style>
+<script>
+function toggleDetail(id) {
+    let card = document.getElementById(id);
+    card.classList.toggle("show");
+}
+</script>
+
+{% endblock %}

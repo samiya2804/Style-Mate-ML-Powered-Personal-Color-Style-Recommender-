@@ -46,11 +46,20 @@
         <div class="profile-section">
     
           <div class="card">
-            <h3><i class="fa-solid fa-comment-dots"></i> Chats</h3>
+            <h3><i class="fa-solid fa-comment-dots"></i> Consult & Learn</h3>
             <div class="security">
-              <a href="{{ url_for('history') }}" class="profilebtn stylebtn"><i class="fa-solid fa-key"></i>Chat history</a>
-              <a href="#" class="profilebtn stylebtn"><i class="fa-solid fa-cloud-arrow-down"></i>Download My Chats</a>
-              <a href="{{ url_for('chatbot') }}" class="profilebtn stylebtn"><i class="fa-brands fa-rocketchat"></i>Ask Queries</a>
+            <a href="{{ url_for('consulting') }}" class="profilebtn stylebtn">
+                        <i class="fas fa-book-open"></i> Knowledge Base
+                    </a>
+                    
+                    <a href="{{url_for('results') }}" target="_blank" class="profilebtn stylebtn">
+                        <i class="fas fa-file-export"></i> Export Style Guide
+                    </a>
+                    
+                    <a href="{{ url_for('chatbot') }}" class="profilebtn stylebtn">
+                        <i class="fas fa-robot"></i> Consult Style AI
+                    </a>
+              <!-- <a href="{{ url_for('chatbot') }}" class=""><i class="fa-brands fa-rocketchat"></i>Ask Queries</a> -->
             </div>
             </div>
 
@@ -71,8 +80,8 @@
                 <h3><i class="fa-solid fa-lock"></i> Security</h3>
                 <div class="security">
                   <a href="{{ url_for('forgetpassword') }}" class="profilebtn stylebtn"><i class="fa-solid fa-key"></i>Change Password</a>
-                  <a href="#" onclick="showDeletePopup()" class="profilebtn stylebtn2""><i class="fa-solid fa-trash"></i>Delete Account</a>
-                  <a href="#" class="profilebtn stylebtn"><i class="fa-solid fa-cloud-arrow-down"></i>Download My Data</a>
+                  <a href="#" onclick="showDeletePopup()" class="profilebtn stylebtn2"><i class="fa-solid fa-trash"></i>Delete Account</a>
+                  <a href="{{url_for('results')}}" class="profilebtn stylebtn"><i class="fa-solid fa-cloud-arrow-down"></i>Download My Data</a>
                 </div>
           </div>
         </div>
@@ -110,7 +119,7 @@
           <div class="card">
             <h3><i class="fas fa-heart"></i> Your Recommended Colors</h3>
             <div class="color-swatches">
-               {% for color in season_colors[:12] %}
+               {% for color in season_colors[:5] %}
           <div class="swatch" style="background: {{ color }};"></div>
           {% endfor %}
           </div>
@@ -119,7 +128,7 @@
 
             <h3 style="margin-top: 1rem;"><i class="fa-solid fa-xmark"></i>Colors to avoid</h3>
             <div class="color-swatches">
-              {% for color in avoid_colors %}
+              {% for color in avoid_colors[:5] %}
                 <div class="swatch" style="background-color: {{ color }};" title="Avoid Color"></div>
               {% endfor %}
             </div>

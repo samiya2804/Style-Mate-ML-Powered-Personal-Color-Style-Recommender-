@@ -8,6 +8,7 @@
     font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 } */
 
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -62,6 +63,7 @@ a{
      /* text-align: left; */
       overflow: hidden;
        width: 100%;
+       
 }
 
 .self-image{
@@ -101,16 +103,27 @@ a{
     left: 0px; 
     right: 0px; 
     /* color: white; */
- /* transform: translate(-50%, -50%); */
-  text-align: center;
-  background: rgba(65, 64, 64, 0.5); /* dark transparent background */
-  color: #fff;
-  padding:4.3rem 3rem;
-  /* border-radius: 1.5rem; */
-  backdrop-filter: blur(1px);
-  z-index: 1000;
-  max-width: 100%;
-    font-family:  'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* transform: translate(-50%, -50%); */
+    text-align: center;
+    background: rgba(65, 64, 64, 0.5); /* dark transparent background */
+    color: #fff;
+    /* *** CHANGE 1: Reduce vertical padding from 4.3rem to 0 to control height *** */
+    padding: 0 3rem; 
+    /* border-radius: 1.5rem; */
+    backdrop-filter: blur(1px);
+    
+    /* *** CHANGE 2: Lower z-index so the navigation bar (which typically has a high z-index) 
+                   or sidebar (if it's a separate component) can be clicked. ***
+    */
+    z-index: 10; 
+    max-width: 100%;
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
+    /* *** CHANGE 3: Set a fixed height or max-height for the button/overlay div 
+                   so it doesn't cover the entire screen height on mobile. ***
+    */
+    height: 100%; /* The image is 600px high on desktop, but we need to control the boundary on mobile */
+    max-height: 600px; 
 }
 .start{
   position: relative;
@@ -126,7 +139,7 @@ a{
   transition: background-color 0.3s ease;
     height: 3rem;
     width: 10rem;
-    margin-top: 26rem;
+    margin-top: 30rem;
     margin-left: 0.5rem;
   
 }
@@ -312,13 +325,20 @@ button.reg:hover {
     }
         
 
-    .button {
-    position: absolute;
-        height: 7.9%;
-        top: 2px;
+ .button {
+        position: absolute;
+        
+        /* *** ADJUSTED MOBILE OVERLAY HEIGHT AND TOP POSITION ***
+           Setting height/max-height to cover the image and text, but leaving the header/nav clear.
+        */
+        height: 50%; /* Adjust this percentage so it clearly stops below the hamburger icon */
+        max-height: 285px; /* Max height limit */
+        
+        top: px;
         left: 0px;
         right: 0px;
         color: white;
+        z-index: 10; /* Important: Keep this low */
     }
     .start{
       background-color: #b4556b;
@@ -340,11 +360,13 @@ button.reg:hover {
     gap: 0.2rem;
     line-height: 7;
   }
-
-  .start {
-    font-size: 1rem;
-    padding: 0.7rem 1.5rem;
-  }
+.start{
+        /* ... existing start button styles ... */
+        margin-top: 67%; /* Push the button down relative to the top of the image */
+        margin-left: auto;
+        margin-right: auto;
+        display: block; /* Ensure button is centered */
+    }
       
     .container{
         margin: 0px;
@@ -364,11 +386,14 @@ button.reg:hover {
         font-size: 0.8rem;
     
     }
-    .heading {
-               position: absolute;
-        top: 46px;
-        right: -23px;
-}
+.heading {
+        position: absolute;
+        top: 20%; /* Move the heading text up slightly on mobile */
+        right: 0;
+        left: 0;
+        margin: auto;
+        text-align: center;
+    }
 .color{
     margin-left: 2.5rem;
 }

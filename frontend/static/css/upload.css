@@ -98,6 +98,10 @@ p{
   .file-input + label:hover {
     background: #d5d5d5;
   }
+     #analyzeButton{
+    margin-left: 11rem;
+    margin-top: 2rem;
+   }
   
   /* Upload button beside input */
   .file-input-wrapper button {
@@ -120,6 +124,13 @@ p{
     .upload-card {
       grid-column: span 1;
     }
+  #analyzeButton{
+    margin-left: 5rem;
+    margin-top: 1rem;
+   }
+
+   
+
   }
 
   @media (max-width: 768px) {

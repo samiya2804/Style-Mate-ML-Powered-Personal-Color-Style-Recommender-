@@ -146,7 +146,7 @@ body {
 
   /* Media Queries */
 
-  @media (max-width:780px){
+  @media (max-width:768px){
 
     .security a{
       text-decoration: none;
@@ -171,7 +171,7 @@ body {
   .lookbook img{
     width: 108%;
   }
-  h3{
+  .card h3{
     font-size: 1rem;
   }
   .resize{

@@ -1,89 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="./static/css/chatbot.css">
-    <!-- AOS CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/chatbot.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  {% extends "base.html" %}
-  {% block title %}Home - StyleMate{% endblock %} 
-  {% block content %}
+    {% extends "base.html" %}
+    {% block title %}Home - StyleMate{% endblock %} 
+    {% block content %}
 
-<!-- body of chatbot with html -->
-  <!-- Hero Section -->
-  <section>
-    <h1>Chat Smarter. Connect Faster.</h1>
-    <p>Your 24/7 Assistant Powered by AI</p>
-    <button class="cta-btn" onclick="toggleChat()">Try Now</button>
-  </section>
+    <section>
+        <h1>Chat Smarter. Connect Faster.</h1>
+        <p>Your 24/7 Assistant Powered by AI</p>
+        <button class="cta-btn" onclick="toggleChat()">Try Now</button>
+    </section>
 
-  <!-- Features Section -->
-  <section class="features" data-aos="fade-up">
-    <div class="feature-card">
-      <i class="fas fa-brain"></i>
-      <h3>Smart AI Understanding</h3>
-      <p>Understands your queries naturally.</p>
+    <section class="features" data-aos="fade-up">
+        <div class="feature-card">
+            <i class="fas fa-brain"></i>
+            <h3>Smart AI Understanding</h3>
+            <p>Understands your queries naturally.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Instant Replies</h3>
+            <p>Get answers in real time.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-lock"></i>
+            <h3>Secure & Private</h3>
+            <p>Your chats stay confidential.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-language"></i>
+            <h3>Multi-Language</h3>
+            <p>Chat in any language you like!</p>
+        </div>
+    </section>
+
+    <section class="steps" data-aos="fade-right">
+        <h2>How to Use</h2>
+        <div class="step">1️⃣ Start the Chat - Click and say hi.</div>
+        <div class="step">2️⃣ Ask Anything - Type your question.</div>
+        <div class="step">3️⃣ Get Instant Help - Receive replies.</div>
+        <div class="step">4️⃣ Done! - Save time and go ahead.</div>
+    </section>
+
+    <button class="chat-button" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            Chat with StyleMate
+            <span class="close" onclick="toggleChat()">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        
     </div>
-    <div class="feature-card">
-      <i class="fas fa-bolt"></i>
-      <h3>Instant Replies</h3>
-      <p>Get answers in real time.</p>
-    </div>
-    <div class="feature-card">
-      <i class="fas fa-lock"></i>
-      <h3>Secure & Private</h3>
-      <p>Your chats stay confidential.</p>
-    </div>
-    <div class="feature-card">
-      <i class="fas fa-language"></i>
-      <h3>Multi-Language</h3>
-      <p>Chat in any language you like!</p>
-    </div>
-  </section>
 
-  <!-- Steps Section -->
-  <section class="steps" data-aos="fade-right">
-    <h2>How to Use</h2>
-    <div class="step">1️⃣ Start the Chat - Click and say hi.</div>
-    <div class="step">2️⃣ Ask Anything - Type your question.</div>
-    <div class="step">3️⃣ Get Instant Help - Receive replies.</div>
-    <div class="step">4️⃣ Done! - Save time and go ahead.</div>
-  </section>
-
-<!-- Chat Button -->
-<button class="chat-button" onclick="toggleChat()">
-  <i class="fas fa-comment-dots"></i>
-</button>
-
-<!-- Chat Popup -->
-<div class="chat-popup" id="chatPopup">
-  <div class="chat-header">
-    Chat with Us
-    <span class="close" onclick="toggleChat()">&times;</span>
-  </div>
-  <div class="chat-messages" id="chatMessages">
-    <!-- Messages will go here -->
-  </div>
-  <div class="chat-input">
-    <input type="text" id="userInput" placeholder="Type your message...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-  <div class="history-link"><a href="{{ url_for('history') }}">Show My History</a></div>
-</div>
-
-<!-- js linking -->
-<script src="./static/js/chatbot.js"></script>
-  <!-- AOS JavaScript -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
- </script>
-{% endblock %}
+    <script src="./static/js/chatbot.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    {% endblock %}
 </body>
 </html>
-

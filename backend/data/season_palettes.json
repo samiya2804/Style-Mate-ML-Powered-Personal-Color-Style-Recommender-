@@ -17,7 +17,30 @@
       "blush": ["apricot", "peach"]
     },
     "fabrics": ["cotton", "linen", "light silk", "chiffon"],
-    "tone_contrast": "Low to medium"
+    "tone_contrast": "Low to medium. Best characterized by a warm undertone and high clarity. They thrive in combinations of light, bright, and saturated colors.",
+    "characteristics": [
+      "Features are typically light, bright, and clear.",
+      "Hair often has golden or red highlights; eyes are bright blue, green, or hazel.",
+      "Skin is warm or ivory with potential for freckles.",
+      "Enhanced by soft, fresh colors that echo nature's renewal."
+    ],
+    "looks": {
+      "name": "Fresh Spring Collection",
+      "images": [
+        "/static/images/Spring_1.png",
+        "/static/images/Spring_2.png",
+        "/static/images/Spring_3.png",
+        "/static/images/Spring_4.png"
+      ]
+    },
+    "grooming_tips": [
+      "Use light, fresh scents.",
+      "Keep hair natural and airy.",
+      "Avoid heavy dark hairstyles.",
+      "Minimal beard styling works best.",
+      "Opt for subtle, fresh accessories.",
+      "Light nail care and natural polish."
+    ]
   },
   "Summer": {
     "description": "Soft, cool, and muted tones. Summers shine in pastels, rose, and misty blues.",
@@ -37,7 +60,30 @@
       "blush": ["soft pink", "rose"]
     },
     "fabrics": ["cotton voile", "crepe", "cashmere", "brushed cotton"],
-    "tone_contrast": "Low contrast"
+    "tone_contrast": "Low contrast. Cool and muted features blend harmoniously, avoiding jarring color differences. They should select tone-on-tone outfits using their cool palette colors.",
+    "characteristics": [
+      "Features are gentle, soft, and have a cool undertone.",
+      "Hair is typically ash blonde or soft brown; eyes are gray-blue or slate.",
+      "Skin has a cool, pinkish, or neutral undertone.",
+      "Enhanced by hazy, soft pastels and muted cool shades."
+    ],
+    "looks": {
+      "name": "Cool Summer Collection",
+      "images": [
+        "/static/images/Summer_1.png",
+        "/static/images/Summer_2.png",
+        "/static/images/Summer_3.png",
+        "/static/images/Summer_4.png"
+      ]
+    },
+    "grooming_tips": [
+      "Soft, pastel-friendly hairstyles.",
+      "Use cool-toned colognes.",
+      "Keep facial hair light and neat.",
+      "Minimalist watches and accessories.",
+      "Light moisturizers for summer skin.",
+      "Pastel ties or pocket squares for style."
+    ]
   },
   "Autumn": {
     "description": "Rich, warm, and earthy tones. Autumns glow in rust, olive, mustard, and terracotta.",
@@ -57,7 +103,30 @@
       "blush": ["burnt apricot", "rust"]
     },
     "fabrics": ["wool", "suede", "tweed", "denim", "corduroy"],
-    "tone_contrast": "Medium to high"
+    "tone_contrast": "Medium to high. Features are primarily deep and warm, with high saturation preferred over pale tones. The contrast is created by mixing rich, earthy colors.",
+    "characteristics": [
+      "Features are deep, rich, and intensely warm.",
+      "Hair is usually red, auburn, or deep brown with golden undertones.",
+      "Skin is warm, golden, or dark bronze.",
+      "Enhanced by deep, spiced, and rustic tones found in nature's harvest."
+    ],
+    "looks": {
+      "name": "Earthy Autumn Collection",
+      "images": [
+        "/static/images/Aut_1.png",
+        "/static/images/Aut_2.png",
+        "/static/images/Aut_3.png",
+        "/static/images/Aut_4.png"
+      ]
+    },
+    "grooming_tips": [
+      "Warm hair highlights or tones.",
+      "Beard oils for earthy look.",
+      "Use rich fragrances.",
+      "Structured hairstyles preferred.",
+      "Layered clothing enhances the earthy palette.",
+      "Dark nail polish optional for fashion-forward."
+    ]
   },
   "Winter": {
     "description": "Cool, bold, and dramatic tones. Winters dazzle in black, icy shades, and jewel tones.",
@@ -77,6 +146,29 @@
       "blush": ["berry", "cool pink"]
     },
     "fabrics": ["satin", "silk", "velvet", "leather", "structured cotton"],
-    "tone_contrast": "High contrast"
+    "tone_contrast": "High contrast. Characterized by stark differences between hair, eye, and skin color (e.g., dark hair/pale skin). They look best in monochromatic or high-contrast color pairings.",
+    "characteristics": [
+      "Features are striking, intense, and possess a cool undertone.",
+      "Hair is often jet black, dark brown, or platinum blonde; eyes are deep or bright cool shades.",
+      "Skin can be very pale, olive, or deep, but always cool or neutral-cool.",
+      "Enhanced by pure, clear colors, black, white, and jewel tones."
+    ],
+    "looks": {
+      "name": "Dramatic Winter Collection",
+      "images": [
+        "/static/images/Winter_1.png",
+        "/static/images/Winter_2.png",
+        "/static/images/Winter_3.png",
+        "/static/images/Winter_4.png"
+      ]
+    },
+    "grooming_tips": [
+      "Bold hairstyles, sharp cuts.",
+      "Use striking colognes.",
+      "Well-groomed beard styles.",
+      "Structured and tailored outfits.",
+      "Leather gloves or belts for accessories.",
+      "Moisturize skin in cold weather."
+    ]
   }
 }
