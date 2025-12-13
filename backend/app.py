@@ -27,12 +27,12 @@ import bcrypt
 from extract_colors import rgb_to_lab
 from predict_season import predict_season
 from functools import wraps
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 app = Flask(
     __name__,
-    # template_folder="../frontend/templates",
-    # static_folder="../frontend/static"
-     template_folder=os.path.join("..", "frontend", "templates"),
-            static_folder=os.path.join("..", "frontend", "static")
+    template_folder=os.path.join(BASE_DIR, "..", "frontend", "templates"),
+    static_folder=os.path.join(BASE_DIR, "..", "frontend", "static")
 )
 app.secret_key = os.getenv("FLASK_SECRET_KEY")
 app.config["SESSION_TYPE"] = "filesystem"
