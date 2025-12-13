@@ -71,9 +71,9 @@ python app.py
 
 Open browser at http://127.0.0.1:5000
 
-✨ Demo
+✨ Demo - Deployed link
 
-Coming soon — stay tuned for a live Netlify or Render link.
+https://style-mate-ml-powered-personal-color-muyw.onrender.com
 
 🙌 Contributors
 
