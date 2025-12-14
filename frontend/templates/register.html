@@ -26,13 +26,17 @@
         <input type="email" name="email" class="form-control" placeholder="Enter Your Email">
       </div>
     
-      <div class="form-group">
-        <input type="password" name="password" class="form-control" placeholder="Enter Strong password">
-      </div>
     
-      <div class="form-group">
-        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
-      </div>
+  <div class="form-group position-relative">
+  <input type="password" name="password" id="password" class="form-control" placeholder="Enter Strong password" required>
+  <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+</div>
+
+<div class="form-group position-relative">
+  <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
+  <span class="toggle-password" onclick="togglePassword('confirm_password', this)">👁️</span>
+</div>
+
     
       <div class="form-group">
         <input type="text" class="form-control"  name="country" placeholder="Enter Your Country">
@@ -121,6 +125,42 @@
         <option value="Western Australia">Western Australia</option>
         <option value="South Australia">South Australia</option>
     </optgroup>
+         <optgroup label="--- PAKISTAN (Provinces) ---">
+  <option>Punjab</option>
+  <option>Sindh</option>
+  <option>Khyber Pakhtunkhwa</option>
+  <option>Balochistan</option>
+  <option>Islamabad Capital Territory</option>
+</optgroup>
+
+<optgroup label="--- SOUTH KOREA (Major Regions) ---">
+  <option>Seoul</option>
+  <option>Busan</option>
+  <option>Incheon</option>
+  <option>Daegu</option>
+  <option>Gyeonggi-do</option>
+</optgroup>
+
+<optgroup label="--- JAPAN ---">
+  <option>Tokyo</option>
+  <option>Osaka</option>
+  <option>Kyoto</option>
+  <option>Kanagawa</option>
+  <option>Hokkaido</option>
+</optgroup>
+
+<optgroup label="--- GERMANY ---">
+  <option>Bavaria</option>
+  <option>Berlin</option>
+  <option>Hamburg</option>
+  <option>North Rhine-Westphalia</option>
+  <option>Baden-Württemberg</option>
+</optgroup>
+
+  <optgroup label="--- others ---">
+        <option value="Others">Others</option>
+  </optgroup>
+
 
 </select>
       </div>
@@ -154,6 +194,18 @@
     </form>
     
     </div>
+     <script>
+function togglePassword(inputId, icon) {
+  const input = document.getElementById(inputId);
+  if (input.type === "password") {
+    input.type = "text";
+    icon.textContent = "🙈";
+  } else {
+    input.type = "password";
+    icon.textContent = "👁️";
+  }
+}
+</script>
     {% endblock %}
 </body>
 </html>
