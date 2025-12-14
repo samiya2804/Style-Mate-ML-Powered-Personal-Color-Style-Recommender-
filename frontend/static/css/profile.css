@@ -146,47 +146,62 @@ body {
 
   /* Media Queries */
 
-  @media (max-width:768px){
+ @media (max-width:768px){
 
-    .security a{
-      text-decoration: none;
+  .profile-section {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .security a{
+    text-decoration: none;
     text-align: center;
     font-size: 0.6rem;
     margin-top: 1.5rem;
-    }
-
-    .security {
-      display: flex;
-      flex-wrap: wrap;
   }
+
+  .security {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .profilebtn{
     padding: 10px 10px;
     text-align: center;
     margin-top: 3.7rem;
     width:100%;
   }
+
   .lookbook{
     grid-template-columns: repeat(2, 1fr);
   }
+
   .lookbook img{
     width: 108%;
   }
+
   .card h3{
     font-size: 1rem;
   }
+
   .resize{
     margin-top: 21px;
     font-size: 0.8rem;
   }
+
   .recheck{
     padding: 10px 7px;
     margin-top: 2.5rem;
     font-size: 0.77rem;
   }
+
   .popup-form {
     top: 43%;
     left: 17%;
     margin-right: 2rem;
   }
-
-  }
+}
