@@ -40,6 +40,19 @@
                 <div class="short-row">
                     <strong>Tone:</strong> <span class="tone-tag">{{ upload.skin_tone or "Unknown" }}</span>
                 </div>
+
+
+                
+                <form 
+    action="{{ url_for('delete_upload', upload_id=upload.id) }}" 
+    method="POST"
+    onsubmit="return confirm('Are you sure you want to delete this analysis?');"
+    class="delete-form"
+>
+    <button type="submit" class="delete-btn">
+        🗑 Delete Analysis
+    </button>
+</form>
                 
                 <button class="show-more-btn" onclick="toggleDetail('card-{{ loop.index }}')">
                     <span class="btn-label">Show More</span>
@@ -93,6 +106,26 @@
   color: rgb(204, 118, 132);
   text-decoration: none;
   margin-left: 2px;
+}
+
+    
+.delete-form {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.delete-btn {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #d9363e;
 }
 
 :hover .back-frame{
