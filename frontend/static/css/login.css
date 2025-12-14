@@ -17,6 +17,32 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+
+
+.toggle-password {
+    position: absolute;
+    top: 66%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+
+    -webkit-user-select: none; /* Safari / iOS */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Old Edge */
+    user-select: none;         /* Standard */
+}
+
 /* @media (min-width: 1400px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
         margin-left: 14rem;
