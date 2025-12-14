@@ -172,6 +172,116 @@
     }
   }
 
+  /* ================= MOBILE & TABLET RESPONSIVE FIXES ================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .container-consult {
+    padding: 0 14px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  aside {
+    order: 2;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .consult-wrapper {
+    padding-top: 16px;
+  }
+
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-header {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .section-header h1 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .tagline {
+    font-size: 13px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  p.lead {
+    font-size: 14px;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .swatch {
+    width: 48px;
+    height: 48px;
+  }
+
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  input[type="text"] {
+    font-size: 14px;
+  }
+
+  .cta {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .section-header h1 {
+    font-size: 16px;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .swatch {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contrast-meter {
+    height: 10px;
+  }
+
+  ol, ul {
+    padding-left: 16px;
+  }
+}
+
+/* Ensure charts never overflow */
+canvas {
+  max-width: 100%;
+}
+
+
 </style>
 
 
